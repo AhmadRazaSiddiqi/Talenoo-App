@@ -1,0 +1,98 @@
+/* Frame 9388 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 18px 15px;
+gap: 10px;
+
+width: 316px;
+height: 48px;
+
+background: #FFFFFF;
+border: 2px solid #6D028E;
+border-radius: 6px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 1072 */
+
+width: 18px;
+height: 18px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 386 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 18px;
+height: 18px;
+left: 15px;
+top: 15px;
+
+background: #6D028E;
+border: 2px solid #6D028E;
+border-radius: 4px;
+
+
+/* check (3) 1 */
+
+position: absolute;
+width: 14px;
+height: 14px;
+left: 17px;
+top: 17px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 25%;
+bottom: 29.17%;
+
+border: 1.5px solid #FFFFFF;
+
+
+/* Photographer */
+
+width: 94px;
+height: 10px;
+
+/* Text MD */
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+/* or 143% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #24364C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
