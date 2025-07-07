@@ -1,37 +1,37 @@
-import React from "react"
+import { useFonts } from "expo-font";
+import { ArrowLeft, ArrowRight } from "lucide-react-native";
+import React from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
   Dimensions,
-  TouchableOpacity,
-  ScrollView,
   Image,
-} from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
-import { useFonts } from "expo-font"
-import Svg, { Circle, Path } from "react-native-svg"
-import { ArrowLeft, ArrowRight } from "lucide-react-native"
-import { scale, verticalScale, moderateScale } from "react-native-size-matters"
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { moderateScale, scale, verticalScale } from "react-native-size-matters";
+import Svg, { Circle, Path } from "react-native-svg";
 
-const { height, width } = Dimensions.get("window")
+const { height, width } = Dimensions.get("window");
 
 // TypeScript interfaces
 interface PersonWithDeviceProps {
-  width: number
-  height: number
+  width: number;
+  height: number;
 }
 
 interface DotIndicatorProps {
-  active: boolean
-  color?: string
+  active: boolean;
+  color?: string;
 }
 
 interface CareerTagProps {
-  label: string
-  backgroundColor: string
-  iconPath: string
-  style: any
+  label: string;
+  backgroundColor: string;
+  iconPath: string;
+  style: any;
 }
 
 // Custom SVG Components
@@ -69,7 +69,7 @@ const CareerTag: React.FC<CareerTagProps> = ({
       <Path d={iconPath} fill="white" />
     </Svg>
   </View>
-)
+);
 
 const PersonWithDevice: React.FC<PersonWithDeviceProps> = ({
   width: svgWidth,
@@ -131,7 +131,7 @@ const PersonWithDevice: React.FC<PersonWithDeviceProps> = ({
         left: "8%",
       },
     },
-  ]
+  ];
 
   return (
     <View style={{ position: "relative", width: svgWidth, height: svgHeight }}>
@@ -174,8 +174,8 @@ const PersonWithDevice: React.FC<PersonWithDeviceProps> = ({
         ))}
       </View>
     </View>
-  )
-}
+  );
+};
 
 const DotIndicator: React.FC<DotIndicatorProps> = ({
   active,
@@ -184,16 +184,16 @@ const DotIndicator: React.FC<DotIndicatorProps> = ({
   <Svg width="12" height="12" viewBox="0 0 12 12">
     <Circle cx="6" cy="6" r="6" fill={active ? "#6D028E" : color} />
   </Svg>
-)
+);
 
 const Onboarding: React.FC = () => {
   const [fontsLoaded] = useFonts({
     "Font-Medium": require("../../assets/fonts/PlusJakartaSans-Medium.ttf"),
     "Font-Bold": require("../../assets/fonts/PlusJakartaSans-Bold.ttf"),
-  })
+  });
 
   if (!fontsLoaded) {
-    return null
+    return null;
   }
 
   return (
@@ -262,10 +262,10 @@ const Onboarding: React.FC = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Onboarding
+export default Onboarding;
 
 const styles = StyleSheet.create({
   container: {
@@ -380,4 +380,4 @@ const styles = StyleSheet.create({
     color: "#FE5120",
     fontWeight: "600",
   },
-})
+});
