@@ -1,383 +1,280 @@
-import { useFonts } from "expo-font";
-import { ArrowLeft, ArrowRight } from "lucide-react-native";
+import {
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from "@/utils/responsive";
+import { FontAwesome6 } from "@expo/vector-icons";
 import React from "react";
 import {
   Dimensions,
   Image,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { moderateScale, scale, verticalScale } from "react-native-size-matters";
-import Svg, { Circle, Path } from "react-native-svg";
+const { width } = Dimensions.get("window");
+const parentContainerScreenLeft = -(821 - width) / 2;
+const parentContainerScreenTop = -(821 / 2);
 
-const { height, width } = Dimensions.get("window");
-
-// TypeScript interfaces
-interface PersonWithDeviceProps {
-  width: number;
-  height: number;
-}
-
-interface DotIndicatorProps {
-  active: boolean;
-  color?: string;
-}
-
-interface CareerTagProps {
-  label: string;
-  backgroundColor: string;
-  iconPath: string;
-  style: any;
-}
-
-// Custom SVG Components
-const CareerTag: React.FC<CareerTagProps> = ({
-  label,
-  backgroundColor,
-  iconPath,
-  style,
-}) => (
-  <View
-    style={[
-      {
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor,
-        paddingHorizontal: 12,
-        paddingVertical: 6,
-        borderRadius: 15,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-        elevation: 4,
-      },
-      style,
-    ]}
-  >
-    <Svg width="12" height="12" viewBox="0 0 24 24" style={{ marginRight: 4 }}>
-      <Path d={iconPath} fill="white" />
-    </Svg>
-    <Text style={{ color: "white", fontWeight: "bold", fontSize: 11 }}>
-      {label}
-    </Text>
-    <Svg width="12" height="12" viewBox="0 0 24 24" style={{ marginLeft: 4 }}>
-      <Path d={iconPath} fill="white" />
-    </Svg>
-  </View>
-);
-
-const PersonWithDevice: React.FC<PersonWithDeviceProps> = ({
-  width: svgWidth,
-  height: svgHeight,
-}) => {
-  const careerTags = [
-    {
-      label: "#Designer",
-      backgroundColor: "#8B5CF6",
-      iconPath:
-        "M13.64 21.97c-.16-.02-.3-.06-.44-.09l-1.42-3.48c-.29.14-.59.25-.91.31v3.83c.57-.07 1.16-.28 1.77-.57zm-3.34.57v-3.83c-.32-.06-.62-.17-.91-.31l-1.42 3.48c-.14.03-.28.07-.44.09.61.29 1.2.5 1.77.57zM8.5 21.92c-.44-.15-.85-.35-1.24-.58l1.42-3.48c.18.14.38.25.6.33l-.78 3.73zm7-.01l-.78-3.73c.22-.08.42-.19.6-.33l1.42 3.48c-.39.23-.8.43-1.24.58z",
-      style: {
-        position: "absolute" as const,
-        top: "15%",
-        left: "5%",
-      },
-    },
-    {
-      label: "#Manager",
-      backgroundColor: "#F97316",
-      iconPath:
-        "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
-      style: {
-        position: "absolute" as const,
-        top: "25%",
-        right: "8%",
-      },
-    },
-    {
-      label: "#React Developer",
-      backgroundColor: "#8B5CF6",
-      iconPath:
-        "M12 2.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM21 9h-6l2 3-2 3h6l2-3-2-3zM3 9l2 3-2 3h6l-2-3 2-3H3z",
-      style: {
-        position: "absolute" as const,
-        top: "55%",
-        left: "2%",
-      },
-    },
-    {
-      label: "#UX Designer",
-      backgroundColor: "#10B981",
-      iconPath:
-        "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z",
-      style: {
-        position: "absolute" as const,
-        top: "70%",
-        right: "5%",
-      },
-    },
-    {
-      label: "#Developer",
-      backgroundColor: "#F97316",
-      iconPath:
-        "M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z",
-      style: {
-        position: "absolute" as const,
-        bottom: "15%",
-        left: "8%",
-      },
-    },
-  ];
-
+const OnboardingScreen = () => {
   return (
-    <View style={{ position: "relative", width: svgWidth, height: svgHeight }}>
-      {/* Background with the actual image */}
-      <View
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: "#FFFFFF", position: "relative" }}
+    >
+      <View style={styles.parentContainer}>
+        <View style={styles.ellipse1} />
+        <View style={styles.ellipse2} />
+        <View style={styles.ellipse3} />
+
+        <View style={styles.childContent}>
+          <Image
+            source={require("../../assets/images/image.png")}
+            resizeMode="contain"
+            style={styles.img}
+          />
+        </View>
+      </View>
+      <Image
+        source={require("../../assets/images/career.png")}
+        resizeMode="contain"
         style={{
-          width: svgWidth,
-          height: svgHeight,
-          borderRadius: svgWidth / 2,
-          overflow: "hidden",
-          backgroundColor: "#F0F0F0",
-          position: "relative",
-          alignItems: "center",
-          justifyContent: "center",
+          left: responsiveWidth(10),
+          top: responsiveHeight(43.33),
+          position: "absolute",
         }}
-      >
-        {/* Replace this with your actual image */}
-        <Image
-          source={require("../../assets/images/image1.png")} // Replace with your image path
+      />
+      <Text style={styles.heading}>
+        Finding Your Perfect {"\n"} Career Path Starts Here!
+      </Text>
+      <Text style={styles.subHeading}>
+        Confused looking for updated talents {"\n"} and let’s see here lots of
+        talent listings
+      </Text>
+      <View style={styles.BtnContainer}>
+        <View
           style={{
-            width: "80%",
-            height: "80%",
-            resizeMode: "contain",
+            height: responsiveHeight(45),
+            width: responsiveWidth(45),
+            backgroundColor: "#F5F5F5",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 100,
           }}
-        />
-      </View>
-
-      {/* Floating Career Tags */}
-      <View
-        style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
-      >
-        {careerTags.map((tag, index) => (
-          <CareerTag
-            key={index}
-            label={tag.label}
-            backgroundColor={tag.backgroundColor}
-            iconPath={tag.iconPath}
-            style={tag.style}
-          />
-        ))}
-      </View>
-    </View>
-  );
-};
-
-const DotIndicator: React.FC<DotIndicatorProps> = ({
-  active,
-  color = "#E2CCE8",
-}) => (
-  <Svg width="12" height="12" viewBox="0 0 12 12">
-    <Circle cx="6" cy="6" r="6" fill={active ? "#6D028E" : color} />
-  </Svg>
-);
-
-const Onboarding: React.FC = () => {
-  const [fontsLoaded] = useFonts({
-    "Font-Medium": require("../../assets/fonts/PlusJakartaSans-Medium.ttf"),
-    "Font-Bold": require("../../assets/fonts/PlusJakartaSans-Bold.ttf"),
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Hero Image Section */}
-        <View style={styles.imageContainer}>
-          <PersonWithDevice
-            width={Math.min(width * 0.9, 400)}
-            height={Math.min(height * 0.45, 400)}
+        >
+          <FontAwesome6
+            name="arrow-left"
+            size={responsiveFontSize(20)}
+            color="#6D028E"
           />
         </View>
-
-        {/* Content Section */}
-        <View style={styles.contentContainer}>
-          <View style={styles.textAndNavigation}>
-            {/* Main Heading */}
-            <Text style={styles.heading}>
-              Finding Your Perfect{"\n"}Career Path Starts Here!
-            </Text>
-
-            {/* Subheading */}
-            <Text style={styles.subHeading}>
-              Confused looking for updated talents{"\n"}and let's see here lots
-              of talent listings
-            </Text>
-
-            {/* Navigation Indicators */}
-            <View style={styles.navigationContainer}>
-              <TouchableOpacity style={styles.navButton}>
-                <ArrowLeft color="#6D028E" size={20} />
-              </TouchableOpacity>
-
-              <View style={styles.dotsContainer}>
-                <DotIndicator active={true} />
-                <DotIndicator active={false} />
-                <DotIndicator active={false} />
-                <DotIndicator active={false} />
-              </View>
-
-              <TouchableOpacity
-                style={[styles.navButton, styles.activeNavButton]}
-              >
-                <ArrowRight color="#FFFFFF" size={20} />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <View style={styles.bottomSection}>
-            {/* Get Started Button */}
-            <TouchableOpacity style={styles.getStartedButton}>
-              <Text style={styles.getStartedText}>Let's Get Started</Text>
-            </TouchableOpacity>
-
-            {/* Sign In Link */}
-            <View style={styles.signInContainer}>
-              <Text style={styles.signInText}>
-                Already have an account?{" "}
-                <Text style={styles.signInLink}>Sign In</Text>
-              </Text>
-            </View>
-          </View>
+        <View style={styles.dotContainer}>
+          <Text style={[styles.dot, { backgroundColor: "#6D028E" }]}></Text>
+          <Text style={[styles.dot, { backgroundColor: "#E2CCE8" }]}></Text>
+          <Text style={[styles.dot, { backgroundColor: "#E2CCE8" }]}></Text>
         </View>
-      </ScrollView>
+        <View
+          style={{
+            height: responsiveHeight(45),
+            width: responsiveWidth(45),
+            backgroundColor: "#6D028E",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 100,
+          }}
+        >
+          <FontAwesome6
+            name="arrow-right"
+            size={responsiveFontSize(20)}
+            color="white"
+          />
+        </View>
+      </View>
+      <TouchableOpacity style={styles.getStarted}>
+        <Text style={styles.getStartedText}>let’s get Started</Text>
+      </TouchableOpacity>
+      <View style={styles.SignInContainer}>
+        <Text
+          style={{
+            color: "#6D028E",
+            fontSize: responsiveFontSize(14),
+            fontFamily: "PlusJakartaSans-Regular",
+            fontWeight: 500,
+            textAlign: "center",
+          }}
+        >
+          Already have an account?
+        </Text>
+        <Text
+          style={{
+            textDecorationLine: "underline",
+            color: "#FE5120",
+            fontSize: responsiveFontSize(14),
+            fontFamily: "PlusJakartaSans-Regular",
+            fontWeight: 500,
+            textAlign: "center",
+          }}
+        >
+          {" "}
+          Sign in
+        </Text>
+      </View>
     </SafeAreaView>
   );
 };
 
-export default Onboarding;
+export default OnboardingScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
+  parentContainer: {
+    position: "absolute",
+    width: 821,
+    height: 821,
+    overflow: "hidden",
+    backgroundColor: "#F5F7FA",
+    borderRadius: 821 / 2,
+
+    top: -821 / 2,
+    left: -(821 - width) / 2,
+
+    zIndex: 0,
   },
-  scrollContent: {
-    flexGrow: 1,
-    paddingBottom: verticalScale(40),
-    minHeight: height,
-  },
-  imageContainer: {
-    alignItems: "center",
+  childContent: {
+    display: "flex",
     justifyContent: "center",
-    paddingTop: verticalScale(20),
-    paddingBottom: verticalScale(30),
-    minHeight: height * 0.45,
-  },
-  contentContainer: {
-    flex: 1,
-    paddingHorizontal: scale(20),
     alignItems: "center",
-    justifyContent: "space-between",
-    paddingBottom: verticalScale(30),
+    position: "absolute",
+    width: 298,
+    height: 410,
+    backgroundColor: "grey",
+
+    top: 26 - parentContainerScreenTop,
+    left: (821 - 298) / 2,
+
+    zIndex: 3,
   },
-  textAndNavigation: {
-    alignItems: "center",
-    width: "100%",
+  img: {
+    width: 366.7,
+    height: 386,
   },
-  bottomSection: {
-    alignItems: "center",
-    width: "100%",
-    paddingBottom: verticalScale(20),
+  ellipse1: {
+    position: "absolute",
+    width: 370,
+    height: 370,
+    backgroundColor: "#FFFFFF",
+    opacity: 0.1,
+    borderRadius: 370 / 2,
+    shadowColor: "rgba(13, 55, 114, 0.3)",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 30,
+    elevation: 5,
+    zIndex: 0,
+    left: 20 - parentContainerScreenLeft,
+    top: 80 - parentContainerScreenTop,
+  },
+  ellipse2: {
+    position: "absolute",
+    width: 318,
+    height: 318,
+    backgroundColor: "#FFFFFF",
+    opacity: 0.3,
+    borderRadius: 318 / 2,
+    shadowColor: "rgba(13, 55, 114, 0.3)",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 30,
+    elevation: 6,
+    zIndex: 1,
+    left: 45 - parentContainerScreenLeft,
+    top: 105 - parentContainerScreenTop,
+  },
+  ellipse3: {
+    position: "absolute",
+    width: 264,
+    height: 264,
+    backgroundColor: "#FFFFFF",
+    opacity: 0.5,
+    borderRadius: 264 / 2,
+    shadowColor: "rgba(13, 55, 114, 0.3)",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 30,
+    elevation: 7,
+    zIndex: 2,
+    left: 70 - parentContainerScreenLeft,
+    top: 130 - parentContainerScreenTop,
   },
   heading: {
-    fontFamily: "Font-Bold",
-    fontSize: moderateScale(28),
-    fontWeight: "700",
+    position: "absolute",
+    top: responsiveHeight(472),
+    left: responsiveWidth(27),
+    fontFamily: "PlusJakartaSans-Bold",
+    fontSize: responsiveFontSize(24),
     textAlign: "center",
-    color: "#24364C",
-    lineHeight: verticalScale(36),
-    marginBottom: verticalScale(16),
-    paddingHorizontal: scale(10),
+    // backgroundColor: "red",
+    width: responsiveWidth(323),
   },
   subHeading: {
-    fontFamily: "Font-Medium",
-    fontSize: moderateScale(16),
-    fontWeight: "500",
-    textAlign: "center",
+    position: "absolute",
+    left: responsiveWidth(31),
+    width: responsiveWidth(313),
+    top: responsiveHeight(561),
+    fontFamily: "PlusJakartaSans-Regular",
+    fontSize: responsiveFontSize(16),
     color: "#5F729D",
-    lineHeight: verticalScale(24),
-    marginBottom: verticalScale(40),
-    paddingHorizontal: scale(20),
+    fontWeight: 500,
+    textAlign: "center",
+    lineHeight: responsiveHeight(24),
   },
-  navigationContainer: {
+  BtnContainer: {
+    position: "absolute",
+    minWidth: responsiveWidth(208),
+    left: responsiveWidth(83),
+    top: responsiveHeight(638),
+    display: "flex",
     flexDirection: "row",
+    gap: responsiveWidth(40),
     alignItems: "center",
-    justifyContent: "center",
-    marginBottom: verticalScale(40),
-    width: "100%",
   },
-  navButton: {
-    backgroundColor: "#F5F5F5",
-    borderRadius: scale(22.5),
-    height: scale(45),
-    width: scale(45),
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  activeNavButton: {
+  getStarted: {
+    position: "absolute",
+    left: responsiveWidth(30),
+    top: responsiveHeight(745),
+    width: responsiveWidth(315),
+    height: responsiveHeight(48),
     backgroundColor: "#6D028E",
-  },
-  dotsContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    display: "flex",
     justifyContent: "center",
-    marginHorizontal: scale(20),
-    gap: scale(8),
-  },
-  getStartedButton: {
-    backgroundColor: "#6D028E",
-    borderRadius: scale(12),
-    paddingVertical: verticalScale(16),
-    paddingHorizontal: scale(40),
-    width: "100%",
-    maxWidth: scale(315),
     alignItems: "center",
-    justifyContent: "center",
-    marginBottom: verticalScale(20),
+    textAlign: "center",
+    borderRadius: 8,
   },
   getStartedText: {
-    fontFamily: "Font-Medium",
-    fontSize: moderateScale(16),
-    fontWeight: "700",
     color: "#FFFFFF",
-    textAlign: "center",
   },
-  signInContainer: {
-    alignItems: "center",
+  SignInContainer: {
+    position: "absolute",
+    left: responsiveWidth(74),
+    top: responsiveHeight(806),
+    width: responsiveWidth(226),
+    display: "flex",
+    flexDirection: "row",
+    textAlign: "center",
     justifyContent: "center",
-    marginTop: verticalScale(16),
-    paddingHorizontal: scale(20),
   },
-  signInText: {
-    fontFamily: "Font-Medium",
-    fontSize: moderateScale(14),
-    color: "#6D028E",
-    textAlign: "center",
-    lineHeight: verticalScale(20),
+  dotContainer: {
+    display: "flex",
+    flexDirection: "row",
+    width: responsiveWidth(38),
+    gap: responsiveWidth(10),
   },
-  signInLink: {
-    color: "#FE5120",
-    fontWeight: "600",
+  dot: {
+    height: 6,
+    width: 6,
+    borderRadius: 100,
   },
 });
