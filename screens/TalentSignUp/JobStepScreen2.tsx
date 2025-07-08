@@ -373,20 +373,26 @@ const styles = StyleSheet.create({
   },
 
   jobLevelItemSelected: {
+    borderWidth: 2,
     borderColor: "#6D028E",
+    justifyContent: "center",
+    // alignItems: "center",
+    // backgroundColor: "red",
+    width: 284,
   },
 
   jobLevelText: {
-    fontFamily: "PlusJakartaSans-Regular",
-    fontWeight: "500",
+    fontFamily: "PlusJakartaSans-Bold",
+    fontWeight: "700",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(20),
-    color: "#24364C",
+    color: "##1E1E1E",
   },
 
   jobLevelTextSelected: {
-    color: "#6D028E",
+    color: "##1E1E1E",
     fontWeight: "bold",
+    fontFamily: "PlusJakartaSans-Bold",
   },
 
   nextButton: {
@@ -447,7 +453,7 @@ const styles = StyleSheet.create({
   SelectTime: {
     position: "absolute",
     width: responsiveWidth(316),
-    top: responsiveHeight(20),
+    top: responsiveHeight(10),
     paddingTop: responsiveHeight(20),
     paddingRight: responsiveWidth(16),
     paddingBottom: responsiveHeight(12),
@@ -457,5 +463,6 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(22),
     fontFamily: "PlusJakartaSans-Bold",
     lineHeight: responsiveHeight(28),
+    fontWeight: "bold",
   },
 });

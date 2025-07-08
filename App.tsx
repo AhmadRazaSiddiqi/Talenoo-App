@@ -5,7 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import "./global.css";
-import JobStepScreen2 from "./screens/TalentSignUp/JobStepScreen2";
+import LocationSearchScreen from "./screens/TalentSignUp/FindLocation";
 const Stack = createNativeStackNavigator();
 
 function RootStack() {
@@ -23,7 +23,9 @@ function RootStack() {
       {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
       {/* <Stack.Screen name="TalentStep" component={TalentStep} /> */}
       {/* <Stack.Screen name="JobStep" component={JobStepScreen} /> */}
-      <Stack.Screen name="JobStep2" component={JobStepScreen2} />
+      {/* <Stack.Screen name="JobStep2" component={JobStepScreen2} /> */}
+      {/* <Stack.Screen name="Location" component={FindLocation} /> */}
+      <Stack.Screen name="Location" component={LocationSearchScreen} />
     </Stack.Navigator>
   );
 }
