@@ -1,26 +1,25 @@
+import { Image } from "expo-image";
+import { LinearGradient } from "expo-linear-gradient";
+import React, { useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
   Dimensions,
-  TouchableOpacity,
-  TextInput, // Keeping TextInput in imports, though not used in UI for this screen based on provided design.
+  Platform, // Keeping TextInput in imports, though not used in UI for this screen based on provided design.
   ScrollView,
-} from "react-native"
-import React, { useState } from "react"
-import { SafeAreaView } from "react-native-safe-area-context"
-import { LinearGradient } from "expo-linear-gradient"
-import { Image } from "expo-image"
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"
-import { Platform } from "react-native"
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // Import your responsive helper functions
 import {
-  responsiveHeight,
   responsiveFontSize,
+  responsiveHeight,
   responsiveWidth,
-} from "../../utils/responsive" // Ensure this path is correct
+} from "../../utils/responsive"; // Ensure this path is correct
 
-const { width, height } = Dimensions.get("window") // Keep this for dynamic width calculation for nextButton
+const { width, height } = Dimensions.get("window"); // Keep this for dynamic width calculation for nextButton
 
 const talentsList = [
   "Internship",
@@ -29,18 +28,18 @@ const talentsList = [
   "Mid Senior Level",
   "Director",
   "Executive",
-]
+];
 
-const JobStepScreen = () => {
-  const [selectedJob, setSelectedJob] = useState(["Internship"]) // Initial selection as per design's checkbox state
+const JobStepScreen2 = () => {
+  const [selectedJob, setSelectedJob] = useState(["Internship"]); // Initial selection as per design's checkbox state
 
   const handleJobSelect = (job) => {
     setSelectedJob((prevSelected) =>
       prevSelected.includes(job)
         ? prevSelected.filter((j) => j !== job)
         : [...prevSelected, job]
-    )
-  }
+    );
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -161,10 +160,10 @@ const JobStepScreen = () => {
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default JobStepScreen
+export default JobStepScreen2;
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -415,29 +414,29 @@ const styles = StyleSheet.create({
     textTransform: "capitalize",
     color: "#FFFFFF",
   },
- con2:{
-    position:'absolute',
-    backgroundColor:'white',
-    height:responsiveHeight(407),
-    width:responsiveWidth(325),
-    left:responsiveWidth(25),
-    top:responsiveHeight(73),
-    borderRadius:15,
-    opacity:0.3,
-    zIndex:0
+  con2: {
+    position: "absolute",
+    backgroundColor: "white",
+    height: responsiveHeight(407),
+    width: responsiveWidth(325),
+    left: responsiveWidth(25),
+    top: responsiveHeight(73),
+    borderRadius: 15,
+    opacity: 0.3,
+    zIndex: 0,
   },
-  con1:{
-    position:'absolute',
-    backgroundColor:'white',
-    height:responsiveHeight(407),
-    width:responsiveWidth(305),
-    left:responsiveWidth(35),
-    top:responsiveHeight(67),
-    borderRadius:15,
-    zIndex:0,
-    opacity:0.3
-  }
+  con1: {
+    position: "absolute",
+    backgroundColor: "white",
+    height: responsiveHeight(407),
+    width: responsiveWidth(305),
+    left: responsiveWidth(35),
+    top: responsiveHeight(67),
+    borderRadius: 15,
+    zIndex: 0,
+    opacity: 0.3,
+  },
   // Removing unused search styles since it's not in this screen's design
   // searchContainer: {},
   // searchInput: {},
-})
+});
