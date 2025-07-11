@@ -1,3 +1,5 @@
+import { Ionicons, MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
@@ -5,12 +7,100 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import "./global.css";
-import SiginScreen from "./screens/SignIn";
+import NotificationScreen from "./screens/Notifications";
+import HomeScreen from "./screens/Tabs/HomeScreen";
+import MessagesScreen from "./screens/Tabs/MessagesScreen";
+import ProfileScreen from "./screens/Tabs/ProfileScreen";
+import RequestsScreen from "./screens/Tabs/RequestsScreen";
+import { responsiveHeight, responsiveWidth } from "./utils/responsive";
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function MainTabs() {
+  return (
+<Tab.Navigator
+  screenOptions={{
+    headerShown: false,
+    tabBarStyle: {
+      width: responsiveWidth(390),
+      height: responsiveHeight(75),
+      borderWidth: 1,
+      paddingTop: responsiveHeight(8),
+      paddingRight: responsiveWidth(16),
+      paddingBottom: responsiveHeight(12),
+      paddingLeft: responsiveWidth(16),
+      gap: responsiveWidth(8),
+    },
+    tabBarActiveTintColor: '#6D028E',
+    tabBarInactiveTintColor: '#6B7582',
+    tabBarLabelStyle: {
+      fontFamily: 'PlusJakartaSans-Regular',
+    },
+  }}
+>
+  <Tab.Screen
+    name="Home"
+    component={HomeScreen}
+    options={{
+      tabBarIcon: ({ focused, color, size }) => (
+        <Octicons
+          name="home"
+          size={24}
+          color={focused ? '#6D028E' : '#6B7582'} 
+        />
+      ),
+    }}
+  />
+  <Tab.Screen
+    name="Requests"
+    component={RequestsScreen}
+    options={{
+      tabBarIcon: ({ focused, color, size }) => (
+        <MaterialCommunityIcons
+          name="inbox-outline"
+          size={24}
+          color={focused ? '#6D028E' : '#6B7582'}
+        />
+      ),
+    }}
+  />
+  <Tab.Screen
+    name="Messages"
+    component={MessagesScreen}
+    options={{
+      tabBarIcon: ({ focused, color, size }) => (
+        <Ionicons
+          name="chatbubble-ellipses-outline"
+          size={24}
+          color={focused ? '#6D028E' : '#6B7582'}
+        />
+      ),
+    }}
+  />
+  <Tab.Screen
+    name="Profile"
+    component={ProfileScreen}
+    
+    options={{
+      tabBarIcon: ({ focused, color, size }) => (
+      
+        <Octicons
+          name="person"
+          size={24}
+          color={focused ? '#6D028E' : '#6B7582'}
+          
+        />
+      ),
+    }}
+  />
+</Tab.Navigator>
+
+  );
+}
 
 function RootStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={{ headerShown: false ,presentation:'card'}}>
       {/* <Stack.Screen name="Onboarding" component={Onboarding} /> */}
       {/* <Stack.Screen name="Onboarding" component={OnboardingScreen} /> */}
       {/* <Stack.Screen name="test" component={CurveViewScreen} /> */}
@@ -27,7 +117,11 @@ function RootStack() {
       {/* <Stack.Screen name="Location" component={FindLocation} /> */}
       {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
       {/* <Stack.Screen name="plan" component={Plans} /> */}
-      <Stack.Screen name="plan" component={SiginScreen} />
+      {/* <Stack.Screen name="plan" component={SiginScreen} /> */}
+      {/* <Stack.Screen name="booking" component={BookingDetailsModal} /> */}
+      <Stack.Screen name="notifications" component={NotificationScreen} />
+
+      {/* <Stack.Screen name="MainTabs" component={MainTabs} /> */}
     </Stack.Navigator>
   );
 }

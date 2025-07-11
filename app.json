@@ -23,11 +23,6 @@
       },
       "edgeToEdgeEnabled": true
     },
-    "web": {
-      "bundler": "metro",
-      "output": "standalone",
-      "favicon": "./assets/images/favicon.png"
-    },
     "plugins": [
       "expo-font",
       [
