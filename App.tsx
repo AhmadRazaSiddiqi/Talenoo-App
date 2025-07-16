@@ -7,11 +7,11 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import "./global.css";
-import NotificationScreen from "./screens/Notifications";
 import HomeScreen from "./screens/Tabs/HomeScreen";
 import MessagesScreen from "./screens/Tabs/MessagesScreen";
 import ProfileScreen from "./screens/Tabs/ProfileScreen";
 import RequestsScreen from "./screens/Tabs/RequestsScreen";
+import WishListScreen from "./screens/WishList";
 import { responsiveHeight, responsiveWidth } from "./utils/responsive";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -119,7 +119,17 @@ function RootStack() {
       {/* <Stack.Screen name="plan" component={Plans} /> */}
       {/* <Stack.Screen name="plan" component={SiginScreen} /> */}
       {/* <Stack.Screen name="booking" component={BookingDetailsModal} /> */}
-      <Stack.Screen name="notifications" component={NotificationScreen} />
+      {/* <Stack.Screen name="notifications" component={NotificationScreen} /> */}
+      {/* <Stack.Screen name="settings" component={SettingsScreen} /> */}
+      {/* <Stack.Screen name="follower" component={FollowersScreen} /> */}
+      {/* <Stack.Screen name="following" component={FollowingScreen} /> */}
+      {/* <Stack.Screen name="contactus" component={ContactUsScreen} /> */}
+      {/* <Stack.Screen name="upload" component={UploadContentScreen} /> */}
+      {/* <Stack.Screen name="ManageContent" component={ManageContentScreen} /> */}
+      {/* <Stack.Screen name="editvideo" component={EditVideoScreen} /> */}
+      {/* <Stack.Screen name="editImage" component={EditImageScreen} /> */}
+      <Stack.Screen name="wishlist" component={WishListScreen} />
+
 
       {/* <Stack.Screen name="MainTabs" component={MainTabs} /> */}
     </Stack.Navigator>
@@ -127,6 +137,7 @@ function RootStack() {
 }
 export default function App() {
   const [fontsLoaded] = useFonts({
+    "PlusJakartaSans-Medium": require("./assets/fonts/PlusJakartaSans-Medium.ttf"),
     "PlusJakartaSans-Regular": require("./assets/fonts/PlusJakartaSans-Regular.ttf"),
     "PlusJakartaSans-Bold": require("./assets/fonts/PlusJakartaSans-Bold.ttf"),
     // add other fonts here if needed
