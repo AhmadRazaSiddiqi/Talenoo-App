@@ -2,7 +2,7 @@ import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const DeleteScreen = () => {
+const BlockUserScreen = () => {
   return (
     <SafeAreaView>
       {/* Header */}
@@ -10,7 +10,7 @@ const DeleteScreen = () => {
         <View style={styles.headerContainer}>
           <TouchableOpacity style={styles.crossButton}>
             <Image
-              source={require("../assets/icons/cross.png")}
+              source={require("../../assets/icons/cross.png")}
               resizeMode="cover"
             />
           </TouchableOpacity>
@@ -18,17 +18,17 @@ const DeleteScreen = () => {
         <View style={styles.main}>
           <View style={styles.titleWrapper}>
             {" "}
-            <Text style={styles.title}>Delete Your account?</Text>
+            <Text style={styles.title}>Block this User?</Text>
           </View>
           <View style={styles.subTitleWrapper}>
             <Text style={styles.subTitle}>
-              They won't be able to see the other profiles,{"  "}and you won't be
-              able to see the other profiles.
+              They won't be able to see your  profile or posts,{"  "}and you won't be
+              able to see the theirs.
             </Text>
           </View>
           <View style={styles.btnContainer}>
-            <TouchableOpacity style={[styles.btn, styles.deleteBtn]}>
-              <Text style={styles.deteteText}>Delete</Text>
+            <TouchableOpacity style={[styles.btn, styles.blockBtn]}>
+              <Text style={styles.deteteText}>Block</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.btn, styles.cancelBtn]}>
               <Text style={styles.cancelText}>Cancel</Text>
@@ -39,7 +39,7 @@ const DeleteScreen = () => {
     </SafeAreaView>
   );
 };
-export default DeleteScreen;
+export default BlockUserScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     fontFamily: "PlusJakartaSans-Regular",
     lineHeight: 24,
     letterSpacing: 0,
-    textAlign:'justify'
+    textAlign:'center'
     
   },
   btnContainer: {
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  deleteBtn: {
+  blockBtn: {
     backgroundColor: "#FE5120",
   },
   cancelBtn: {

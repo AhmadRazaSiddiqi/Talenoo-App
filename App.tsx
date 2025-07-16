@@ -7,11 +7,11 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import "./global.css";
-import DeleteScreen from "./screens/DeleteScreen";
 import HomeScreen from "./screens/Tabs/HomeScreen";
 import MessagesScreen from "./screens/Tabs/MessagesScreen";
 import ProfileScreen from "./screens/Tabs/ProfileScreen";
 import RequestsScreen from "./screens/Tabs/RequestsScreen";
+import BlockUserScreen from "./screens/TalentUpcoming/BlockUser";
 import { responsiveHeight, responsiveWidth } from "./utils/responsive";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -130,7 +130,8 @@ function RootStack() {
       {/* <Stack.Screen name="editImage" component={EditImageScreen} /> */}
       {/* <Stack.Screen name="wishlist" component={WishListScreen} /> */}
       {/* <Stack.Screen name="qrscreen" component={QRScreen} /> */}
-      <Stack.Screen name="deleteaccount" component={DeleteScreen} />
+      {/* <Stack.Screen name="deleteaccount" component={DeleteScreen} /> */}
+      <Stack.Screen name="deleteaccount" component={BlockUserScreen} />
 
 
       {/* <Stack.Screen name="MainTabs" component={MainTabs} /> */}
