@@ -1,5 +1,3 @@
-//TODO:Complete The Screen
-
 import React from 'react';
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
