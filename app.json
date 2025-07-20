@@ -7,7 +7,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "talenoo",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -21,7 +20,16 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "statusBar": {
+        "hidden": true,
+        "translucent": true
+      },
+      "package": "com.webdev690.Talinoo"
+    },
+    "androidNavigationBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#ffffff"
     },
     "plugins": [
       "expo-font",

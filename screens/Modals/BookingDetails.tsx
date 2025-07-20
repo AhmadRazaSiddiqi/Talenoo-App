@@ -1,13 +1,13 @@
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import {
-    Image,
-    SafeAreaView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 const BookingDetailsModal = () => {
   return (
@@ -16,7 +16,7 @@ const BookingDetailsModal = () => {
 
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity>
           <AntDesign name="arrowleft" size={24} color="black" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Booking Details</Text>
@@ -85,17 +85,17 @@ const BookingDetailsModal = () => {
 
       {/* Action Buttons */}
       <View>
-       <View style={styles.messageWrapper}>
-            <TouchableOpacity style={styles.messageButton}>
-              <Image source={require("../../assets/images/message.png")} />
-              <Text style={styles.messageButtonText}>Message Client</Text>
-            </TouchableOpacity>
-       </View>
-       <View style={styles.completebtnWrapper}>
-            <TouchableOpacity style={styles.completeButton}>
-              <Text style={styles.completeButtonText}>Complete Task</Text>
-            </TouchableOpacity>
-       </View>
+        <View style={styles.messageWrapper}>
+          <TouchableOpacity style={styles.messageButton}>
+            <Image source={require("../../assets/images/message.png")} />
+            <Text style={styles.messageButtonText}>Message Client</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.feedbackbtnWrapper}>
+          <TouchableOpacity style={styles.feedbackButton}>
+            <Text style={styles.feedbackButtonText}>Give Feedback</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -109,10 +109,13 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: 20,
     paddingVertical: 16,
   },
-  backButton: {},
+  backButton: {
+    backgroundColor: "green",
+  },
   headerTitle: {
     fontSize: 18,
     lineHeight: 23,
@@ -234,39 +237,39 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontFamily: "PlusJakartaSans-Bold",
   },
-  completeButton: {
+  feedbackButton: {
     backgroundColor: "#FE5120",
     borderRadius: 20,
-    padding:16,
+    padding: 16,
     alignItems: "center",
-    justifyContent:'center',
-    height:40,
-    maxHeight:480,
-    width:360,
-    maxWidth:480,
-    marginInline:'auto'
+    justifyContent: "center",
+    height: 40,
+    maxHeight: 480,
+    width: 360,
+    maxWidth: 480,
+    marginInline: "auto",
   },
-  completeButtonText: {
+  feedbackButtonText: {
     fontSize: 16,
     fontWeight: "400",
     color: "#ffffff",
-    lineHeight:24,
-    fontFamily:'PlusJakartaSans-Regular',
-    letterSpacing:0,
+    lineHeight: 24,
+    fontFamily: "PlusJakartaSans-Regular",
+    letterSpacing: 0,
   },
-  messageWrapper:{
-    height:64,
-    width:390,
-    paddingVertical:12,
-    paddingHorizontal:16
+  messageWrapper: {
+    height: 64,
+    width: 390,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
   },
-  completebtnWrapper:{
-    display:'flex',
-    width:390,
-    height:64,
-    justifyContent:'center',
-    alignItems:'center'
-  }
+  feedbackbtnWrapper: {
+    display: "flex",
+    width: 390,
+    height: 64,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export default BookingDetailsModal;

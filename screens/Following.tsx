@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     color: "#6D028E", // Purple as in design
     fontWeight:'700',
     letterSpacing:0
-  },
+},
   followerContainer: {
     flexDirection: "row",
     alignItems: "center",
