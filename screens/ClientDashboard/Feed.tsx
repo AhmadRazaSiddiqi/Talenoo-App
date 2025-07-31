@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
   profileName: {
     fontSize: 18,
     fontWeight: "700",
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     lineHeight: 23,
     letterSpacing: 0,
     color: "#121417",
@@ -252,14 +252,14 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontSize: 16,
     fontWeight: "400",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
   },
   profileViews: {
     color: "#24364C",
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: 0,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
   },
   profileStats: {
     width: 270,
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     lineHeight: 24,
     letterSpacing: 0,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     color: "#667582",
   },
   ratingContainer: {
@@ -284,6 +284,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: 0,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
   },
 });

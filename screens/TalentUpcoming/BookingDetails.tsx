@@ -2,13 +2,13 @@
 import { AntDesign, Feather } from "@expo/vector-icons";
 import React from "react";
 import {
-  Image,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Image,
+    SafeAreaView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 const BookingDetailsScreen = () => {
   return (
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     color: "#6D028E",
     textAlign: "center",
     flex: 1,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
   },
   clientSection: {
     flexDirection: "row",
@@ -152,12 +152,12 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#121417",
     marginBottom: 4,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
   },
   clientLabel: {
     fontSize: 16,
     color: "#6B7582",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontWeight: 400,
   },
   detailsSection: {
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
   },
   messageText: {
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontSize: 16,
     color: "#121417",
     lineHeight: 24,
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#121417",
     marginLeft: 8,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
   },
   completeButton: {
     backgroundColor: "#FE5120",
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#ffffff",
     lineHeight:24,
-    fontFamily:'PlusJakartaSans-Regular',
+    fontFamily:'Font-Regular',
     letterSpacing:0,
   },
   messageWrapper:{

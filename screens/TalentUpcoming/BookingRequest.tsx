@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     color: "#6D028E",
     textAlign: "center",
     flex: 1,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
   },
   clientSection: {
     flexDirection: "row",
@@ -154,12 +154,12 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#121417",
     marginBottom: 4,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
   },
   clientLabel: {
     fontSize: 16,
     color: "#6B7582",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontWeight: 400,
   },
   detailsSection: {
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
   },
   messageText: {
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontSize: 16,
     color: "#121417",
     lineHeight: 24,
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#121417",
     marginLeft: 8,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
   },
   button: {
     borderRadius: 20,
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     
     lineHeight:24,
-    fontFamily:'PlusJakartaSans-Regular',
+    fontFamily:'Font-Regular',
     letterSpacing:0,
   },
   AcceptBtn:{

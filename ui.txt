@@ -76,7 +76,7 @@ width: 94px;
 height: 10px;
 
 /* Text MD */
-font-family: 'Plus Jakarta Sans';
+font-family: 'Font-';
 font-style: normal;
 font-weight: 500;
 font-size: 14px;

@@ -1,7 +1,7 @@
 import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
+    responsiveFontSize,
+    responsiveHeight,
+    responsiveWidth,
 } from "@/utils/responsive";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   CardHeader: {
     width: responsiveWidth(292),
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontSize: responsiveFontSize(16),
   },
   CardBody: {
@@ -84,12 +84,12 @@ const styles = StyleSheet.create({
     marginBottom: responsiveHeight(8),
   },
   freeText: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "800",
     fontSize: responsiveFontSize(36),
   },
   MonthText: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "800",
     fontSize: responsiveFontSize(16),
     bottom: 0,
@@ -105,13 +105,13 @@ const styles = StyleSheet.create({
   SelectText: {
     fontSize: responsiveFontSize(14),
     textAlign: "center",
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "700",
   },
   checkMark: {},
   footerText: {
     fontSize: responsiveFontSize(13),
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontWeight: "400",
     color: "#141214",
   },

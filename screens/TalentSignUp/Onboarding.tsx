@@ -101,7 +101,7 @@ const OnboardingScreen = () => {
           style={{
             color: "#6D028E",
             fontSize: responsiveFontSize(14),
-            fontFamily: "PlusJakartaSans-Regular",
+            fontFamily: "Font-Regular",
             fontWeight: 500,
             textAlign: "center",
           }}
@@ -113,7 +113,7 @@ const OnboardingScreen = () => {
             textDecorationLine: "underline",
             color: "#FE5120",
             fontSize: responsiveFontSize(14),
-            fontFamily: "PlusJakartaSans-Regular",
+            fontFamily: "Font-Regular",
             fontWeight: 500,
             textAlign: "center",
           }}
@@ -210,20 +210,20 @@ const styles = StyleSheet.create({
   },
   heading: {
     position: "absolute",
-    top: responsiveHeight(472),
+    top:responsiveHeight(531),
     left: responsiveWidth(27),
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontSize: responsiveFontSize(24),
     textAlign: "center",
-    // backgroundColor: "red",
+    
     width: responsiveWidth(323),
   },
   subHeading: {
     position: "absolute",
     left: responsiveWidth(31),
     width: responsiveWidth(313),
-    top: responsiveHeight(561),
-    fontFamily: "PlusJakartaSans-Regular",
+    top: responsiveHeight(620),
+    fontFamily: "Font-Regular",
     fontSize: responsiveFontSize(16),
     color: "#5F729D",
     fontWeight: 500,
@@ -235,6 +235,7 @@ const styles = StyleSheet.create({
     minWidth: responsiveWidth(208),
     left: responsiveWidth(83),
     top: responsiveHeight(638),
+  
     display: "flex",
     flexDirection: "row",
     gap: responsiveWidth(40),
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
   getStarted: {
     position: "absolute",
     left: responsiveWidth(30),
-    top: responsiveHeight(745),
+    top: responsiveHeight(748),
     width: responsiveWidth(315),
     height: responsiveHeight(48),
     backgroundColor: "#6D028E",
@@ -252,6 +253,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     borderRadius: 8,
+
   },
   getStartedText: {
     color: "#FFFFFF",
@@ -259,7 +261,7 @@ const styles = StyleSheet.create({
   SignInContainer: {
     position: "absolute",
     left: responsiveWidth(74),
-    top: responsiveHeight(806),
+    top: responsiveHeight(809),
     width: responsiveWidth(226),
     display: "flex",
     flexDirection: "row",

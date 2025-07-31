@@ -1,17 +1,17 @@
+import { Feather } from "@expo/vector-icons"
+import { useNavigation } from "@react-navigation/native"
+import Checkbox from "expo-checkbox"
 import React, { useState } from "react"
 import {
-  SafeAreaView,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Image, // You can use expo-checkbox for a better UI
+    Image,
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native"
-import { useNavigation } from "@react-navigation/native"
-import { Feather } from "@expo/vector-icons"
-import Checkbox from "expo-checkbox"
-import { responsiveFontSize, responsiveHeight, responsiveWidth } from "../../utils/responsive"
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from "../../../utils/responsive"
 
 const SignUpScreen = () => {
   const navigation = useNavigation()
@@ -33,7 +33,7 @@ const SignUpScreen = () => {
 
       {/* Logo */}
       <Image
-        source={require("../../assets/images/brandlogo.png")} // Replace with your logo path
+        source={require("../../../assets/images/brandlogo.png")} // Replace with your logo path
         style={styles.logo}
         resizeMode="contain"
       />
@@ -45,23 +45,32 @@ const SignUpScreen = () => {
         Welcome back! Please enter your details
       </Text>
       </View>
-<View style={styles.details}>
 
       {/* Name Field */}
-      <View style={styles.inputContainer}>
+      <View style={[styles.inputContainer,{top:responsiveHeight(401)}]}>
         <Text style={styles.inputLabel}>
           Name <Text style={styles.required}>*</Text>
         </Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter your name"
+          value={name}
+          onChangeText={setName}
+        />
+      </View>
+      <View style={[styles.inputContainer,{top:responsiveHeight(485)}]}>
+        <Text style={styles.inputLabel}>
+          Username <Text style={styles.required}>*</Text>
+        </Text>
+        <TextInput
+          style={styles.input}
+          
           value={name}
           onChangeText={setName}
         />
       </View>
 
       {/* Phone Number Field */}
-      <View style={styles.inputContainer}>
+      <View style={[styles.inputContainer,{top:responsiveHeight(569)}]}>
         <Text style={styles.inputLabel}>
           Phone Number <Text style={styles.required}>*</Text>
         </Text>
@@ -75,16 +84,16 @@ const SignUpScreen = () => {
             />
         </View>
       </View>
-            </View>
+           
 
       {/* Terms Checkbox */}
       <View style={styles.checkboxContainer}>
         <Checkbox value={agreed} onValueChange={setAgreed} style={styles.checkbox} />
-        <Text style={styles.checkboxText}>
-          I agree to all <Text style={styles.linkText}>Term</Text>,{" "}
-          <Text style={styles.linkText}>Privacy</Text> and{" "}
-          <Text style={styles.linkText}>Fees</Text>
-        </Text>
+      <View style={{display:'flex',flexDirection:'row'}}>
+          <Text style={styles.checkboxText}>I agree to all ,{" "}</Text>
+            <Text style={styles.linkText}>Privacy  and{" "}</Text>
+            <Text style={styles.linkText}>Fees</Text>
+      </View>
       </View>
 
       {/* Sign Up Button */}
@@ -93,11 +102,11 @@ const SignUpScreen = () => {
       </TouchableOpacity>
 
       {/* Sign In link */}
-      <TouchableOpacity>
+     
         <Text style={styles.signInText}>
-          Already have an account? <Text style={styles.linkText}>Sign In</Text>
+          Already have an account? <Text  style={styles.linkText}>Sign In</Text>
         </Text>
-      </TouchableOpacity>
+     
     </SafeAreaView>
   )
 }
@@ -112,8 +121,7 @@ const styles = StyleSheet.create({
     position:'relative'
   },
   backButton: {
-    marginTop: responsiveHeight(10),
-    position:'relative',
+    position:'absolute',
     top:responsiveHeight(15),
     left:responsiveWidth(15),
 
@@ -136,7 +144,7 @@ const styles = StyleSheet.create({
     top:responsiveHeight(45),
     left:responsiveWidth(101.19)
   },
-  title: {
+  title: {    
     fontSize: responsiveFontSize(20),
     fontWeight: "700",
     color: "#1D253C",
@@ -149,9 +157,10 @@ const styles = StyleSheet.create({
     // marginBottom: 20,
   },
   inputContainer: {
-  
+  position:'absolute',
     height:responsiveHeight(69),
-    width:responsiveWidth(315)
+    width:responsiveWidth(315),
+    left:responsiveWidth(30)
   },
   inputLabel: {
     fontSize: 14,
@@ -193,16 +202,18 @@ const styles = StyleSheet.create({
     display:'flex',
     flexDirection: "row",
     gap:responsiveWidth(10),
-    height:responsiveHeight(20),
     width:responsiveWidth(263),
+    height:responsiveHeight(20),
     top:responsiveHeight(717),
     left:responsiveWidth(56),
     
+    
   },
   checkboxText: {
-    marginLeft: 10,
-    fontSize: 14,
+    fontSize: responsiveFontSize(14),
     color: "#7C8592",
+    fontFamily:'Font-Medium',
+    lineHeight:responsiveHeight(20)
   },
   linkText: {
     color: "#FF7043",
@@ -219,22 +230,24 @@ const styles = StyleSheet.create({
     left:responsiveWidth(30),
   },
   signUpButtonText: {
+    fontFamily:'Font-Bold',
     color: "white",
     fontSize:responsiveFontSize(15),
-    fontWeight: "600",
-    height:responsiveHeight(15),
-    width:responsiveWidth(56)
+    fontWeight: "700",
+    width:responsiveWidth(56),
   },
   signInText: {
     position:'absolute',
+   top:responsiveHeight(809),
     textAlign: "center",
+    left:responsiveWidth(74),
     fontSize: responsiveFontSize(14),
     color: "purple",
-    height:responsiveHeight(10),
+    lineHeight:responsiveHeight(20),
     width:responsiveWidth(226),
-    left:responsiveWidth(74),
-    top:responsiveHeight(750),
-    fontWeight:500
+   fontFamily:"Font-Medium",
+    fontWeight:500,
+    
     // marginVertical:'auto'
 
 
@@ -248,19 +261,11 @@ const styles = StyleSheet.create({
     width:responsiveWidth(305),
     height:responsiveHeight(40)
   },
-  details:{
-    position:'absolute',
-    height:responsiveHeight(168),
-    width:responsiveWidth(315),
-    top:responsiveHeight(412),
-    left:responsiveWidth(30),
-    rowGap:responsiveHeight(24)
-  },
   checkbox:{
-    height:responsiveHeight(20),
+    height:responsiveWidth(20),
     width:responsiveWidth(20),
-    // borderWidth:2,
-    // borderColor:'#5F729D',
-    borderRadius:3
+    borderWidth:responsiveWidth(2),
+    borderColor:'#5F729D',
+    borderRadius:responsiveWidth(3)
   }
 })

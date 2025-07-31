@@ -3,10 +3,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
-} from "../../utils/responsive.js";
+    responsiveFontSize,
+    responsiveHeight,
+    responsiveWidth,
+} from "../../../utils/responsive";
 
 const HomeScreen = () => {
   return (
@@ -76,7 +76,7 @@ const HomeScreen = () => {
             <View key={item} style={styles.taskCard}>
               <View style={styles.taskHeader}>
                 <Image
-                  source={require("../../assets/images/clientImage.png")}
+                  source={require("../../../assets/images/clientImage.png")}
                   style={styles.avatar}
                   resizeMode="cover"
                 />
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     textAlign: "left",
     alignSelf: "center",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     lineHeight: responsiveHeight(24),
     marginBottom: responsiveHeight(10),
     letterSpacing: 1,
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
   statNumber: {
     fontSize: responsiveFontSize(24),
     color: "#6D028E",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
   },
   statLabel: {
     fontSize: responsiveFontSize(12),
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     borderRadius: 9999,
     width: responsiveWidth(152),
     height: responsiveHeight(36),
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontWeight: "400",
   },
   activeTab: {
@@ -265,7 +265,7 @@ const styles = StyleSheet.create({
   activeTabText: {
     fontSize: responsiveFontSize(14),
     color: "#6D028E",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
   },
   taskList: {
     height: responsiveHeight(520),
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
     color: "#24364C",
     gap: responsiveWidth(1),
     alignItems: "center",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     width: responsiveWidth(93.77),
     height: responsiveHeight(16),
     justifyContent: "center",
@@ -343,7 +343,7 @@ const styles = StyleSheet.create({
     color: "#24364C",
     width: responsiveWidth(219),
     lineHeight: responsiveHeight(20),
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     flexShrink: 1,
   },
   status: {

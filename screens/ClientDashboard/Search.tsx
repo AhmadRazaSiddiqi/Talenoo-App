@@ -1,6 +1,7 @@
 import Slider from '@react-native-community/slider';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { rf, rh, rw } from '../../../utils/scaling';
 
 const SearchScreen = () => {
   const [username, setUsername] = useState('');
@@ -55,44 +56,44 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    padding: 20,
+    padding: rw(20),
   },
   title: {
-    fontSize: 24,
+    fontSize: rf(24),
     fontWeight: 'bold',
     color: '#6B46C1',
-    marginBottom: 20,
+    marginBottom: rh(20),
   },
   filtersContainer: {
     flex: 1,
   },
   label: {
-    fontSize: 16,
+    fontSize: rf(16),
     fontWeight: 'bold',
     color: '#1F2937',
-    marginBottom: 10,
+    marginBottom: rh(10),
   },
   input: {
-    height: 40,
+    height: rh(40),
     borderWidth: 1,
     borderColor: '#E5E7EB',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 20,
+    borderRadius: rw(8),
+    paddingHorizontal: rw(10),
+    marginBottom: rh(20),
     color: '#6B7280',
   },
   slider: {
-    marginBottom: 10,
+    marginBottom: rh(10),
   },
   priceText: {
     textAlign: 'center',
     color: '#6B7280',
-    marginBottom: 20,
+    marginBottom: rh(20),
   },
   button: {
     backgroundColor: '#6B46C1',
-    paddingVertical: 10,
-    borderRadius: 20,
+    paddingVertical: rh(10),
+    borderRadius: rw(20),
     alignItems: 'center',
   },
   buttonText: {
@@ -104,14 +105,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     borderTopWidth: 1,
     borderTopColor: '#E5E7EB',
-    paddingVertical: 10,
+    paddingVertical: rh(10),
   },
   navItem: {
     alignItems: 'center',
   },
   navText: {
     color: '#6B7280',
-    fontSize: 12,
+    fontSize: rf(12),
   },
 });
 

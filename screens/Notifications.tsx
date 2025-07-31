@@ -1,13 +1,14 @@
 import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    FlatList,
+    Image,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/Feather";
+import { rf, rh, rw } from '../../utils/scaling';
 
 const notifications = [
   {
@@ -132,76 +133,74 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    height:806
+    height: rh(806),
   },
   header: {
-    fontSize: 24,
+    fontSize: rf(24),
     fontWeight: "700",
     color: "purple",
-    marginVertical: 20,
+    marginVertical: rh(20),
     alignSelf: "center",
-    letterSpacing:0,
-    fontFamily:"PlusJakartaSans-Bold",
-    lineHeight:28,
-    
+    letterSpacing: 0,
+    fontFamily: "Font-Bold",
+    lineHeight: rh(28),
   },
   sectionContainer: {
-    marginBottom: 20,
-    // backgroundColor:'yellow'
+    marginBottom: rh(20),
   },
   sectionHeader: {
-    fontSize: 18,
+    fontSize: rf(18),
     fontWeight: "700",
     color: "#6D028E",
-    height:47,
-    width:390,
-    paddingHorizontal:16,
-    paddingTop:16,
-    paddingBottom:8,
-    lineHeight:23,
-    fontFamily:'PlusJakartaSans-Bold',
+    height: rh(47),
+    width: rw(390),
+    paddingHorizontal: rw(16),
+    paddingTop: rh(16),
+    paddingBottom: rh(8),
+    lineHeight: rh(23),
+    fontFamily: 'Font-Bold',
   },
   itemContainer: {
     flexDirection: "row",
     alignItems: "center",
-    // backgroundColor:'red',
-    paddingVertical:8,
-    paddingHorizontal:16,
-    width:390,
-    height:72,
-    alignSelf:'center'
+    paddingVertical: rh(8),
+    paddingHorizontal: rw(16),
+    width: rw(390),
+    height: rh(72),
+    alignSelf: 'center',
   },
   avatar: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: rw(48),
+    height: rw(48),
+    borderRadius: rw(24),
   },
   iconContainer: {
     backgroundColor: "#f0f0f0",
-    borderRadius: 10,
-    padding: 10,
+    borderRadius: rw(10),
+    padding: rw(10),
   },
   icon: {
     alignSelf: "center",
   },
   textContainer: {
     flex: 1,
-    marginLeft: 15,
+    marginLeft: rw(15),
   },
   text: {
-    fontSize: 16,
+    fontSize: rf(16),
     fontWeight: "500",
-    lineHeight:24,
-    fontFamily:'PlusJakartaSans-Regular',
-    color:'#121417'
+    lineHeight: rh(24),
+    fontFamily: 'Font-Regular',
+    color: '#121417',
   },
   time: {
-    fontSize: 14,
+    fontSize: rf(14),
     color: "#6B7582",
-  lineHeight:21
+    lineHeight: rh(21),
+    height: rh(21),
   },
   arrowContainer: {
-    justifyContent:'center',
-    alignItems:'center'
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

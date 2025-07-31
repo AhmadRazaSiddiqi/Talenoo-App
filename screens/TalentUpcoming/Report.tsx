@@ -1,7 +1,8 @@
 //FIXME:Fix the Selection menu
-import React from 'react'
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import React from 'react';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { rf, rh, rw } from '../../../utils/scaling';
 
 const reportType=["Harassment","Spam","Inappropriate Language","Abuse","Other"]
 const ReportScreen = () => {
@@ -48,61 +49,61 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         flexDirection: "row",
-        height:72,
-        width:390,
+        height: rh(72),
+        width: rw(390),
         alignItems: "center",
         justifyContent: "space-between",
-        paddingHorizontal: 16,
-        paddingVertical: 16,
+        paddingHorizontal: rw(16),
+        paddingVertical: rh(16),
       },
       headerTitle: {
-        fontSize: 18,
-        lineHeight:23,
-        fontFamily: "PlusJakartaSans-Bold",
+        fontSize: rf(18),
+        lineHeight: rh(23),
+        fontFamily: "Font-Bold",
         color: "#6D028E", // Purple as in design
         fontWeight:'700',
         letterSpacing:0
     },
     reportContainer:{
-        height:329,
-        width:390,
-        paddingBottom:16,
-        paddingHorizontal:16,
-        gap:12
+        height: rh(329),
+        width: rw(390),
+        paddingBottom: rh(16),
+        paddingHorizontal: rw(16),
+        gap: rw(12)
     },
     textAreaWrapper:{
-        width:390,
-        height:168,
-        maxWidth:480,
-        paddingVertical:12,
-        paddingHorizontal:16,
-        gap:16
+        width: rw(390),
+        height: rh(168),
+        maxWidth: rw(480),
+        paddingVertical: rh(12),
+        paddingHorizontal: rw(16),
+        gap: rw(16)
     },
     textArea:{
-        width:358,
-        height:144,
-        minHeight:144,
-        borderRadius:12,
-        borderWidth:1,
-        padding:15,
+        width: rw(358),
+        height: rh(144),
+        minHeight: rh(144),
+        borderRadius: rw(12),
+        borderWidth: 1,
+        padding: rw(15),
         borderColor:'#DEE0E3'
     },
     btnContainer:{
         flexDirection:'row',
-        height:64,
-        width:390,
-        paddingVertical:12,
-        paddingHorizontal:16,
+        height: rh(64),
+        width: rw(390),
+        paddingVertical: rh(12),
+        paddingHorizontal: rw(16),
         justifyContent:'space-between',
         
     },
     btn:{
-        width:175,
-        minWidth:84,
-        maxWidth:480,
-        height:40,
-        paddingHorizontal:16,
-        borderRadius:20,
+        width: rw(175),
+        minWidth: rw(84),
+        maxWidth: rw(480),
+        height: rh(40),
+        paddingHorizontal: rw(16),
+        borderRadius: rw(20),
         justifyContent:'center',
         alignItems:'center'
     },
@@ -113,48 +114,48 @@ const styles = StyleSheet.create({
         backgroundColor:'#6D028E'
     },
     cancelBtnText:{
-        fontFamily:'PlusJakartaSans-Bold',
-        fontSize:14,
+        fontFamily:'Font-Bold',
+        fontSize: rf(14),
         letterSpacing:0,
-        lineHeight:21,
+        lineHeight: rh(21),
         textAlign:'center',
         fontWeight:'700',
         color:'#121417'
     },
     submitBtnText:{
-        fontFamily:'PlusJakartaSans-Bold',
-        fontSize:14,
+        fontFamily:'Font-Bold',
+        fontSize: rf(14),
         letterSpacing:0,
-        lineHeight:21,
+        lineHeight: rh(21),
         textAlign:'center',
         fontWeight:'700',
         color:'#FFFFFF'
     },
     blockBtnContainer:{
-        width:390,
-        height:200,
-        paddingVertical:12,
-        paddingHorizontal:16,
+        width: rw(390),
+        height: rh(200),
+        paddingVertical: rh(12),
+        paddingHorizontal: rw(16),
         // justifyContent:'center',
         // alignItems:'center',
     },
     blockBtn:{
-        width:360,
-        height:40,
-        minWidth:84,
-        maxWidth:480,
+        width: rw(360),
+        height: rh(40),
+        minWidth: rw(84),
+        maxWidth: rw(480),
         backgroundColor:'#FE5120',
-        paddingHorizontal:16,
+        paddingHorizontal: rw(16),
         justifyContent:'center',
         alignItems:'center',
-        borderRadius:20
+        borderRadius: rw(20)
     },
     blockBtnText:{
-        fontFamily:'PlusJakartaSans-Regular',
-        fontSize:16,
+        fontFamily:'Font-Regular',
+        fontSize: rf(16),
         fontWeight:'400',
         letterSpacing:0,
-        lineHeight:24,
+        lineHeight: rh(24),
         color:'#FFFFFF'
     },
 })

@@ -25,18 +25,18 @@ const HomeLayoutScreen = () => {
           <View style={styles.actionRow}>
             <View style={styles.iconGroup}>
               <Ionicons name="heart" size={24} color="red" />
-              <Text style={{color:'#6B7582',fontWeight:'700',fontSize:13,fontFamily:"PlusJakartaSans-Bold"}}>98</Text>
+              <Text style={{color:'#6B7582',fontWeight:'700',fontSize:13,fontFamily:"Font-Bold"}}>98</Text>
             </View>
             <View style={styles.iconGroup}>
               <Image
                 source={require("../../assets/icons/share (1).png")}
                 style={{ width: 24, height: 24 }}
               />
-              <Text style={{color:'#6B7582',fontWeight:'700',fontSize:13,fontFamily:"PlusJakartaSans-Bold"}}>32</Text>
+              <Text style={{color:'#6B7582',fontWeight:'700',fontSize:13,fontFamily:"Font-Bold"}}>32</Text>
             </View>
             <View style={styles.iconGroup}>
               <Ionicons name="bookmark" size={24} color="#FE5120" />
-              <Text style={{color:'#6B7582',fontWeight:'700',fontSize:13,fontFamily:"PlusJakartaSans-Bold"}}>15</Text>
+              <Text style={{color:'#6B7582',fontWeight:'700',fontSize:13,fontFamily:"Font-Bold"}}>15</Text>
             </View>
           </View>      
           <View style={styles.bookNowWrapper}>
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   profileName: {
     fontSize: 18,
     fontWeight: "700",
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     lineHeight: 23,
     letterSpacing: 0,
     color: "#121417",
@@ -234,14 +234,14 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontSize: 16,
     fontWeight: "400",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
   },
   profileViews: {
     color: "#24364C",
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: 0,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
   },
   profileStats: {
     width: 270,
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     lineHeight: 24,
     letterSpacing: 0,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     color: "#667582",
   },
   ratingContainer: {
@@ -265,6 +265,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: 0,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
   },
 });

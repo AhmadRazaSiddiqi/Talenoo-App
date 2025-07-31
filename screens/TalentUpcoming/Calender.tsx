@@ -2,12 +2,12 @@
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    FlatList,
+    Image,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -158,13 +158,13 @@ const RequestCalenderScreen = () => {
             arrowColor: "#6D028E",
 
             textMonthFontSize: 18,
-            textMonthFontFamily: "PlusJakartaSans-Bold",
+            textMonthFontFamily: "Font-Bold",
             textMonthFontWeight: "700",
 
-            textDayFontFamily: "PlusJakartaSans-Medium",
+            textDayFontFamily: "Font-Medium",
             textDayFontSize: 16,
 
-            textDayHeaderFontFamily: "PlusJakartaSans-Bold",
+            textDayHeaderFontFamily: "Font-Bold",
             textDayHeaderFontSize: 14,
 
             dotColor: "#6D028E",
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 18,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#6D028E",
   },
   calendarContainer: {
@@ -239,18 +239,18 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#121417",
   },
   role: {
     fontSize: 13,
     color: "#6D028E",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     marginTop: 2,
   },
   location: {
     fontSize: 13,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     color: "#5F6C86",
     marginTop: 2,
   },
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 8,
-    fontFamily: "PlusJakartaSans-Medium",
+    fontFamily: "Font-Medium",
   },
   timeRow: {
     flexDirection: "row",
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
   time: {
     marginLeft: 6,
     fontSize: 13,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     color: "#1C2439",
   },
 });

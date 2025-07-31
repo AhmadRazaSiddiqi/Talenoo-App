@@ -1,12 +1,12 @@
 import { Feather } from "@expo/vector-icons";
 import React from "react";
 import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    FlatList,
+    Image,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 18,
     lineHeight:23,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#6D028E", // Purple as in design
     fontWeight:'700',
     letterSpacing:0
@@ -143,14 +143,14 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     color:'#121417',
     fontWeight:'500',
     lineHeight:24
   },
   profession: {
     fontSize: 14,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     color: "#6B7582",
     lineHeight:21,
     letterSpacing:0,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   removeButtonText: {
     fontSize: 14,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontWeight:'500',
     color:'#121417'
   },

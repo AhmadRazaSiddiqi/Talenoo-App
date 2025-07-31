@@ -2,23 +2,23 @@ import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
-  Dimensions,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Dimensions,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { FontAwesome6 } from "@expo/vector-icons";
 import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
-} from "../../utils/responsive";
+    responsiveFontSize,
+    responsiveHeight,
+    responsiveWidth,
+} from "../../../utils/responsive";
 
 const { width, height } = Dimensions.get("window");
 
@@ -60,7 +60,7 @@ const JobStepScreen = () => {
             If `imgmask.png` is truly a mask for the *content area* rather than a decorative overlay,
             its usage might need re-evaluation. Assuming it's the white content card. */}
       <Image
-        source={require("../../assets/images/imgmask.png")}
+        source={require("../../../assets/images/imgmask.png")}
         style={styles.contentMaskCard}
         resizeMode="contain"
       />
@@ -141,6 +141,7 @@ const JobStepScreen = () => {
                     paddingLeft: responsiveWidth(40),
                     display: "flex",
                     justifyContent: "space-between",
+                    alignItems:'center',
 
                     flexDirection: "row",
                   }}
@@ -166,7 +167,7 @@ const JobStepScreen = () => {
                       style={{
                         fontSize: responsiveFontSize(14),
                         color: "#1E1E1E",
-                        fontFamily: "PlusJakartaSans-Bold",
+                        fontFamily: "Font-Bold",
                       }}
                     >
                       09:00-11:00
@@ -271,7 +272,7 @@ const styles = StyleSheet.create({
   },
 
   progressTextActive: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "700",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(24),
@@ -297,7 +298,7 @@ const styles = StyleSheet.create({
   },
 
   progressTextInactive: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "700",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(24),
@@ -322,7 +323,7 @@ const styles = StyleSheet.create({
   },
 
   progressTextInactiveGray: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "700",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(24),
@@ -344,7 +345,7 @@ const styles = StyleSheet.create({
   },
 
   heading: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
 
     fontWeight: "700",
     fontSize: responsiveFontSize(20),
@@ -382,7 +383,7 @@ const styles = StyleSheet.create({
   },
 
   jobLevelText: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "700",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(20),
@@ -392,7 +393,7 @@ const styles = StyleSheet.create({
   jobLevelTextSelected: {
     color: "##1E1E1E",
     fontWeight: "bold",
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
   },
 
   nextButton: {
@@ -420,7 +421,7 @@ const styles = StyleSheet.create({
   },
 
   nextButtonText: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "700",
     fontSize: responsiveFontSize(15),
     lineHeight: responsiveFontSize(15),
@@ -461,7 +462,7 @@ const styles = StyleSheet.create({
   },
   SelectTimeText: {
     fontSize: responsiveFontSize(22),
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     lineHeight: responsiveHeight(28),
     fontWeight: "bold",
   },

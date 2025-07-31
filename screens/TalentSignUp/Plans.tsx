@@ -1,17 +1,17 @@
 import PlanCard from "@/components/PlanCard";
 import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
+    responsiveFontSize,
+    responsiveHeight,
+    responsiveWidth,
 } from "@/utils/responsive";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import React from "react";
 import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "700",
     color: "#1F2937",
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
   },
   closeButton: {
     padding: 8,

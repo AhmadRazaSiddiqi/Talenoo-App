@@ -1,12 +1,12 @@
 import { Feather } from "@expo/vector-icons";
 import React from "react";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ToggleSwitch from 'toggle-switch-react-native';
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
   },
   bellContainer: {
     height: 40,
@@ -225,14 +225,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   followNumber: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontSize: 24,
     color: "#121417",
     fontWeight: "700",
     lineHeight: 30,
   },
   followLabel: {
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontSize: 14,
     lineHeight: 21,
     color: "#6B7582",
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
   sectionContainer: {},
   sectionTitle: {
     fontSize: 18,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "700",
     width: 390,
     height: 47,
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
   },
   menuText: {
     fontSize: 16,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     lineHeight: 24,
     fontWeight: "400",
     color: "#121417",
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   deleteButtonText: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#fff",
     fontSize: 14,
     fontWeight: "700",

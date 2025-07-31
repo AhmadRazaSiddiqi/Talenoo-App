@@ -2,22 +2,22 @@ import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
-  Dimensions,
-  Platform, // Keeping TextInput in imports, though not used in UI for this screen based on provided design.
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Dimensions,
+    Platform, // Keeping TextInput in imports, though not used in UI for this screen based on provided design.
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // Import your responsive helper functions
 import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
-} from "../../utils/responsive"; // Ensure this path is correct
+    responsiveFontSize,
+    responsiveHeight,
+    responsiveWidth,
+} from "../../../utils/responsive"; // Ensure this path is correct
 
 const { width, height } = Dimensions.get("window"); // Keep this for dynamic width calculation for nextButton
 
@@ -58,7 +58,7 @@ const JobStepScreen2 = () => {
           If `imgmask.png` is truly a mask for the *content area* rather than a decorative overlay,
           its usage might need re-evaluation. Assuming it's the white content card. */}
       <Image
-        source={require("../../assets/images/imgmask.png")} // Use your actual mask image if it's the intent
+        source={require("../../../assets/images/imgmask.png")} // Use your actual mask image if it's the intent
         style={styles.contentMaskCard} // Renamed style for clarity, matches the last Rectangle 384
         resizeMode="contain" // 'contain' is good for scaling without cropping
       />
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
   },
   // 1 (text inside active circle)
   progressTextActive: {
-    fontFamily: "Plus Jakarta Sans", // Needs custom font loading
+    fontFamily: "Font-", // Needs custom font loading
     fontWeight: "700",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(24), // Line height for the text
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
   },
   // 2 (text inside inactive circle)
   progressTextInactive: {
-    fontFamily: "Plus Jakarta Sans", // Needs custom font loading
+    fontFamily: "Font-", // Needs custom font loading
     fontWeight: "700",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(24),
@@ -292,7 +292,7 @@ const styles = StyleSheet.create({
   },
   // 3 (text inside inactive circle)
   progressTextInactiveGray: {
-    fontFamily: "Plus Jakarta Sans", // Needs custom font loading
+    fontFamily: "Font-", // Needs custom font loading
     fontWeight: "700",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(24),
@@ -324,7 +324,7 @@ const styles = StyleSheet.create({
   },
   // What is your current experience level?
   heading: {
-    fontFamily: "Plus Jakarta Sans", // Needs custom font loading
+    fontFamily: "Font-", // Needs custom font loading
     fontWeight: "700",
     fontSize: responsiveFontSize(20),
     lineHeight: responsiveFontSize(28), // Line height from design
@@ -343,7 +343,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: responsiveWidth(15),
-    paddingVertical: responsiveHeight(18), // From design padding 18px
+ // From design padding 18px
     gap: responsiveWidth(10), // Gap between checkbox and text
     width: responsiveWidth(316), // Width from design
     height: responsiveHeight(48), // Height from design
@@ -362,7 +362,7 @@ const styles = StyleSheet.create({
   },
   // Internship / Entry Level / etc. text
   jobLevelText: {
-    fontFamily: "Plus Jakarta Sans", // Needs custom font loading
+    fontFamily: "Font-", // Needs custom font loading
     fontWeight: "500",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(20),
@@ -406,7 +406,7 @@ const styles = StyleSheet.create({
   // Next text
   nextButtonText: {
     // width: 35px; height: 15px;
-    fontFamily: "Plus Jakarta Sans", // Needs custom font loading
+    fontFamily: "Font-", // Needs custom font loading
     fontWeight: "700",
     fontSize: responsiveFontSize(15),
     lineHeight: responsiveFontSize(15), // Matches 100% of font-size

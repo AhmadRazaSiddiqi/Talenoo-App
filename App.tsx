@@ -13,8 +13,9 @@ import "./global.css";
 import SearchScreen from "./screens/ClientDashboard/Search";
 import MessagesScreen from "./screens/Messages";
 import HomeScreen from "./screens/Tabs/HomeScreen";
-import ProfileScreen from "./screens/Tabs/ProfileScreen";
+// import ProfileScreen from "./screens/Tabs/ProfileScreen";
 import RequestsScreen from "./screens/Tabs/RequestsScreen";
+import ProfileScreen from "./screens/TalentSignUp/Profile";
 
 import { responsiveHeight, responsiveWidth } from "./utils/responsive";
 
@@ -166,8 +167,36 @@ function ClientTabs() {
 
 function RootStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false, presentation: "card" }}>
-      <Stack.Screen name="clientTabs" component={ClientTabs} />
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+       {/* <Stack.Screen name="Onboarding" component={OnboardingScreen} /> */}
+      {/* <Stack.Screen name="Onboarding" component={OnboardingScreen} /> */}
+      {/* <Stack.Screen name="usertypescreen" component={UserTypeSelectionScreen} /> */}
+      {/* Add other screens here as needed */}
+      {/* Example: <Stack.Screen name="Home" component={HomeScreen} /> */}
+      {/* <Stack.Screen name="UserType" component={UserTypeSelectionScreen} /> */}
+      {/* <Stack.Screen name="TalentSignUp" component={OTPVerificationScreen} /> */}
+      {/* <Stack.Screen name="Otpscreen" component={OTPVerificationScreen} /> */}
+      {/* <Stack.Screen name="ClientSignUp" component={ClientSignUpScreen} /> */}
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+      {/* <Stack.Screen name="TalentStep" component={TalentStep} /> */}
+      {/* <Stack.Screen name="JobStep" component={JobStepScreen} /> */}
+      {/* <Stack.Screen name="JobStep2" component={JobStepScreen2} /> */}
+      {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
+      {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
+      {/* <Stack.Screen name="plan" component={Plans} /> */}
+      {/* <Stack.Screen name="plan" component={SiginScreen} /> */}
+      {/* <Stack.Screen name="booking" component={BookingDetailsModal} /> */}
+      {/* <Stack.Screen name="notifications" component={NotificationScreen} /> */}
+      {/* <Stack.Screen name="settings" component={SettingsScreen} /> */}
+      {/* <Stack.Screen name="follower" component={FollowersScreen} /> */}
+      {/* <Stack.Screen name="following" component={FollowingScreen} /> */}
+      {/* <Stack.Screen name="contactus" component={ContactUsScreen} /> */}
+      {/* <Stack.Screen name="upload" component={UploadContentScreen} /> */}
+      {/* <Stack.Screen name="ManageContent" component={ManageContentScreen} /> */}
+      {/* <Stack.Screen name="editvideo" component={EditVideoScreen} /> */}
+      {/* <Stack.Screen name="editImage" component={EditImageScreen} /> */}
+      {/* <Stack.Screen name="wishlist" component={WishListScreen} /> */}
+      {/* <Stack.Screen name="qrscreen" component={QRScreen} /> */}
     </Stack.Navigator>
   );
 }

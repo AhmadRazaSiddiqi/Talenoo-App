@@ -3,19 +3,15 @@ import { useNavigation } from "@react-navigation/native";
 import Checkbox from "expo-checkbox";
 import React, { useState } from "react";
 import {
-  Image,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    Image,
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
-import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
-} from "../utils/responsive.js";
+import { rf, rh, rw } from '../../utils/scaling';
 
 const SiginScreen = () => {
   const navigation = useNavigation();
@@ -37,7 +33,7 @@ const SiginScreen = () => {
       {/* Logo */}
       <View style={styles.main}>
         <Image
-          source={require("../assets/images/brandlogo.png")} // Replace with your logo path
+          source={require("../../assets/images/brandlogo.png")} // Replace with your logo path
           style={styles.logo}
           resizeMode="contain"
         />
@@ -96,88 +92,87 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    paddingHorizontal: 20,
+    paddingHorizontal: rw(20),
     position: "relative",
   },
   backButton: {
-    marginTop: responsiveHeight(10),
+    marginTop: rh(10),
     position: "relative",
-    top: responsiveHeight(15),
-    left: responsiveWidth(15),
+    top: rh(15),
+    left: rw(15),
   },
   backButtonCircle: {
     backgroundColor: "#F5F5F5",
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: rw(40),
+    height: rh(40),
+    borderRadius: rw(20),
     alignItems: "center",
     justifyContent: "center",
   },
   logo: {
-    width: responsiveWidth(172.62),
-    height: responsiveHeight(237),
+    width: rw(172.62),
+    height: rh(237),
     alignSelf: "center",
   },
   title: {
-    fontSize: responsiveFontSize(20),
+    fontSize: rf(20),
     fontWeight: "700",
     color: "#1D253C",
     textAlign: "center",
   },
   subtitle: {
-    fontSize: 14,
+    fontSize: rf(14),
     color: "#7C8592",
     textAlign: "center",
-    // marginBottom: 20,
   },
   inputContainer: {
-    height: responsiveHeight(69),
-    width: responsiveWidth(315),
+    height: rh(69),
+    width: rw(315),
   },
   inputLabel: {
-    fontSize: 14,
+    fontSize: rf(14),
     fontWeight: "600",
     color: "#1D253C",
-    marginBottom: 5,
+    marginBottom: rh(5),
   },
   required: {
     color: "red",
   },
   input: {
     backgroundColor: "#F5F6FA",
-    width: responsiveWidth(315),
-    height: responsiveHeight(48),
-    borderRadius: 6,
+    width: rw(315),
+    height: rh(48),
+    borderRadius: rw(6),
   },
   phoneInputContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#F5F6FA",
-    borderRadius: 6,
+    borderRadius: rw(6),
   },
   phoneCode: {
     color: "#6D028E",
-    fontSize: responsiveFontSize(15),
+    fontSize: rf(15),
     fontWeight: "600",
-    marginRight: 10,
+    marginRight: rw(10),
   },
   phoneInput: {
     flex: 1,
-    height: responsiveHeight(48),
-    width: responsiveWidth(315),
-    fontSize: responsiveFontSize(15),
+    height: rh(48),
+    width: rw(315),
+    fontSize: rf(15),
     outlineColor: "transparent",
   },
   checkboxContainer: {
     display: "flex",
     flexDirection: "row",
-    gap: responsiveWidth(10),
-    height: responsiveHeight(20),
-    width: responsiveWidth(313),
+    gap: rw(10),
+    height: rh(20),
+    width: rw(313),
   },
   checkboxText: {
-    marginLeft: 10,
-    fontSize: 14,
+    marginLeft: rw(10),
+    fontSize: rf(14),
     color: "#7C8592",
   },
   linkText: {
@@ -188,57 +183,57 @@ const styles = StyleSheet.create({
   signUpButton: {
     position: "absolute",
     backgroundColor: "#6D028E",
-    borderRadius: 8,
+    borderRadius: rw(8),
     alignItems: "center",
     justifyContent: "center",
-    height: responsiveHeight(48),
-    width: responsiveWidth(315),
-    top: responsiveHeight(748),
-    left: responsiveWidth(30),
+    height: rh(48),
+    width: rw(315),
+    top: rh(748),
+    left: rw(30),
   },
   signUpButtonText: {
     color: "white",
-    fontSize: responsiveFontSize(15),
+    fontSize: rf(15),
     fontWeight: "600",
-    height: responsiveHeight(15),
-    width: responsiveWidth(56),
+    height: rh(15),
+    width: rw(56),
   },
   signInText: {
     position: "absolute",
     textAlign: "center",
-    fontSize: responsiveFontSize(14),
+    fontSize: rf(14),
     color: "purple",
-    height: responsiveHeight(10),
-    width: responsiveWidth(226),
-    left: responsiveWidth(74),
-    top: responsiveHeight(750),
+    height: rh(10),
+    width: rw(226),
+    left: rw(74),
+    top: rh(750),
     fontWeight: 500,
     // marginVertical:'auto'
   },
   heading: {
     display: "flex",
-    gap: responsiveHeight(15),
-    width: responsiveWidth(305),
-    height: responsiveHeight(40),
+    gap: rh(15),
+    width: rw(305),
+    height: rh(40),
   },
   details: {
-    width: responsiveWidth(315),
+    width: rw(315),
   },
   checkbox: {
-    height: responsiveHeight(20),
-    width: responsiveWidth(20),
+    height: rh(20),
+    width: rw(20),
     // borderWidth:2,
     // borderColor:'#5F729D',
-    borderRadius: 3,
+    borderRadius: rw(3),
   },
   main: {
     position: "absolute",
     display: "flex",
     justifyContent: "center",
-    gap: 45,
-    top: responsiveHeight(100),
-    left: responsiveWidth(30),
-    height: responsiveHeight(476),
-    width: responsiveWidth(315),
+    gap: rh(45),
+    top: rh(100),
+    left: rw(30),
+    height: rh(476),
+    width: rw(315),
   },
 });

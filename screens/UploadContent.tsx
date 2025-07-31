@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { rf, rh, rw } from '../../utils/scaling';
 
 const UploadContentScreen = () => {
   return (
@@ -55,146 +56,144 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems:'center'
+    alignItems: 'center',
   },
   scroll: {
-   height:584,
-   width:390
+    height: rh(584),
+    width: rw(390),
   },
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: rh(20),
     justifyContent: 'space-between',
-    height:72,
-    width:390
+    height: rh(72),
+    width: rw(390),
   },
   headerText: {
-    height:23,
-    width:310,
-    fontFamily: 'PlusJakartaSans-Bold',
-    fontSize: 18,
+    height: rh(23),
+    width: rw(310),
+    fontFamily: 'Font-Bold',
+    fontSize: rf(18),
     color: '#6D028E',
-    paddingRight:48,
-    fontWeight:'700',
-    lineHeight:23,
-    letterSpacing:0,
-    textAlign:'center'
+    paddingRight: rw(48),
+    fontWeight: '700',
+    lineHeight: rh(23),
+    letterSpacing: 0,
+    textAlign: 'center',
   },
   uploadBox: {
-    display:'flex',
+    display: 'flex',
     borderWidth: 2,
-    height:232,
-    width:358,
+    height: rh(232),
+    width: rw(358),
     borderColor: '#D1D5DB',
     borderStyle: 'dashed',
-    borderRadius: 12,
+    borderRadius: rw(12),
     alignItems: 'center',
-    paddingVertical:56,
-    paddingHorizontal:24,
-    gap:24
+    paddingVertical: rh(56),
+    paddingHorizontal: rw(24),
+    gap: rw(24),
   },
   uploadTitle: {
-    fontFamily: 'PlusJakartaSans-Bold',
-    fontWeight:'700',
-    fontSize: 18,
+    fontFamily: 'Font-Bold',
+    fontWeight: '700',
+    fontSize: rf(18),
     color: '#121417',
-    lineHeight:23,
-    letterSpacing:0,
-    textAlign:'center'
-    
+    lineHeight: rh(23),
+    letterSpacing: 0,
+    textAlign: 'center',
   },
   uploadSubtitle: {
-    fontFamily: 'PlusJakartaSans-Regular',
-    fontSize: 14,
-    fontWeight:'400',
+    fontFamily: 'Font-Regular',
+    fontSize: rf(14),
+    fontWeight: '400',
     color: '#6B7280',
-    letterSpacing:0,
-    lineHeight:21,
-    textAlign:'center'
+    letterSpacing: 0,
+    lineHeight: rh(21),
+    textAlign: 'center',
   },
   selectButton: {
-    display:'flex',
-    justifyContent:'center',
-    alignItems:'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#F2F2F5',
-    borderRadius: 20,
-    paddingHorizontal: 16,
-    width:110,
-    height:40,
-
+    borderRadius: rw(20),
+    paddingHorizontal: rw(16),
+    width: rw(110),
+    height: rh(40),
   },
   selectButtonText: {
-    fontFamily: 'PlusJakartaSans-Bold',
-    fontSize: 14,
+    fontFamily: 'Font-Bold',
+    fontSize: rf(14),
     color: '#121417',
-    lineHeight:21,
-    letterSpacing:0,
-    textAlign:'center'
+    lineHeight: rh(21),
+    letterSpacing: 0,
+    textAlign: 'center',
   },
   input: {
     backgroundColor: '#F2F2F5',
-    borderRadius: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    fontFamily: 'PlusJakartaSans-Regular',
-    fontSize: 16,
-    marginBottom: 15,
+    borderRadius: rw(20),
+    paddingHorizontal: rw(20),
+    paddingVertical: rh(16),
+    fontFamily: 'Font-Regular',
+    fontSize: rf(16),
+    marginBottom: rh(15),
     color: '#000',
   },
   descriptionInput: {
-    height: 150,
+    height: rh(150),
     textAlignVertical: 'top',
   },
   postButton: {
     backgroundColor: '#6D028E',
-    borderRadius: 24,
-    height:48,
-    width:358,
+    borderRadius: rw(24),
+    height: rh(48),
+    width: rw(358),
     alignItems: 'center',
     justifyContent: 'center',
-   paddingHorizontal:20
+   paddingHorizontal:rw(20)
   },
   postText: {
     color: '#fff',
-    fontFamily: 'PlusJakartaSans-Bold',
-    fontSize: 16,
+    fontFamily: 'Font-Bold',
+    fontSize: rf(16),
   },
   crossContainer:{
-    height:48,
-    width:48,
+    height:rh(48),
+    width:rh(48),
     justifyContent:'center',
     alignItems:'center'
   },
   uploadBoxContainer:{
     position:'absolute',
-    height:264,
-    width:390,
-    top:72,
-    padding:16
+    height:rh(264),
+    width:rw(390),
+    top:rh(72),
+    padding:rw(16)
   },
   TitleContainer:{
     position:'absolute',
-    width:390,
-    height:80,
-    top:336
+    width:rw(390),
+    height:rh(80),
+    top:rh(336)
   },
   DescriptionContainer:{
     position:'absolute',
-    height:169,
-    width:390,
-    top:416
+    height:rh(169),
+    width:rw(390),
+    top:rh(416)
   },
   PostBtnContainer:{
     display:'flex',
     justifyContent:'center',
     // alignItems:'center',
    position:'absolute',
-   paddingVertical:12,
-   paddingHorizontal:16,
-    top:752,
-    width:390,
-    height:72
+   paddingVertical:rh(12),
+   paddingHorizontal:rw(16),
+    top:rh(752),
+    width:rw(390),
+    height:rh(72)
 
   }
 });

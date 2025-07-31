@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 const EditVideoScreen = () => {
@@ -126,11 +126,11 @@ const styles = StyleSheet.create({
   backArrow: {
     fontSize: 24,
     color: "#000",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
   },
   headerText: {
     fontSize: 23,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#6D028E",
     fontWeight: "700",
   },
@@ -174,12 +174,12 @@ const styles = StyleSheet.create({
   playIcon: {
     color: "#FFF",
     fontSize: 24,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     opacity: 1,
   },
   label: {
     fontSize: 16,
-    fontFamily: "PlusJakartaSans-Medium",
+    fontFamily: "Font-Medium",
     color: "#000",
     marginTop: 15,
     flex: 1,
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
     fontSize: 16,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     color: "#667582",
     lineHeight: 24,
     fontWeight: "400",
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
     lineHeight: 23,
     letterSpacing: 0,
     fontSize: 18,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "700",
   },
 
@@ -269,12 +269,12 @@ const styles = StyleSheet.create({
   },
   radioLabel: {
     fontSize: 16,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#000",
   },
   radioDesc: {
     fontSize: 14,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     color: "#6C6C6C",
   },
   buttonRow: {
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   cancelText: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontSize: 16,
     lineHeight: 24,
     fontWeight: "700",
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
   },
   saveText: {
     fontSize: 16,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#FFFFFF",
     lineHeight:24,
     letterSpacing:0,

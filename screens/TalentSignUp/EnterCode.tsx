@@ -1,20 +1,20 @@
+import { Feather } from "@expo/vector-icons"
+import { useNavigation } from "@react-navigation/native"
 import React, { useState } from "react"
 import {
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
+    Image,
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native"
-import { useNavigation } from "@react-navigation/native"
-import { Feather } from "@expo/vector-icons"
 import { OtpInput } from "react-native-otp-entry"
 import {
-  responsiveWidth,
-  responsiveHeight,
-  responsiveFontSize,
-} from "../../utils/responsive"
+    responsiveFontSize,
+    responsiveHeight,
+    responsiveWidth,
+} from "../../../utils/responsive"
 
 const OTPVerificationScreen = () => {
   const navigation = useNavigation()
@@ -27,36 +27,35 @@ const OTPVerificationScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header Row with Back Button */}
-      <View style={styles.headerRow}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <View style={styles.backButtonCircle}>
-            <Feather
-              name="arrow-left"
-              size={responsiveFontSize(20)}
-              color="#6D028E"
-            />
-          </View>
-        </TouchableOpacity>
-      </View>
+      {/* Back Button */}
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}
+      >
+        <View style={styles.backButtonCircle}>
+          <Feather
+            name="arrow-left"
+            size={responsiveFontSize(20)}
+            color="#6D028E"
+          />
+        </View>
+      </TouchableOpacity>
 
       {/* Logo */}
       <Image
-        source={require("../../assets/images/brandlogo.png")}
+        source={require("../../../assets/images/brandlogo.png")}
         style={styles.logo}
         resizeMode="contain"
+        
       />
 
       {/* Title and Subtitle */}
       <View style={styles.titleAndSubtitleContainer}>
         <Text style={styles.title}>Enter Code</Text>
-        <Text style={styles.subtitle}>
-          <Text style={{ color: "#5F729D" }}> An Authentication Code Has Sent To</Text>
-          <Text style={{ color: 'orange' }}>{"\n"}+966 12686 1010</Text>
-        </Text>
+        <View style={styles.phoneText}>
+          <Text style={styles.authCodeText}>An Authentication Code Has Sent To</Text>
+          <Text style={styles.phoneNumber}>+966 12686 1010</Text>
+        </View>
       </View>
 
       {/* OTP Input */}
@@ -74,15 +73,15 @@ const OTPVerificationScreen = () => {
             focusedPinCodeContainerStyle: styles.otpSlotActive,
           }}
         />
-      </View>
-
-      {/* Resend Section */}
       <View style={styles.resendContainer}>
         <Text style={styles.resendInfo}>If you don't receive code!</Text>
         <TouchableOpacity>
           <Text style={styles.resendLink}>Resend</Text>
         </TouchableOpacity>
       </View>
+      </View>
+
+      {/* Resend Section */}
 
       {/* Verify Button */}
       <TouchableOpacity style={styles.verifyButton} onPress={handleVerify}>
@@ -91,8 +90,8 @@ const OTPVerificationScreen = () => {
 
       {/* Sign In Link */}
       <View style={styles.SiginInContainer}>
-        <TouchableOpacity onPress={() => (navigation as any).navigate("SignIn")}> 
-          <Text style={{ color: 'purple' }}>
+        <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+          <Text style={styles.signInText}>
             Back To <Text style={styles.signInLink}>Sign In</Text>
           </Text>
         </TouchableOpacity>
@@ -110,71 +109,99 @@ const styles = StyleSheet.create({
     paddingHorizontal: responsiveWidth(20),
     paddingTop: responsiveHeight(20),
     alignItems: "center",
-  },
-  headerRow: {
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: responsiveHeight(10),
-    paddingHorizontal:responsiveWidth(10)
+    position: "relative",
   },
   backButton: {
-    // No absolute, just left align
-    marginLeft: 0,
+    position: "absolute",
+    top: responsiveHeight(15),
+    left: responsiveWidth(15),
   },
   backButtonCircle: {
     backgroundColor: "#F5F5F5",
     width: responsiveWidth(40),
-    height: responsiveHeight(40),
+    height: responsiveWidth(40),
     borderRadius: responsiveWidth(20),
     alignItems: "center",
     justifyContent: "center",
   },
   logo: {
+    position: "absolute",
     width: responsiveWidth(172.62),
     height: responsiveHeight(237),
-    alignSelf: "center",
-    marginBottom: responsiveHeight(10),
+    top: responsiveHeight(55),
+    left: responsiveWidth(100.69),
   },
   titleAndSubtitleContainer: {
-    alignItems: "center",
-    marginBottom: responsiveHeight(30),
-    width: "100%",
+    position: "absolute",
+    height:responsiveHeight(60),
+    width:responsiveWidth(274),
+    top: responsiveHeight(342),
+    left: responsiveWidth(50),
+    
+    gap:responsiveHeight(5),
+    
+    
   },
   title: {
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Font-Bold",
+    // height:responsiveHeight(15),
     fontSize: responsiveFontSize(20),
     lineHeight: responsiveFontSize(28),
     fontWeight: "700",
     color: "#24364C",
     textAlign: "center",
-    marginBottom: responsiveHeight(10),
+   
+   
   },
-  subtitle: {
-    fontFamily: "Plus Jakarta Sans",
+  phoneText: {
+   
+  justifyContent:'center',
+  // alignItems:'center',
+  flexDirection:'row',
+flexWrap:'wrap',
+  textAlign:'center',
+
+    width:'100%',
+    height:responsiveHeight(30),
+    
+  
+  },
+  authCodeText: {
+    color: "#5F729D",
+    fontFamily: "Font-Medium",
     fontSize: responsiveFontSize(14),
-    // lineHeight: responsiveFontSize(20),
     fontWeight: "500",
-    textAlign: "center",
-    marginTop: responsiveHeight(5),
+    lineHeight:responsiveHeight(20),
+  },
+  phoneNumber: {
+    fontFamily: "Font-Medium",
+    fontSize: responsiveFontSize(14),
+    fontWeight: "500",
+    color: "#FE5120",
+    lineHeight:responsiveHeight(20),
   },
   otpWrapper: {
-    alignItems: "center",
-    marginBottom: responsiveHeight(20),
-    width: "100%",
+    position:'absolute',
+    width:responsiveWidth(252),
+    height:responsiveHeight(94),
+    left:responsiveWidth(61),
+    top:responsiveHeight(432),
+    gap:responsiveHeight(10)
+
+   
   },
   otpContainer: {
     flexDirection: "row",
     alignSelf: "center",
     width: responsiveWidth(222),
     justifyContent: "space-between",
-    marginTop: 0,
-    marginBottom: responsiveHeight(10),
+
+    
   },
   otpSlot: {
     backgroundColor: "#F5F7FA",
     width: responsiveWidth(48),
-    height: responsiveHeight(48),
+    height: responsiveWidth(48),
     borderRadius: responsiveWidth(6),
     alignItems: "center",
     justifyContent: "center",
@@ -186,7 +213,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   otpSlotText: {
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Font-Medium",
     fontSize: responsiveFontSize(28),
     lineHeight: responsiveFontSize(32),
     fontWeight: "300",
@@ -201,53 +228,58 @@ const styles = StyleSheet.create({
   },
   resendContainer: {
     alignItems: "center",
-    marginBottom: responsiveHeight(30),
     width: "100%",
   },
   resendInfo: {
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Font-Medium",
     fontSize: responsiveFontSize(16),
     lineHeight: responsiveFontSize(24),
     fontWeight: "500",
     color: "#5F729D",
     textAlign: "center",
-    marginBottom: responsiveHeight(5),
+  
   },
   resendLink: {
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Font-Medium",
     fontSize: responsiveFontSize(16),
     lineHeight: responsiveFontSize(24),
     fontWeight: "600",
-    color: "orange",
+    color: "#FE5120",
     textAlign: "center",
-    // textDecorationLine: "underline",
   },
   verifyButton: {
-  position:'relative',
-  top:responsiveHeight(100),
+    position: "absolute",
+    top: responsiveHeight(748),
     width: responsiveWidth(315),
     height: responsiveHeight(48),
     backgroundColor: "#6D028E",
     borderRadius: responsiveWidth(8),
     justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "center",
-    marginBottom: responsiveHeight(20),
+    left:responsiveWidth(30)
   },
   verifyButtonText: {
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Font-Bold",
     fontSize: responsiveFontSize(15),
     fontWeight: "700",
     color: "#FFFFFF",
     textAlign: "center",
     textTransform: "capitalize",
     lineHeight: responsiveFontSize(15),
+
   },
   SiginInContainer: {
-  position:'relative',
-    alignItems: "center",
-    marginTop: responsiveHeight(10),
-    top:responsiveHeight(100)
+    
+    position: "absolute",
+    top: responsiveHeight(809),
+    textAlign:'center'
+    
+  },
+  signInText: {
+    color: "purple",
+    fontFamily: "Font-Medium",
+    fontSize: responsiveFontSize(14),
+    fontWeight: "500",
+    lineHeight:responsiveHeight(20)
   },
   signInLink: {
     color: "#FE5120",

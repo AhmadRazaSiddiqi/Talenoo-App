@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 23,
     letterSpacing: 0,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#121417",
     fontWeight: "700",
     textAlign: "center",
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     textAlign: "center",
     lineHeight: 28,
     fontWeight: "700",
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     height: 48,
     fontSize: 16,
     fontWeight: "400",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     lineHeight: 24,
     letterSpacing: 0,
     textAlign:'justify'
@@ -146,14 +146,14 @@ const styles = StyleSheet.create({
   },
   deteteText: {
     fontSize: 16,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#FFFFFF",
     fontWeight: "700",
     letterSpacing: 0,
   },
   cancelText: {
     fontSize: 16,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#121417",
     fontWeight: "700",
     letterSpacing: 0,

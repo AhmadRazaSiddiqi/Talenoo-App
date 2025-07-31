@@ -9,6 +9,7 @@ import {
     TextInput,
     View,
 } from "react-native";
+import { rf, rh, rw } from '../../utils/scaling';
 
 const messages = [
   {
@@ -89,64 +90,62 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    paddingHorizontal: 16,
-    paddingTop: 20,
+    paddingHorizontal: rw(16),
+    paddingTop: rh(20),
   },
   header: {
-    fontSize: 22,
+    fontSize: rf(22),
     fontWeight: "bold",
     color: "#6D028E",
     alignSelf: "center",
-    marginBottom: 16,
-    fontFamily: "PlusJakartaSans-Bold",
+    marginBottom: rh(16),
+    fontFamily: "Font-Bold",
   },
   searchContainer: {
     flexDirection: "row",
     backgroundColor: "#F2F2F5",
-    borderRadius: 16,
-    paddingHorizontal: 12,
+    borderRadius: rw(16),
+    paddingHorizontal: rw(12),
     alignItems: "center",
-    height: 48,
+    height: rh(48),
   },
   searchIcon: {
-    marginRight: 8,
+    marginRight: rw(8),
   },
   searchInput: {
     flex: 1,
-    fontSize: 16,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontSize: rf(16),
+    fontFamily: "Font-Regular",
     color: "#121417",
   },
   messageItem: {
     flexDirection: "row",
-    paddingVertical: 8,
+    paddingVertical: rh(8),
     alignItems: "center",
-    height:82,
-    width:390,
-    minHeight:72,
-    gap:16,
-    paddingHorizontal:16,
-
-    
+    height: rh(82),
+    width: rw(390),
+    minHeight: rh(72),
+    gap: rw(16),
+    paddingHorizontal: rw(16),
   },
   avatar: {
-    width: 52,
-    height: 52,
-    borderRadius: 26,
-    marginRight: 12,
+    width: rw(52),
+    height: rw(52),
+    borderRadius: rw(26),
+    marginRight: rw(12),
   },
   textContainer: {
     flex: 1,
   },
   name: {
-    fontSize: 16,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontSize: rf(16),
+    fontFamily: "Font-Bold",
     color: "#121417",
   },
   message: {
-    fontSize: 14,
+    fontSize: rf(14),
     color: "#5F6C86",
-    fontFamily: "PlusJakartaSans-Regular",
-    marginTop: 2,
+    fontFamily: "Font-Regular",
+    marginTop: rh(2),
   },
 });

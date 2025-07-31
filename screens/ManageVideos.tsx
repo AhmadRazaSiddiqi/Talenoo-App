@@ -1,12 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     paddingTop: 16,
   },
   headerText: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontSize: 18,
     color: "#6D028E",
     lineHeight:23,
@@ -156,20 +156,20 @@ const styles = StyleSheet.create({
     display: "flex",
   },
   title: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontSize: 16,
     color: "#000",
     paddingBottom: 4,
   },
   time: {
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontSize: 14,
     color: "#667582",
     paddingBottom: 2,
     lineHeight:21
   },
   stats: {
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontSize: 14,
     color: "#6B7280",
   },
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
     height:40
   },
   actionText: {
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontSize: 12,
     color: "#000",
     paddingTop: 4,

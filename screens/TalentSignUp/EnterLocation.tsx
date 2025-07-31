@@ -1,18 +1,18 @@
 import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
+    responsiveFontSize,
+    responsiveHeight,
+    responsiveWidth,
 } from "@/utils/responsive";
 import { Feather } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
-  Dimensions,
-  Image,
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Dimensions,
+    Image,
+    Modal,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
   },
   title: {
     width: 319,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "700",
     fontSize: 20,
     lineHeight: 28,
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     width: 319,
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontWeight: "500",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveHeight(20),
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   allowButtonText: {
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     fontWeight: "700",
     fontSize: 15,
     lineHeight: 15,
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   manualButtonText: {
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
     fontWeight: "500",
     fontSize: 16,
     lineHeight: 24,

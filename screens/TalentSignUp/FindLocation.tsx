@@ -15,6 +15,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { scale, verticalScale } from 'react-native-size-matters';
 
 const LocationSearchScreen = () => {
   const [searchText, setSearchText] = useState("");
@@ -74,11 +75,11 @@ const LocationSearchScreen = () => {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-          <AntDesign name="arrowleft" size={24} color="#6D028E" />
+          <AntDesign name="arrowleft" size={responsiveWidth(24)} color="#6D028E" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Your Location</Text>
         <TouchableOpacity onPress={handleClose} style={styles.closeButton}>
-          <Feather name="x" size={24} color="#374151" />
+          <Feather name="x" size={responsiveWidth(24)} color="#374151" />
         </TouchableOpacity>
       </View>
 
@@ -86,7 +87,7 @@ const LocationSearchScreen = () => {
       <View style={styles.searchContainer}>
         <Ionicons
           name="search"
-          size={20}
+          size={responsiveWidth(20)}
           color="#6D028E"
           style={styles.searchIcon}
         />
@@ -105,7 +106,7 @@ const LocationSearchScreen = () => {
         onPress={handleUseCurrentLocation}
       >
         <View style={styles.currentLocationIcon}>
-          <FontAwesome6 name="location-crosshairs" size={20} color="#6D028E" />
+          <FontAwesome6 name="location-crosshairs" size={responsiveWidth(20)} color="#6D028E" />
         </View>
         <Text style={styles.currentLocationText}>Use current location</Text>
       </TouchableOpacity>
@@ -123,7 +124,7 @@ const LocationSearchScreen = () => {
             >
               <View style={styles.locationIconContainer}>
                 {/* <Ionicons name="location" size={18} color="#6B7280" /> */}
-                <FontAwesome6 name="location-dot" size={14} color="#6B7280" />
+                <FontAwesome6 name="location-dot" size={responsiveWidth(14)} color="#6B7280" />
                 <Text style={styles.locationName}>{location.name}</Text>
               </View>
               <View style={styles.locationInfo}>
@@ -148,9 +149,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderBottomWidth: 1,
+    paddingHorizontal: responsiveWidth(16),
+    paddingVertical: responsiveHeight(12),
+    borderBottomWidth: responsiveWidth(1),
     borderBottomColor: "#F3F4F6",
   },
   backButton: {
@@ -161,10 +162,10 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   headerTitle: {
-    fontSize: 18,
+    fontSize: responsiveFontSize(18),
     fontWeight: "700",
     color: "#1F2937",
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
   },
   closeButton: {
     padding: 8,
@@ -174,43 +175,44 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginHorizontal: 16,
-    marginTop: 16,
-    marginBottom: 8,
+    marginHorizontal: responsiveWidth(16),
+    marginTop: responsiveHeight(16),
+    marginBottom: responsiveHeight(8),
     backgroundColor: "#F9FAFB",
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderWidth: 1,
+    borderRadius: responsiveWidth(12),
+    paddingHorizontal: responsiveWidth(16),
+    paddingVertical: responsiveHeight(12),
+    borderWidth: responsiveWidth(1),
     borderColor: "#E5E7EB",
   },
   searchIcon: {
-    marginRight: 12,
+    marginRight: responsiveWidth(12),
   },
   searchInput: {
-    flex: 1,
-    fontSize: 16,
+    height:responsiveHeight(48),
+    width:responsiveWidth(345),
+    fontSize: responsiveFontSize(16),
     color: "#374151",
   },
   currentLocationButton: {
     flexDirection: "row",
     alignItems: "flex-start",
-    marginHorizontal: 16,
-    marginVertical: 8,
-    paddingVertical: 16,
+    marginHorizontal: responsiveWidth(16),
+    marginVertical: responsiveHeight(8),
+    paddingVertical: responsiveHeight(16),
   },
   currentLocationIcon: {
-    marginRight: 16,
+    marginRight: responsiveWidth(16),
   },
   currentLocationText: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(16),
     fontWeight: "500",
     color: "#6D028E",
   },
   resultsContainer: {
     position: "absolute",
     flex: 1,
-    marginTop: 16,
+    marginTop: responsiveHeight(16),
     backgroundColor: "green",
     // paddingLeft: responsiveWidth(14),
     // height: responsiveHeight(313),
@@ -221,8 +223,8 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(16),
     fontWeight: "600",
     color: "#24364C",
-    marginHorizontal: 16,
-    marginBottom: 16,
+    marginHorizontal: responsiveWidth(16),
+    marginBottom: responsiveHeight(16),
     width: responsiveWidth(105),
     // height: responsiveHeight(15),
     left: responsiveWidth(15),
@@ -234,15 +236,15 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     // paddingHorizontal: responsiveWidth(16),
     // paddingVertical: responsiveHeight(16),
-    borderBottomWidth: 1,
+    borderBottomWidth: responsiveWidth(1),
     borderBottomColor: "#F3F4F6",
-    marginBottom: responsiveHeight(15),
+    marginBottom: verticalScale(15),
   },
   locationIconContainer: {
     display: "flex",
     flexDirection: "row",
-    marginRight: 16,
-    marginTop: 2,
+    marginRight: responsiveWidth(16),
+    marginTop: responsiveHeight(2),
     gap: responsiveWidth(5),
   },
   locationInfo: {
@@ -255,25 +257,25 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(14),
     fontWeight: "600",
     color: "#1F2937",
-    marginBottom: 4,
+    marginBottom: responsiveHeight(4),
   },
   locationAddress: {
-    fontSize: responsiveFontSize(14),
+    fontSize: scale(14),
     color: "#9CA3AF",
-    lineHeight: 20,
-    marginBottom: 2,
+    lineHeight: responsiveHeight(20),
+    marginBottom: responsiveHeight(2),
   },
   locationCountry: {
     fontSize: responsiveFontSize(14),
     color: "#9CA3AF",
-    lineHeight: 20,
+    lineHeight: verticalScale(20),
   },
   locations: {
     position: "absolute",
     width: responsiveWidth(296),
-    paddingLeft: 1,
+    paddingLeft: responsiveWidth(1),
     left: responsiveWidth(32),
-    top: responsiveHeight(231),
+    top: verticalScale(231),
   },
 });
 

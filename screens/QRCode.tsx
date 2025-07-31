@@ -82,13 +82,13 @@ const styles = StyleSheet.create({
   backArrow: {
     fontSize: 24,
     color: "#000",
-    fontFamily: "PlusJakartaSans-Regular",
+    fontFamily: "Font-Regular",
   },
   headerText: {
     fontSize: 18,
     lineHeight: 23,
     letterSpacing: 0,
-    fontFamily: "PlusJakartaSans-Bold",
+    fontFamily: "Font-Bold",
     color: "#121417",
     fontWeight: "700",
   textAlign:'center',
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
 
   },
   name: {
-    fontFamily: 'PlusJakartaSans-Bold',
+    fontFamily: 'Font-Bold',
     fontSize: 22,
     fontWeight:'700',
     lineHeight:28,
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     color: '#121417',
   },
   username: {
-    fontFamily: 'PlusJakartaSans-Regular',
+    fontFamily: 'Font-Regular',
     fontSize: 14,
     color: '#667582',
     textAlign:'center'
@@ -193,12 +193,12 @@ width:'100%'
     justifyContent:'center'
   },
   shareText: {
-    fontFamily: 'PlusJakartaSans-Bold',
+    fontFamily: 'Font-Bold',
     fontSize: 14,
     color: '#121417',
   },
   saveText: {
-    fontFamily: 'PlusJakartaSans-Bold',
+    fontFamily: 'Font-Bold',
     fontSize: 14,
     color: '#fff',
   },
