@@ -1,12 +1,8 @@
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from '@/utils/responsive.js';
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-    responsiveFontSize,
-    responsiveHeight,
-    responsiveWidth,
-} from "../../../utils/responsive";
 
 const HomeScreen = () => {
   return (
@@ -76,7 +72,7 @@ const HomeScreen = () => {
             <View key={item} style={styles.taskCard}>
               <View style={styles.taskHeader}>
                 <Image
-                  source={require("../../../assets/images/clientImage.png")}
+                  source={require("@/assets/images/clientImage.png")}
                   style={styles.avatar}
                   resizeMode="cover"
                 />

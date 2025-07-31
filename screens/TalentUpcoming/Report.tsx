@@ -1,8 +1,8 @@
 //FIXME:Fix the Selection menu
+import { responsiveFontSize as rf, responsiveHeight as rh, responsiveWidth as rw } from '@/utils/responsive.js';
 import React from 'react';
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { rf, rh, rw } from '../../../utils/scaling';
 
 const reportType=["Harassment","Spam","Inappropriate Language","Abuse","Other"]
 const ReportScreen = () => {

@@ -1,30 +1,30 @@
-import PlanCard from "@/components/PlanCard";
+import PlanCard from "@/components/plan/PlanCard"
 import {
-    responsiveFontSize,
-    responsiveHeight,
-    responsiveWidth,
-} from "@/utils/responsive";
-import { AntDesign, Feather } from "@expo/vector-icons";
-import React from "react";
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from "@/utils/responsive"
+import { AntDesign, Feather } from "@expo/vector-icons"
+import React from "react"
 import {
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
 
 const Plans = () => {
   const handleBack = () => {
     // Handle back navigation
-    console.log("Back pressed");
-  };
+    console.log("Back pressed")
+  }
 
   const handleClose = () => {
     // Handle close
-    console.log("Close pressed");
-  };
+    console.log("Close pressed")
+  }
 
   const Cards = {
     Free: {
@@ -57,7 +57,7 @@ const Plans = () => {
       btnbg: "#F2F2F2",
       btntxtClr: "black",
     },
-  };
+  }
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="white" />
@@ -79,8 +79,8 @@ const Plans = () => {
         <PlanCard CardDetails={Cards.Gold} />
       </View>
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -219,6 +219,6 @@ const styles = StyleSheet.create({
     left: responsiveWidth(32),
     top: responsiveHeight(231),
   },
-});
+})
 
-export default Plans;
+export default Plans

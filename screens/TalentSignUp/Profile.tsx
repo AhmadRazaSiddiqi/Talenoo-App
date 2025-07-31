@@ -1,4 +1,4 @@
-import ProfileInput from '@/components/ProfileInput'
+import ProfileInput from '@/components/profile/ProfileInput'
 import { AntDesign } from '@expo/vector-icons'
 import React from 'react'
 import { Keyboard, Pressable, StyleSheet, Text, View } from 'react-native'

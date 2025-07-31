@@ -1,3 +1,4 @@
+import { responsiveFontSize as rf, responsiveHeight as rh, responsiveWidth as rw } from '@/utils/responsive.js';
 import React from "react";
 import {
     FlatList,
@@ -7,7 +8,6 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
-import { rf, rh, rw } from '../../utils/scaling';
 
 const renderItem = [
   {

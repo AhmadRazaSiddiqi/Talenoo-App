@@ -1,7 +1,7 @@
+import { responsiveFontSize as rf, responsiveHeight as rh, responsiveWidth as rw } from '@/utils/responsive.js';
 import Slider from '@react-native-community/slider';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { rf, rh, rw } from '../../../utils/scaling';
 
 const SearchScreen = () => {
   const [username, setUsername] = useState('');

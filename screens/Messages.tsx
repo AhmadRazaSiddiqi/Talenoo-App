@@ -1,4 +1,5 @@
 //FIXME - Fix the styling of the code
+import { responsiveFontSize as rf, responsiveHeight as rh, responsiveWidth as rw } from '@/utils/responsive.js';
 import { Feather } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
@@ -9,7 +10,6 @@ import {
     TextInput,
     View,
 } from "react-native";
-import { rf, rh, rw } from '../../utils/scaling';
 
 const messages = [
   {

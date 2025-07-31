@@ -1,25 +1,25 @@
-import { Image } from "expo-image";
-import { LinearGradient } from "expo-linear-gradient";
-import React, { useState } from "react";
 import {
-    Dimensions,
-    Platform, // Keeping TextInput in imports, though not used in UI for this screen based on provided design.
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from "@/utils/responsive.js"
+import { Image } from "expo-image"
+import { LinearGradient } from "expo-linear-gradient"
+import React, { useState } from "react"
+import {
+  Dimensions,
+  Platform, // Keeping TextInput in imports, though not used in UI for this screen based on provided design.
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
+import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 // Import your responsive helper functions
-import {
-    responsiveFontSize,
-    responsiveHeight,
-    responsiveWidth,
-} from "../../../utils/responsive"; // Ensure this path is correct
 
-const { width, height } = Dimensions.get("window"); // Keep this for dynamic width calculation for nextButton
+const { width, height } = Dimensions.get("window") // Keep this for dynamic width calculation for nextButton
 
 const talentsList = [
   "Internship",
@@ -28,18 +28,18 @@ const talentsList = [
   "Mid Senior Level",
   "Director",
   "Executive",
-];
+]
 
 const JobStepScreen2 = () => {
-  const [selectedJob, setSelectedJob] = useState(["Internship"]); // Initial selection as per design's checkbox state
+  const [selectedJob, setSelectedJob] = useState(["Internship"]) // Initial selection as per design's checkbox state
 
   const handleJobSelect = (job) => {
     setSelectedJob((prevSelected) =>
       prevSelected.includes(job)
         ? prevSelected.filter((j) => j !== job)
         : [...prevSelected, job]
-    );
-  };
+    )
+  }
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -58,7 +58,7 @@ const JobStepScreen2 = () => {
           If `imgmask.png` is truly a mask for the *content area* rather than a decorative overlay,
           its usage might need re-evaluation. Assuming it's the white content card. */}
       <Image
-        source={require("../../../assets/images/imgmask.png")} // Use your actual mask image if it's the intent
+        source={require("@/assets/images/imgmask.png")} // Use your actual mask image if it's the intent
         style={styles.contentMaskCard} // Renamed style for clarity, matches the last Rectangle 384
         resizeMode="contain" // 'contain' is good for scaling without cropping
       />
@@ -160,10 +160,10 @@ const JobStepScreen2 = () => {
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default JobStepScreen2;
+export default JobStepScreen2
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -343,7 +343,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: responsiveWidth(15),
- // From design padding 18px
+    // From design padding 18px
     gap: responsiveWidth(10), // Gap between checkbox and text
     width: responsiveWidth(316), // Width from design
     height: responsiveHeight(48), // Height from design
@@ -439,4 +439,4 @@ const styles = StyleSheet.create({
   // Removing unused search styles since it's not in this screen's design
   // searchContainer: {},
   // searchInput: {},
-});
+})

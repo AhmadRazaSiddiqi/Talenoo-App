@@ -1,3 +1,4 @@
+import { responsiveFontSize as rf, responsiveHeight as rh, responsiveWidth as rw } from '@/utils/responsive.js';
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Checkbox from "expo-checkbox";
@@ -11,7 +12,6 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
-import { rf, rh, rw } from '../../utils/scaling';
 
 const SiginScreen = () => {
   const navigation = useNavigation();

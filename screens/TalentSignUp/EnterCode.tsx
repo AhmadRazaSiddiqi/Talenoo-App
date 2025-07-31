@@ -1,20 +1,20 @@
+import {
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from "@/utils/responsive"
 import { Feather } from "@expo/vector-icons"
 import { useNavigation } from "@react-navigation/native"
 import React, { useState } from "react"
 import {
-    Image,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native"
 import { OtpInput } from "react-native-otp-entry"
-import {
-    responsiveFontSize,
-    responsiveHeight,
-    responsiveWidth,
-} from "../../../utils/responsive"
 
 const OTPVerificationScreen = () => {
   const navigation = useNavigation()
@@ -43,17 +43,18 @@ const OTPVerificationScreen = () => {
 
       {/* Logo */}
       <Image
-        source={require("../../../assets/images/brandlogo.png")}
+        source={require("@/assets/images/brandlogo.png")}
         style={styles.logo}
         resizeMode="contain"
-        
       />
 
       {/* Title and Subtitle */}
       <View style={styles.titleAndSubtitleContainer}>
         <Text style={styles.title}>Enter Code</Text>
         <View style={styles.phoneText}>
-          <Text style={styles.authCodeText}>An Authentication Code Has Sent To</Text>
+          <Text style={styles.authCodeText}>
+            An Authentication Code Has Sent To
+          </Text>
           <Text style={styles.phoneNumber}>+966 12686 1010</Text>
         </View>
       </View>
@@ -73,12 +74,12 @@ const OTPVerificationScreen = () => {
             focusedPinCodeContainerStyle: styles.otpSlotActive,
           }}
         />
-      <View style={styles.resendContainer}>
-        <Text style={styles.resendInfo}>If you don't receive code!</Text>
-        <TouchableOpacity>
-          <Text style={styles.resendLink}>Resend</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.resendContainer}>
+          <Text style={styles.resendInfo}>If you don't receive code!</Text>
+          <TouchableOpacity>
+            <Text style={styles.resendLink}>Resend</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* Resend Section */}
@@ -133,14 +134,12 @@ const styles = StyleSheet.create({
   },
   titleAndSubtitleContainer: {
     position: "absolute",
-    height:responsiveHeight(60),
-    width:responsiveWidth(274),
+    height: responsiveHeight(60),
+    width: responsiveWidth(274),
     top: responsiveHeight(342),
     left: responsiveWidth(50),
-    
-    gap:responsiveHeight(5),
-    
-    
+
+    gap: responsiveHeight(5),
   },
   title: {
     fontFamily: "Font-Bold",
@@ -150,53 +149,44 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#24364C",
     textAlign: "center",
-   
-   
   },
   phoneText: {
-   
-  justifyContent:'center',
-  // alignItems:'center',
-  flexDirection:'row',
-flexWrap:'wrap',
-  textAlign:'center',
+    justifyContent: "center",
+    // alignItems:'center',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    textAlign: "center",
 
-    width:'100%',
-    height:responsiveHeight(30),
-    
-  
+    width: "100%",
+    height: responsiveHeight(30),
   },
   authCodeText: {
     color: "#5F729D",
     fontFamily: "Font-Medium",
     fontSize: responsiveFontSize(14),
     fontWeight: "500",
-    lineHeight:responsiveHeight(20),
+    lineHeight: responsiveHeight(20),
   },
   phoneNumber: {
     fontFamily: "Font-Medium",
     fontSize: responsiveFontSize(14),
     fontWeight: "500",
     color: "#FE5120",
-    lineHeight:responsiveHeight(20),
+    lineHeight: responsiveHeight(20),
   },
   otpWrapper: {
-    position:'absolute',
-    width:responsiveWidth(252),
-    height:responsiveHeight(94),
-    left:responsiveWidth(61),
-    top:responsiveHeight(432),
-    gap:responsiveHeight(10)
-
-   
+    position: "absolute",
+    width: responsiveWidth(252),
+    height: responsiveHeight(94),
+    left: responsiveWidth(61),
+    top: responsiveHeight(432),
+    gap: responsiveHeight(10),
   },
   otpContainer: {
     flexDirection: "row",
     alignSelf: "center",
     width: responsiveWidth(222),
     justifyContent: "space-between",
-
-    
   },
   otpSlot: {
     backgroundColor: "#F5F7FA",
@@ -237,7 +227,6 @@ flexWrap:'wrap',
     fontWeight: "500",
     color: "#5F729D",
     textAlign: "center",
-  
   },
   resendLink: {
     fontFamily: "Font-Medium",
@@ -255,7 +244,7 @@ flexWrap:'wrap',
     backgroundColor: "#6D028E",
     borderRadius: responsiveWidth(8),
     justifyContent: "center",
-    left:responsiveWidth(30)
+    left: responsiveWidth(30),
   },
   verifyButtonText: {
     fontFamily: "Font-Bold",
@@ -265,21 +254,18 @@ flexWrap:'wrap',
     textAlign: "center",
     textTransform: "capitalize",
     lineHeight: responsiveFontSize(15),
-
   },
   SiginInContainer: {
-    
     position: "absolute",
     top: responsiveHeight(809),
-    textAlign:'center'
-    
+    textAlign: "center",
   },
   signInText: {
     color: "purple",
     fontFamily: "Font-Medium",
     fontSize: responsiveFontSize(14),
     fontWeight: "500",
-    lineHeight:responsiveHeight(20)
+    lineHeight: responsiveHeight(20),
   },
   signInLink: {
     color: "#FE5120",

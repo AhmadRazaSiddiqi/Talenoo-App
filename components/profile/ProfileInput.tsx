@@ -1,7 +1,6 @@
 import React from "react";
 import { Keyboard, StyleSheet, Text, TextInput, View } from "react-native";
 import { moderateScale, scale, verticalScale } from "react-native-size-matters";
-import { rf, rh, rw } from '../../utils/scaling';
 type Props = {
   labelText: String;
   Inputtype: String;
@@ -65,11 +64,11 @@ const ProfileInput = ({ labelText, Inputtype }: Props) => {
       ) : (
         <TextInput
           style={{
-            height: rh(48),
-            width: rw(319),
+            height: verticalScale(48),
+            width: moderateScale(319),
             backgroundColor: "#F5F7FA",
             borderRadius: moderateScale(6),
-            fontSize: rf(15),
+            fontSize: scale(15),
             fontFamily: "Font-Medium",
           }}
         />

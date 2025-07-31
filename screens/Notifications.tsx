@@ -1,3 +1,4 @@
+import { responsiveFontSize as rf, responsiveHeight as rh, responsiveWidth as rw } from '@/utils/responsive.js';
 import {
     FlatList,
     Image,
@@ -8,7 +9,6 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/Feather";
-import { rf, rh, rw } from '../../utils/scaling';
 
 const notifications = [
   {

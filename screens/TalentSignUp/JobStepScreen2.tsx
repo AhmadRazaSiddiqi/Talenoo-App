@@ -1,26 +1,23 @@
-import { Image } from "expo-image";
-import { LinearGradient } from "expo-linear-gradient";
-import React, { useState } from "react";
 import {
-    Dimensions,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-
-import { FontAwesome6 } from "@expo/vector-icons";
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from "@/utils/responsive"
+import { Image } from "expo-image"
+import { LinearGradient } from "expo-linear-gradient"
+import React, { useState } from "react"
 import {
-    responsiveFontSize,
-    responsiveHeight,
-    responsiveWidth,
-} from "../../../utils/responsive";
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
+import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
-const { width, height } = Dimensions.get("window");
+import { FontAwesome6 } from "@expo/vector-icons"
 
 const weekList = [
   "Sunday",
@@ -30,18 +27,18 @@ const weekList = [
   "Thursday",
   "Friday",
   "Saturday",
-];
+]
 
 const JobStepScreen = () => {
-  const [selectedDay, setSelectedDay] = useState(["Monday"]);
+  const [selectedDay, setSelectedDay] = useState(["Monday"])
 
   const handleJobSelect = (day) => {
     setSelectedDay((prevSelected) =>
       prevSelected.includes(day)
         ? prevSelected.filter((d) => d !== day)
         : [...prevSelected, day]
-    );
-  };
+    )
+  }
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -60,7 +57,7 @@ const JobStepScreen = () => {
             If `imgmask.png` is truly a mask for the *content area* rather than a decorative overlay,
             its usage might need re-evaluation. Assuming it's the white content card. */}
       <Image
-        source={require("../../../assets/images/imgmask.png")}
+        source={require("@/assets/images/imgmask.png")}
         style={styles.contentMaskCard}
         resizeMode="contain"
       />
@@ -141,7 +138,7 @@ const JobStepScreen = () => {
                     paddingLeft: responsiveWidth(40),
                     display: "flex",
                     justifyContent: "space-between",
-                    alignItems:'center',
+                    alignItems: "center",
 
                     flexDirection: "row",
                   }}
@@ -204,10 +201,10 @@ const JobStepScreen = () => {
         <Text style={styles.nextButtonText}>Save</Text>
       </TouchableOpacity>
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default JobStepScreen;
+export default JobStepScreen
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -466,4 +463,4 @@ const styles = StyleSheet.create({
     lineHeight: responsiveHeight(28),
     fontWeight: "bold",
   },
-});
+})
