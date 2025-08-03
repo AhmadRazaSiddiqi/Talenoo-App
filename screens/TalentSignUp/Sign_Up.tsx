@@ -4,7 +4,6 @@ import {
   responsiveWidth,
 } from "@/utils/responsive"
 import { Feather } from "@expo/vector-icons"
-import { useNavigation } from "@react-navigation/native"
 import Checkbox from "expo-checkbox"
 import React, { useState } from "react"
 import {
@@ -17,8 +16,7 @@ import {
   View,
 } from "react-native"
 
-const SignUpScreen = () => {
-  const navigation = useNavigation()
+const SignUpScreen = ({navigation}) => {
   const [name, setName] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [agreed, setAgreed] = useState(false)
@@ -28,7 +26,7 @@ const SignUpScreen = () => {
       {/* Back button */}
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => navigation.goBack()}
+        onPress={() => navigation.replace('usertypescreen')}
       >
         <View style={styles.backButtonCircle}>
           <Feather name="arrow-left" size={20} color="#6D028E" />
@@ -50,14 +48,7 @@ const SignUpScreen = () => {
         </Text>
       </View>
 
-      {/* Name Field */}
-      <View style={[styles.inputContainer, { top: responsiveHeight(401) }]}>
-        <Text style={styles.inputLabel}>
-          Name <Text style={styles.required}>*</Text>
-        </Text>
-        <TextInput style={styles.input} value={name} onChangeText={setName} />
-      </View>
-      <View style={[styles.inputContainer, { top: responsiveHeight(485) }]}>
+      <View style={[styles.inputContainer, { top: responsiveHeight(422) }]}>
         <Text style={styles.inputLabel}>
           Username <Text style={styles.required}>*</Text>
         </Text>
@@ -65,12 +56,12 @@ const SignUpScreen = () => {
       </View>
 
       {/* Phone Number Field */}
-      <View style={[styles.inputContainer, { top: responsiveHeight(569) }]}>
+      <View style={[styles.inputContainer, { top: responsiveHeight(520) }]}>
         <Text style={styles.inputLabel}>
           Phone Number <Text style={styles.required}>*</Text>
         </Text>
         <View style={styles.phoneInputContainer}>
-          <Text style={styles.phoneCode}>+966</Text>
+          <Text style={styles.phoneCode} >+966</Text>
           <TextInput
             style={styles.phoneInput}
             keyboardType="phone-pad"
@@ -86,6 +77,8 @@ const SignUpScreen = () => {
           value={agreed}
           onValueChange={setAgreed}
           style={styles.checkbox}
+          // color={'#6D028E'}
+        
         />
         <View style={{ display: "flex", flexDirection: "row" }}>
           <Text style={styles.checkboxText}>I agree to all , </Text>
@@ -95,8 +88,11 @@ const SignUpScreen = () => {
       </View>
 
       {/* Sign Up Button */}
-      <TouchableOpacity style={styles.signUpButton}>
-        <Text style={styles.signUpButtonText}>Sign Up</Text>
+      <TouchableOpacity onPress={()=>navigation.replace('Otpscreen')} style={[styles.signUpButton,{top: responsiveHeight(690), backgroundColor: "#6D028E",}]}>
+        <Text  style={[styles.signUpButtonText,{color: "#FFF",}]}>Sign Up</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={[styles.signUpButton,{top: responsiveHeight(748),backgroundColor: "#F5F7FA",elevation:6}]}>
+        <Text style={[styles.signUpButtonText,{color: "#FE5120",}]}>Continue As Guest</Text>
       </TouchableOpacity>
 
       {/* Sign In link */}
@@ -141,6 +137,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: responsiveFontSize(20),
+    fontFamily:'Font-Bold',
     fontWeight: "700",
     color: "#1D253C",
     textAlign: "center",
@@ -156,6 +153,7 @@ const styles = StyleSheet.create({
     height: responsiveHeight(69),
     width: responsiveWidth(315),
     left: responsiveWidth(30),
+    gap:responsiveHeight(10)
   },
   inputLabel: {
     fontSize: 14,
@@ -181,8 +179,16 @@ const styles = StyleSheet.create({
   phoneCode: {
     color: "#6D028E",
     fontSize: responsiveFontSize(15),
+    left:responsiveWidth(4),
+width:responsiveWidth(57),
+borderRadius:responsiveWidth(6),
+fontFamily:'Font-Medium',
+textAlignVertical:'center',
+backgroundColor:'#FFF',
+height:responsiveHeight(40),
+marginRight:responsiveWidth(10),
+textAlign:'center',
     fontWeight: "600",
-    marginRight: 10,
   },
   phoneInput: {
     flex: 1,
@@ -197,7 +203,7 @@ const styles = StyleSheet.create({
     gap: responsiveWidth(10),
     width: responsiveWidth(263),
     height: responsiveHeight(20),
-    top: responsiveHeight(717),
+    top: responsiveHeight(657),
     left: responsiveWidth(56),
   },
   checkboxText: {
@@ -211,25 +217,23 @@ const styles = StyleSheet.create({
   },
   signUpButton: {
     position: "absolute",
-    backgroundColor: "#6D028E",
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
     height: responsiveHeight(48),
     width: responsiveWidth(315),
-    top: responsiveHeight(748),
     left: responsiveWidth(30),
   },
   signUpButtonText: {
     fontFamily: "Font-Bold",
-    color: "white",
+    
     fontSize: responsiveFontSize(15),
     fontWeight: "700",
-    width: responsiveWidth(56),
+    // width: responsiveWidth(56)
   },
   signInText: {
     position: "absolute",
-    top: responsiveHeight(809),
+    top: responsiveHeight(800),
     textAlign: "center",
     left: responsiveWidth(74),
     fontSize: responsiveFontSize(14),
@@ -256,5 +260,6 @@ const styles = StyleSheet.create({
     borderWidth: responsiveWidth(2),
     borderColor: "#5F729D",
     borderRadius: responsiveWidth(3),
+    
   },
 })

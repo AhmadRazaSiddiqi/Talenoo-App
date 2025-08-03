@@ -4,13 +4,13 @@ import { useNavigation } from "@react-navigation/native";
 import Checkbox from "expo-checkbox";
 import React, { useState } from "react";
 import {
-    Image,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 const SiginScreen = () => {
@@ -33,7 +33,7 @@ const SiginScreen = () => {
       {/* Logo */}
       <View style={styles.main}>
         <Image
-          source={require("../../assets/images/brandlogo.png")} // Replace with your logo path
+          source={require("../assets/images/brandlogo.png")} // Replace with your logo path
           style={styles.logo}
           resizeMode="contain"
         />

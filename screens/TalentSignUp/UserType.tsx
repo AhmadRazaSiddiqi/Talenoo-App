@@ -8,25 +8,18 @@ import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
   Image,
+  Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from "react-native";
 
-const UserTypeSelectionScreen: React.FC = () => {
+const UserTypeSelectionScreen: React.FC = ({navigation}) => {
   const [selectedUserType, setSelectedUserType] = useState<
     "talent" | "client" | null
   >(null);
 
-  const handleNext = () => {
-    if (selectedUserType) {
-      console.log("Selected User Type:", selectedUserType);
-    } else {
-      console.log("Please select a user type.");
-    }
-  };
 
   const renderRadioButton = (type: "talent" | "client") => (
     <View style={styles.radioButtonContainer}>
@@ -54,11 +47,11 @@ const UserTypeSelectionScreen: React.FC = () => {
       {/* Layered Background Elements */}
 
       <View style={styles.backgroundLayer2} />
-      <View style={styles.backgroundLayer1} />
       <View style={styles.backgroundLayer3} />
-      <View style={styles.backgroundElipse2} />
-      <View style={styles.backgroundElipse3} />
+      <View style={styles.backgroundLayer1} />
       <View style={styles.backgroundElipse4} />
+      <View style={styles.backgroundElipse3} />
+      <View style={styles.backgroundElipse2} />
       <View style={styles.topImageContainer}>
         <Image
           source={require("../../assets/images/userType.png")}
@@ -78,7 +71,7 @@ const UserTypeSelectionScreen: React.FC = () => {
         {/* Cards Container */}
         <View style={styles.cardsContainer}>
           {/* Talent Card */}
-          <TouchableOpacity
+          <Pressable
             style={[
               styles.card,
               selectedUserType === "talent" && styles.selectedCard,
@@ -88,7 +81,7 @@ const UserTypeSelectionScreen: React.FC = () => {
             <View style={styles.cardContent}>
               <View style={styles.cardHeader}>
                 <View style={styles.talentIconContainer}>
-                  <FontAwesome6 name="user-tie" size={24} color="#FE5120" />
+                  <FontAwesome6 name="user-tie" size={responsiveFontSize(24)} color="#FE5120" />
                 </View>
                 <View style={styles.cardTextContent}>
                   <Text style={styles.cardTitle}>Talent</Text>
@@ -109,10 +102,10 @@ const UserTypeSelectionScreen: React.FC = () => {
                 </View>
               </View>
             </View>
-          </TouchableOpacity>
+          </Pressable>
 
           {/* Client Card */}
-          <TouchableOpacity
+          <Pressable
             style={[
               styles.card,
               selectedUserType === "client" && styles.selectedCard,
@@ -137,21 +130,21 @@ const UserTypeSelectionScreen: React.FC = () => {
                   <Text style={styles.clientTagText}>Hiring</Text>
                 </View>
                 <View style={styles.clientTag}>
-                  <Text style={styles.clientTagText}>Projects</Text>
+                  <Text style={styles.clientTagText}>Employeer</Text>
                 </View>
               </View>
             </View>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       
       {/* Next Button */}
-      <TouchableOpacity
-        style={[styles.nextButton, !selectedUserType && styles.nextButton]}
-        onPress={handleNext}
+      <Pressable
+        style={[styles.nextButton, !selectedUserType && styles.nextButton,!selectedUserType?{opacity:.5}:{opacity:1}]}
+        onPress={()=>{navigation.replace('TalentSignUp',{usertype:selectedUserType})}}
         disabled={!selectedUserType}
       >
         <Text style={styles.nextButtonText}>Next</Text>
-      </TouchableOpacity>
+      </Pressable>
     </SafeAreaView>
   );
 };
@@ -167,7 +160,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 175,
     
-    top: 410,
+    top: responsiveHeight(389),
     width: '100%',
     height: responsiveHeight(311),
   },
@@ -177,7 +170,7 @@ const styles = StyleSheet.create({
     height: responsiveHeight(407),
     width: responsiveWidth(325),
     left: responsiveWidth(186+25),
-    top: responsiveHeight(530+73),
+    top: responsiveHeight(389+73),
     borderRadius: responsiveWidth(15),
   },
   backgroundLayer1: {
@@ -186,7 +179,7 @@ const styles = StyleSheet.create({
     height: responsiveHeight(407),
     width: responsiveWidth(305),
     left: responsiveWidth(186+35),
-    top: responsiveHeight(530+67),
+    top: responsiveHeight(389+67),
     borderRadius: responsiveWidth(15),
   },
   backgroundLayer3:{
@@ -195,28 +188,18 @@ const styles = StyleSheet.create({
     height: responsiveHeight(265),
     width: responsiveWidth(345),
     left: responsiveWidth(186+15),
-    top: responsiveHeight(530+80),
+    top: responsiveHeight(389+80),
     borderRadius: responsiveWidth(15),
-  },
-  mainContentContainer: {
-    // position: "absolute",
-    // backgroundColor: "green",
-    // width: responsiveWidth(345),
-    // height: responsiveHeight(265),
-    // left: responsiveWidth(15),
-    // top: responsiveHeight(80),
-    // borderRadius: responsiveWidth(15),
-    // paddingHorizontal: responsiveWidth(15),
-    // paddingTop: responsiveHeight(20),
   },
   topImageContainer: {
     position: "absolute",
-    height: responsiveWidth(292),
-    width: responsiveWidth(292),
-    top: responsiveHeight(530+73),
+    height: responsiveHeight(292),
+    width: responsiveHeight(292),
+    top: responsiveHeight(389+73),
     left: responsiveWidth(186+39),
     // bottom:0,
     borderRadius: 5,
+    backgroundColor:'transparent'
   },
   profileImage: {
     width: responsiveWidth(292),
@@ -262,7 +245,7 @@ const styles = StyleSheet.create({
     width: responsiveWidth(288),
   },
   selectedCard: {
-    borderColor: "#6D028E",
+    // borderColor: "#6D028E",
   },
   cardContent: {
     flex: 1,
@@ -283,7 +266,7 @@ const styles = StyleSheet.create({
   },
   clientIconContainer: {
     width: responsiveWidth(48),
-    height: responsiveHeight(48),
+    height: responsiveWidth(48),
     borderRadius: responsiveWidth(12),
     backgroundColor: "#F3E8FF",
     alignItems: "center",
@@ -292,6 +275,7 @@ const styles = StyleSheet.create({
   },
   cardTextContent: {
     flex: 1,
+   
   },
   cardTitle: {
     fontSize: responsiveFontSize(16),
@@ -360,7 +344,7 @@ const styles = StyleSheet.create({
     width: responsiveHeight(12),
     height: responsiveHeight(12),
     borderRadius: responsiveHeight(6),
-    backgroundColor: "#D1D5DB",
+    backgroundColor: "#6D028E",
   },
   nextButton: {
     position: "absolute",
@@ -399,9 +383,10 @@ const styles = StyleSheet.create({
     
     // borderRadius: responsiveHeight(),
     backgroundColor: "#FFF",
-    top: responsiveHeight(-530), // Adjust to only show the curve under the image
-    left: responsiveWidth(-186), // keep it behind the image but above gradient
+    top: -responsiveHeight(389), // Adjust to only show the curve under the image
+    left: -responsiveWidth(186), // keep it behind the image but above gradient
     opacity: 1,
+    
   },
 
   backgroundElipse2: {
@@ -410,7 +395,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
     width: responsiveWidth(336.65),
     height: responsiveWidth(336.65),
-    top: responsiveHeight(530+51.38),
+    top: responsiveHeight(389+51.38),
     left: responsiveWidth(186+19.63),
     opacity: 0.1,
     borderRadius: responsiveWidth(168.325),
@@ -432,7 +417,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 60,
 
-    top: responsiveHeight(530+75.03),
+    top: responsiveHeight(389+75.03),
     left: responsiveWidth(186+43.29),
     
   },

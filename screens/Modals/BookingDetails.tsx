@@ -1,13 +1,14 @@
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from "@/utils/responsive";
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import {
-    Image,
-    SafeAreaView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 const BookingDetailsModal = () => {
   return (
@@ -93,7 +94,7 @@ const BookingDetailsModal = () => {
         </View>
         <View style={styles.feedbackbtnWrapper}>
           <TouchableOpacity style={styles.feedbackButton}>
-            <Text style={styles.feedbackButtonText}>Give Feedback</Text>
+            <Text style={styles.feedbackButtonText}>Complete Task</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -105,20 +106,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ffffff",
+    paddingTop:responsiveHeight(5),
+    // justifyContent:'center',
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-  },
-  backButton: {
-    backgroundColor: "green",
+    paddingHorizontal: responsiveWidth(20),
+    paddingVertical:responsiveHeight(16),
   },
   headerTitle: {
-    fontSize: 18,
-    lineHeight: 23,
+    fontSize: responsiveFontSize(18),
+    lineHeight: responsiveHeight(23),
     fontWeight: "700",
     color: "#6D028E",
     textAlign: "center",
@@ -128,15 +128,15 @@ const styles = StyleSheet.create({
   clientSection: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 20,
-    paddingVertical: 24,
+    paddingHorizontal: responsiveWidth(20),
+    paddingVertical: responsiveHeight(24),
   },
   profileImageContainer: {
-    width: 128,
-    height: 128,
-    borderRadius: 64,
+    width: responsiveWidth(128),
+    height: responsiveWidth(128),
+    borderRadius: responsiveWidth(64),
     backgroundColor: "#F5E6D3",
-    marginRight: 16,
+    marginRight: responsiveWidth(16),
     overflow: "hidden",
   },
   profileImage: {
@@ -147,76 +147,71 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   clientName: {
-    fontSize: 22,
+    fontSize: responsiveFontSize(22),
     fontWeight: "700",
     color: "#121417",
-    marginBottom: 4,
+    marginBottom: responsiveHeight(4),
     fontFamily: "Font-Bold",
   },
   clientLabel: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(16),
     color: "#6B7582",
     fontFamily: "Font-Regular",
     fontWeight: 400,
   },
   detailsSection: {
-    paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingHorizontal: responsiveWidth(20),
+    paddingVertical: responsiveHeight(16),
   },
   sectionTitle: {
-    fontSize: 20,
+    fontSize: responsiveFontSize(20),
     fontWeight: "700",
     color: "#1a1a1a",
-    marginBottom: 20,
+    marginBottom: responsiveHeight(20),
   },
   detailRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: responsiveHeight(20),
   },
   iconContainer: {
-    width: 40,
-    height: 40,
+    width: responsiveWidth(40),
+    height: responsiveWidth(40),
     backgroundColor: "#F2F2F5",
-    borderRadius: 8,
+    borderRadius: responsiveWidth(8),
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 16,
+    marginRight: responsiveWidth(16),
   },
   detailContent: {
     flex: 1,
   },
   detailLabel: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(16),
     fontWeight: "600",
     color: "#1a1a1a",
-    marginBottom: 4,
+    marginBottom: responsiveHeight(4),
   },
   detailValue: {
-    fontSize: 14,
+    fontSize: responsiveFontSize(14),
     color: "#666",
   },
   mapButton: {
     padding: 8,
   },
   messageSection: {
-    paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingHorizontal: responsiveWidth(20),
+    paddingVertical: responsiveHeight(16),
   },
   messageText: {
     fontFamily: "Font-Regular",
-    fontSize: 16,
+    fontSize: responsiveFontSize(16),
     color: "#121417",
-    lineHeight: 24,
+    lineHeight: responsiveHeight(24),
     fontWeight: "400",
     letterSpacing: 0,
     flexShrink: 1,
-    width: 358,
-  },
-  actionButtons: {
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginTop: "auto",
+    width: responsiveWidth(358),
   },
   messageButton: {
     flexDirection: "row",
@@ -224,51 +219,55 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#F2F2F5",
     // backgroundColor:'red',
-    borderRadius: 20,
-    paddingHorizontal: 16,
-    width: 358,
-    height: 40,
-    gap: 8,
+    borderRadius: responsiveWidth(20),
+    paddingHorizontal: responsiveWidth(16),
+    width: responsiveWidth(358),
+    height: responsiveHeight(40),
+    gap: responsiveWidth(8),
   },
   messageButtonText: {
-    fontSize: 14,
+    fontSize: responsiveFontSize(14),
     fontWeight: "700",
     color: "#121417",
-    marginLeft: 8,
+    marginLeft: responsiveWidth(8),
     fontFamily: "Font-Bold",
   },
   feedbackButton: {
     backgroundColor: "#FE5120",
-    borderRadius: 20,
-    padding: 16,
+    borderRadius: responsiveWidth(20),
+    // padding: 16,
     alignItems: "center",
     justifyContent: "center",
-    height: 40,
-    maxHeight: 480,
-    width: 360,
-    maxWidth: 480,
-    marginInline: "auto",
+    height: responsiveHeight(40),
+    maxHeight: responsiveHeight(480),
+    width: responsiveWidth(360),
+    maxWidth: responsiveWidth(480),
   },
   feedbackButtonText: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(16),
     fontWeight: "400",
     color: "#ffffff",
-    lineHeight: 24,
+    lineHeight: responsiveHeight(24),
     fontFamily: "Font-Regular",
     letterSpacing: 0,
   },
   messageWrapper: {
-    height: 64,
-    width: 390,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    height: responsiveHeight(64),
+    width: responsiveWidth(390),
+    paddingVertical: responsiveHeight(12),
+    paddingHorizontal:responsiveWidth(12),
+    
+    
+    // paddingHorizontal: responsiveWidth(16),
   },
   feedbackbtnWrapper: {
     display: "flex",
-    width: 390,
-    height: 64,
-    justifyContent: "center",
-    alignItems: "center",
+    width: responsiveWidth(390),
+    height: responsiveHeight(64),
+   paddingVertical:responsiveHeight(12),
+   paddingHorizontal:responsiveWidth(12)
+
+
   },
 });
 

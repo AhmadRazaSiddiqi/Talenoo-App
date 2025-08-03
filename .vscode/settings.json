@@ -3,5 +3,7 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
-  }
+  },
+  "cSpell.ignoreWords": ["arrowleft"],
+  "cSpell.words": ["Inputtype", "Pressable"]
 }

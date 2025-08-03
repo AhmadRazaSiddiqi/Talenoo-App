@@ -29,7 +29,7 @@ const weekList = [
   "Saturday",
 ]
 
-const JobStepScreen = () => {
+const JobStepScreen = ({navigation}) => {
   const [selectedDay, setSelectedDay] = useState(["Monday"])
 
   const handleJobSelect = (day) => {
@@ -67,7 +67,7 @@ const JobStepScreen = () => {
         {/* Group 942 / Group 1068 - Back Arrow */}
         <TouchableOpacity
           style={styles.backButtonContainer}
-          onPress={() => console.log("Back pressed")}
+          onPress={() =>navigation.replace('JobStep2')}
         >
           <Icon
             name="arrow-left"
@@ -135,7 +135,8 @@ const JobStepScreen = () => {
                   style={{
                     position: "absolute",
                     width: responsiveWidth(231),
-                    paddingLeft: responsiveWidth(40),
+                    // paddingLeft: responsiveWidth(40),
+                    
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
@@ -158,6 +159,10 @@ const JobStepScreen = () => {
                       gap: responsiveWidth(10),
                       justifyContent: "center",
                       alignItems: "center",
+                    
+                      height:responsiveHeight(42),
+                      width:responsiveWidth(142)
+
                     }}
                   >
                     <Text
@@ -173,13 +178,14 @@ const JobStepScreen = () => {
                       style={{
                         transform: [{ rotate: "45deg" }],
                         fontWeight: "100",
+                     
                       }}
                     >
                       <FontAwesome6
                         name={
                           selectedDay.includes(day) ? "circle-plus" : "xmark"
                         }
-                        size={22}
+                        size={responsiveFontSize(17.01)}
                         color={
                           selectedDay.includes(day) ? "#FE5120" : "#6D028E"
                         }
@@ -196,7 +202,7 @@ const JobStepScreen = () => {
       {/* Frame 9370 - Next Button */}
       <TouchableOpacity
         style={styles.nextButton}
-        onPress={() => console.log("Next button pressed", selectedDay)}
+        onPress={() => navigation.replace('JobStep')}
       >
         <Text style={styles.nextButtonText}>Save</Text>
       </TouchableOpacity>
@@ -236,7 +242,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: responsiveWidth(15),
     paddingTop: responsiveHeight(15),
-
     position: "absolute",
     width: "100%",
     zIndex: 2,
@@ -376,14 +381,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     // alignItems: "center",
     // backgroundColor: "red",
-    width: 284,
+    width: responsiveWidth(316),
+    height: responsiveHeight(48),
   },
 
   jobLevelText: {
     fontFamily: "Font-Bold",
     fontWeight: "700",
+    width:responsiveWidth(142),
+    height:responsiveHeight(44),
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(20),
+    paddingHorizontal:responsiveWidth(16),
+    textAlign:'center',
+    textAlignVertical:'center',
     color: "##1E1E1E",
   },
 

@@ -17,7 +17,19 @@ import HomeScreen from "./screens/Tabs/HomeScreen";
 import RequestsScreen from "./screens/Tabs/RequestsScreen";
 import ProfileScreen from "./screens/TalentSignUp/Profile";
 
-import { responsiveHeight, responsiveWidth } from "./utils/responsive";
+import ContactUsScreen from "./screens/ContactUs";
+import EditImageScreen from "./screens/EditImage";
+import EditVideoScreen from "./screens/EditVideo";
+import FollowersScreen from "./screens/Followers";
+import FollowingScreen from "./screens/Following";
+import ManageContentScreen from "./screens/ManageVideos";
+import BookingDetailsModal from "./screens/Modals/BookingDetails";
+import NotificationScreen from "./screens/Notifications";
+import SettingsScreen from "./screens/ProfileSettings";
+import QRScreen from "./screens/QRCode";
+import UploadContentScreen from "./screens/UploadContent";
+import WishListScreen from "./screens/WishList";
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from "./utils/responsive";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -84,7 +96,7 @@ function MainTabs() {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Octicons name="person" size={24} color={focused ? "#6D028E" : "#6B7582"} />
+            <Octicons name="person" size={responsiveFontSize(24)} color={focused ? "#6D028E" : "#6B7582"} />
           ),
         }}
       />
@@ -98,13 +110,13 @@ function ClientTabs() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          height: 76,
-          borderWidth: 1,
-          paddingTop: 8,
-          paddingRight: 16,
-          paddingBottom: 12,
-          paddingLeft: 16,
-          gap: 8,
+          height: responsiveHeight(76),
+          borderWidth: responsiveWidth(1),
+          paddingTop: responsiveHeight(8),
+          paddingRight: responsiveWidth(16),
+          paddingBottom: responsiveHeight(12),
+          paddingLeft: responsiveWidth(16),
+          gap: responsiveWidth(8),
           borderColor: "#F2F2F5",
         },
         tabBarActiveTintColor: "#6D028E",
@@ -119,7 +131,7 @@ function ClientTabs() {
         component={SearchScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Octicons name="home" size={24} color={focused ? "#6D028E" : "#6B7582"} />
+            <Octicons name="home" size={responsiveFontSize(24)} color={focused ? "#6D028E" : "#6B7582"} />
           ),
         }}
       />
@@ -137,7 +149,7 @@ function ClientTabs() {
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name="grid-outline"
-              size={24}
+              size={responsiveFontSize(24)}
               color={focused ? "#6D028E" : "#6B7582"}
             />
           ),
@@ -148,7 +160,7 @@ function ClientTabs() {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Octicons name="person" size={24} color={focused ? "#6D028E" : "#6B7582"} />
+            <Octicons name="person" size={responsiveFontSize(24)} color={focused ? "#6D028E" : "#6B7582"} />
           ),
         }}
       />
@@ -157,7 +169,7 @@ function ClientTabs() {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Octicons name="person" size={24} color={focused ? "#6D028E" : "#6B7582"} />
+            <Octicons name="person" size={responsiveFontSize(24)} color={focused ? "#6D028E" : "#6B7582"} />
           ),
         }}
       />
@@ -172,31 +184,31 @@ function RootStack() {
       {/* <Stack.Screen name="Onboarding" component={OnboardingScreen} /> */}
       {/* <Stack.Screen name="usertypescreen" component={UserTypeSelectionScreen} /> */}
       {/* Add other screens here as needed */}
-      {/* Example: <Stack.Screen name="Home" component={HomeScreen} /> */}
-      {/* <Stack.Screen name="UserType" component={UserTypeSelectionScreen} /> */}
-      {/* <Stack.Screen name="TalentSignUp" component={OTPVerificationScreen} /> */}
+      {/* <Stack.Screen name="Home" component={HomeLayoutScreen} /> */}
+      {/* <Stack.Screen name="UserSelection" component={UserTypeSelectionScreen} /> */}
+      {/* <Stack.Screen name="TalentSignUp" component={SignUpScreen} /> */}
       {/* <Stack.Screen name="Otpscreen" component={OTPVerificationScreen} /> */}
       {/* <Stack.Screen name="ClientSignUp" component={ClientSignUpScreen} /> */}
-      <Stack.Screen name="Profile" component={ProfileScreen} />
+      {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
       {/* <Stack.Screen name="TalentStep" component={TalentStep} /> */}
-      {/* <Stack.Screen name="JobStep" component={JobStepScreen} /> */}
       {/* <Stack.Screen name="JobStep2" component={JobStepScreen2} /> */}
+      {/* <Stack.Screen name="JobStep" component={JobStepScreen} /> */}
       {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
       {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
       {/* <Stack.Screen name="plan" component={Plans} /> */}
-      {/* <Stack.Screen name="plan" component={SiginScreen} /> */}
-      {/* <Stack.Screen name="booking" component={BookingDetailsModal} /> */}
-      {/* <Stack.Screen name="notifications" component={NotificationScreen} /> */}
-      {/* <Stack.Screen name="settings" component={SettingsScreen} /> */}
-      {/* <Stack.Screen name="follower" component={FollowersScreen} /> */}
-      {/* <Stack.Screen name="following" component={FollowingScreen} /> */}
-      {/* <Stack.Screen name="contactus" component={ContactUsScreen} /> */}
-      {/* <Stack.Screen name="upload" component={UploadContentScreen} /> */}
-      {/* <Stack.Screen name="ManageContent" component={ManageContentScreen} /> */}
-      {/* <Stack.Screen name="editvideo" component={EditVideoScreen} /> */}
-      {/* <Stack.Screen name="editImage" component={EditImageScreen} /> */}
-      {/* <Stack.Screen name="wishlist" component={WishListScreen} /> */}
-      {/* <Stack.Screen name="qrscreen" component={QRScreen} /> */}
+      {/* <Stack.Screen name="signin" component={SiginScreen} /> */}
+      <Stack.Screen name="booking" component={BookingDetailsModal} />
+      <Stack.Screen name="notifications" component={NotificationScreen} />
+      <Stack.Screen name="settings" component={SettingsScreen} />
+      <Stack.Screen name="follower" component={FollowersScreen} />
+      <Stack.Screen name="following" component={FollowingScreen} />
+      <Stack.Screen name="contactus" component={ContactUsScreen} />
+      <Stack.Screen name="upload" component={UploadContentScreen} />
+      <Stack.Screen name="ManageContent" component={ManageContentScreen} />
+      <Stack.Screen name="editvideo" component={EditVideoScreen} />
+      <Stack.Screen name="editImage" component={EditImageScreen} />
+      <Stack.Screen name="wishlist" component={WishListScreen} />
+      <Stack.Screen name="qrscreen" component={QRScreen} />
     </Stack.Navigator>
   );
 }

@@ -1,10 +1,10 @@
-import React from "react";
-import { Keyboard, StyleSheet, Text, TextInput, View } from "react-native";
-import { moderateScale, scale, verticalScale } from "react-native-size-matters";
+import React from "react"
+import { Keyboard, Text, TextInput, View } from "react-native"
+import { moderateScale, scale, verticalScale } from "react-native-size-matters"
 type Props = {
-  labelText: String;
-  Inputtype: String;
-};
+  labelText: string
+  Inputtype: string
+}
 
 const ProfileInput = ({ labelText, Inputtype }: Props) => {
   return (
@@ -74,9 +74,7 @@ const ProfileInput = ({ labelText, Inputtype }: Props) => {
         />
       )}
     </View>
-  );
-};
+  )
+}
 
-export default ProfileInput;
-
-const styles = StyleSheet.create({});
+export default ProfileInput

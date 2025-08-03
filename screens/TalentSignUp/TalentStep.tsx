@@ -29,8 +29,8 @@ const talentsList = [
   "Other",
 ]
 
-const TalentStep = () => {
-  const [selectedTalents, setSelectedTalents] = useState(["Photographer"])
+const TalentStep = ({navigation}) => {
+  const [selectedTalents, setSelectedTalents] = useState([""])
   const [searchQuery, setSearchQuery] = useState("")
   const [otherTalent, setOtherTalent] = useState("")
 
@@ -144,7 +144,7 @@ const TalentStep = () => {
                       ? "checkbox-marked"
                       : "checkbox-blank-outline"
                   }
-                  size={responsiveFontSize(14)}
+                  size={responsiveFontSize(20)}
                   color={
                     selectedTalents.includes(talent) ? "#6D028E" : "#F5F5F5"
                   }
@@ -177,7 +177,7 @@ const TalentStep = () => {
       {/* Frame 9370 - Next Button */}
       <TouchableOpacity
         style={styles.nextButton}
-        onPress={() => console.log("Next button pressed", selectedTalents)}
+        onPress={() => navigation.replace('JobStep2')}
       >
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
   },
 
   progressTextInactive: {
-    fontFamily: "Font-",
+    fontFamily: "Font-Medium",
     fontWeight: "700",
     fontSize: responsiveFontSize(14),
     lineHeight: responsiveFontSize(24),

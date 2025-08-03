@@ -4,7 +4,6 @@ import {
   responsiveWidth,
 } from "@/utils/responsive"
 import { Feather } from "@expo/vector-icons"
-import { useNavigation } from "@react-navigation/native"
 import React, { useState } from "react"
 import {
   Image,
@@ -16,8 +15,8 @@ import {
 } from "react-native"
 import { OtpInput } from "react-native-otp-entry"
 
-const OTPVerificationScreen = () => {
-  const navigation = useNavigation()
+const OTPVerificationScreen = ({navigation}) => {
+  
   const [otp, setOtp] = useState("")
 
   const handleVerify = () => {
@@ -30,7 +29,7 @@ const OTPVerificationScreen = () => {
       {/* Back Button */}
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => navigation.goBack()}
+        onPress={() => navigation.replace("TalentSignUp")}
       >
         <View style={styles.backButtonCircle}>
           <Feather
@@ -85,7 +84,7 @@ const OTPVerificationScreen = () => {
       {/* Resend Section */}
 
       {/* Verify Button */}
-      <TouchableOpacity style={styles.verifyButton} onPress={handleVerify}>
+      <TouchableOpacity style={styles.verifyButton} onPress={()=>navigation.replace('TalentStep')}>
         <Text style={styles.verifyButtonText}>Verify and proceed</Text>
       </TouchableOpacity>
 
@@ -119,8 +118,8 @@ const styles = StyleSheet.create({
   },
   backButtonCircle: {
     backgroundColor: "#F5F5F5",
-    width: responsiveWidth(40),
-    height: responsiveWidth(40),
+    width: responsiveHeight(40),
+    height: responsiveHeight(40),
     borderRadius: responsiveWidth(20),
     alignItems: "center",
     justifyContent: "center",
@@ -257,7 +256,7 @@ const styles = StyleSheet.create({
   },
   SiginInContainer: {
     position: "absolute",
-    top: responsiveHeight(809),
+    top: responsiveHeight(800),
     textAlign: "center",
   },
   signInText: {
