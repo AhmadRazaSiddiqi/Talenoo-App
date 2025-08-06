@@ -18,6 +18,7 @@ const HomeScreen = () => {
       <View style={styles.con2}></View>
 
       <Text style={styles.dashboardHeading}>Dashboard</Text>
+      <Image source={require('../../assets/images/CalendarImage.png')} style={{left:responsiveWidth(322)}}/>
       <View style={styles.mainContentArea}>
         {/* Dashboard Heading */}
 
@@ -57,6 +58,14 @@ const HomeScreen = () => {
           <Text
             style={[
               styles.tabText,
+              { color: "#24364C", borderColor: "#E5E7EB", borderWidth: 1 },
+            ]}
+          >
+            Payment Pending
+          </Text>
+          <Text
+            style={[
+              styles.tabText,
               { backgroundColor: "#F3E8FF", color: "#6D028E" },
             ]}
           >
@@ -66,6 +75,7 @@ const HomeScreen = () => {
         {/* Scrollable Tasks */}
         <ScrollView
           style={styles.taskList}
+        
           showsVerticalScrollIndicator={false}
         >
           {[1, 2, 3, 4, 5, 6].map((item) => (
@@ -187,13 +197,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: responsiveHeight(27),
     // left: responsiveWidth(148),
-    fontSize: responsiveFontSize(16),
+    fontSize: responsiveFontSize(20),
     width: responsiveWidth(108),
     fontWeight: "700",
     color: "#FFFFFF",
     textAlign: "left",
     alignSelf: "center",
-    fontFamily: "Font-Regular",
+    fontFamily: "Font-Bold",
     lineHeight: responsiveHeight(24),
     marginBottom: responsiveHeight(10),
     letterSpacing: 1,
@@ -227,7 +237,7 @@ const styles = StyleSheet.create({
   tabContainer: {
     position: "absolute",
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.15,
@@ -246,10 +256,10 @@ const styles = StyleSheet.create({
   tabText: {
     display: "flex",
     fontSize: responsiveFontSize(14),
-    justifyContent: "center",
-    alignItems: "center",
+    textAlign:'center',
+    textAlignVertical:'center',
     borderRadius: 9999,
-    width: responsiveWidth(152),
+    width: responsiveWidth(109),
     height: responsiveHeight(36),
     fontFamily: "Font-Regular",
     fontWeight: "400",
@@ -267,6 +277,8 @@ const styles = StyleSheet.create({
     height: responsiveHeight(520),
     position: "absolute",
     top: responsiveHeight(176 + 70 - 80),
+    alignSelf:'center'
+    
   },
   taskCard: {
     backgroundColor: "#FFFFFF",
@@ -277,7 +289,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
-    elevation: 2,
+    elevation: 6,
     minHeight: responsiveHeight(177),
     width: responsiveWidth(304),
     marginInline: "auto",
@@ -304,7 +316,7 @@ const styles = StyleSheet.create({
   },
   inProgressBadge: {
     backgroundColor: "#E0E0E0",
-    borderRadius: 12,
+    borderRadius: responsiveWidth(12),
     paddingHorizontal: responsiveWidth(8),
     paddingVertical: responsiveHeight(2),
   },

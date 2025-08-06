@@ -4,9 +4,13 @@ import { moderateScale, scale, verticalScale } from "react-native-size-matters"
 type Props = {
   labelText: string
   Inputtype: string
+  value:string
+  setValue:any
+  name:string
 }
 
-const ProfileInput = ({ labelText, Inputtype }: Props) => {
+const ProfileInput = ({ labelText, Inputtype,setValue,value ,name}: Props) => {
+ 
   return (
     <View
       style={{
@@ -30,6 +34,7 @@ const ProfileInput = ({ labelText, Inputtype }: Props) => {
         <>
           {" "}
           <TextInput
+          
             style={{
               height: verticalScale(48),
               width: moderateScale(319),
@@ -37,9 +42,13 @@ const ProfileInput = ({ labelText, Inputtype }: Props) => {
               backgroundColor: "#F5F7FA",
               borderRadius: moderateScale(6),
               fontSize: scale(15),
+              outlineColor:'transparent',
               fontFamily: "Font-Medium",
+              
             }}
             keyboardType="number-pad"
+            value={value}
+            onChangeText={(text)=>setValue(name,text)}
             onSubmitEditing={() => Keyboard.dismiss()}
           />
           <Text
@@ -70,6 +79,8 @@ const ProfileInput = ({ labelText, Inputtype }: Props) => {
             borderRadius: moderateScale(6),
             fontSize: scale(15),
             fontFamily: "Font-Medium",
+            outlineColor:'transparent'
+            
           }}
         />
       )}

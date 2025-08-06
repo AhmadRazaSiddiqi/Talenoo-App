@@ -3,16 +3,14 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
-import { setVisibilityAsync, useVisibility } from "expo-navigation-bar";
 import { StatusBar } from "expo-status-bar";
-import { useCallback, useEffect } from "react";
-import { AppState, Image, Platform, StatusBar as RNStatusBar } from "react-native";
+import { useEffect } from "react";
+import { Image } from "react-native";
 
 import "./global.css";
 
 import SearchScreen from "./screens/ClientDashboard/Search";
 import MessagesScreen from "./screens/Messages";
-import HomeScreen from "./screens/Tabs/HomeScreen";
 // import ProfileScreen from "./screens/Tabs/ProfileScreen";
 import RequestsScreen from "./screens/Tabs/RequestsScreen";
 import ProfileScreen from "./screens/TalentSignUp/Profile";
@@ -20,13 +18,14 @@ import ProfileScreen from "./screens/TalentSignUp/Profile";
 import ContactUsScreen from "./screens/ContactUs";
 import EditImageScreen from "./screens/EditImage";
 import EditVideoScreen from "./screens/EditVideo";
-import FollowersScreen from "./screens/Followers";
 import FollowingScreen from "./screens/Following";
 import ManageContentScreen from "./screens/ManageVideos";
 import BookingDetailsModal from "./screens/Modals/BookingDetails";
-import NotificationScreen from "./screens/Notifications";
 import SettingsScreen from "./screens/ProfileSettings";
 import QRScreen from "./screens/QRCode";
+import SiginScreen from "./screens/SignIn";
+import OTPVerificationScreen from "./screens/TalentSignUp/EnterCode";
+import TalentStep from "./screens/TalentSignUp/TalentStep";
 import UploadContentScreen from "./screens/UploadContent";
 import WishListScreen from "./screens/WishList";
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from "./utils/responsive";
@@ -58,7 +57,7 @@ function MainTabs() {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={SettingsScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <Octicons name="home" size={24} color={focused ? "#6D028E" : "#6B7582"} />
@@ -67,7 +66,7 @@ function MainTabs() {
       />
       <Tab.Screen
         name="Requests"
-        component={RequestsScreen}
+        component={BookingDetailsModal}
         options={{
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
@@ -85,7 +84,7 @@ function MainTabs() {
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name="chatbubble-ellipses-outline"
-              size={24}
+              size={responsiveFontSize(24)}
               color={focused ? "#6D028E" : "#6B7582"}
             />
           ),
@@ -187,20 +186,20 @@ function RootStack() {
       {/* <Stack.Screen name="Home" component={HomeLayoutScreen} /> */}
       {/* <Stack.Screen name="UserSelection" component={UserTypeSelectionScreen} /> */}
       {/* <Stack.Screen name="TalentSignUp" component={SignUpScreen} /> */}
-      {/* <Stack.Screen name="Otpscreen" component={OTPVerificationScreen} /> */}
+    <Stack.Screen name="signin" component={SiginScreen} />
+      <Stack.Screen name="Otpscreen" component={OTPVerificationScreen} />
       {/* <Stack.Screen name="ClientSignUp" component={ClientSignUpScreen} /> */}
       {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
-      {/* <Stack.Screen name="TalentStep" component={TalentStep} /> */}
+      <Stack.Screen name="TalentStep" component={TalentStep} />
       {/* <Stack.Screen name="JobStep2" component={JobStepScreen2} /> */}
       {/* <Stack.Screen name="JobStep" component={JobStepScreen} /> */}
       {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
       {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
       {/* <Stack.Screen name="plan" component={Plans} /> */}
-      {/* <Stack.Screen name="signin" component={SiginScreen} /> */}
-      <Stack.Screen name="booking" component={BookingDetailsModal} />
-      <Stack.Screen name="notifications" component={NotificationScreen} />
-      <Stack.Screen name="settings" component={SettingsScreen} />
-      <Stack.Screen name="follower" component={FollowersScreen} />
+      {/* <Stack.Screen name="booking" component={BookingDetailsModal} /> */}
+      {/* <Stack.Screen name="notifications" component={NotificationScreen} /> */}
+      {/* <Stack.Screen name="settings" component={SettingsScreen} /> */}
+      {/* <Stack.Screen name="follower" component={FollowersScreen} /> */}
       <Stack.Screen name="following" component={FollowingScreen} />
       <Stack.Screen name="contactus" component={ContactUsScreen} />
       <Stack.Screen name="upload" component={UploadContentScreen} />
@@ -220,41 +219,11 @@ export default function App() {
     "Font-Bold": require("./assets/fonts/PlusJakartaSans-Bold.ttf"),
   });
 
-  const visibility = useVisibility(); // 👈 Tracks nav bar state
-
-  const hideSystemBars = useCallback(async () => {
-    if (Platform.OS === "android") {
-      try {
-        await setVisibilityAsync("hidden");
-        RNStatusBar.setHidden(true, "fade");
-        console.log("✅ Navigation and status bars hidden");
-      } catch (error) {
-        console.warn("❌ Error hiding system bars:", error);
-      }
-    } else if (Platform.OS === "ios") {
-      RNStatusBar.setHidden(true, "fade");
-    }
-  }, []);
-
   useEffect(() => {
     if (fontsLoaded) {
-      hideSystemBars();
+      console.log("Fonts loaded successfully");
     }
-
-    const appStateListener = AppState.addEventListener("change", (nextAppState) => {
-      if (nextAppState === "active" && fontsLoaded) {
-        hideSystemBars();
-      }
-    });
-
-    return () => {
-      appStateListener.remove();
-    };
-  }, [fontsLoaded, hideSystemBars]);
-
-  useEffect(() => {
-    console.log("🔍 Navigation bar visibility:", visibility);
-  }, [visibility]);
+  }, [fontsLoaded]);
 
   if (!fontsLoaded) return null;
 
@@ -262,6 +231,7 @@ export default function App() {
     <NavigationContainer>
       <StatusBar hidden={true} style="auto" />
       <RootStack />
+      {/* <MainTabs/> */}
     </NavigationContainer>
   );
 }

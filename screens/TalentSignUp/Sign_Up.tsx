@@ -1,3 +1,4 @@
+import ApiService from "@/services/ApiService"
 import {
   responsiveFontSize,
   responsiveHeight,
@@ -16,10 +17,19 @@ import {
   View,
 } from "react-native"
 
+type loginProps={
+  username:string,
+  phone_number:string,
+  role:string
+}
 const SignUpScreen = ({navigation}) => {
   const [name, setName] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [agreed, setAgreed] = useState(false)
+const handleLogin =async({username,phone_number,role}:loginProps)=>{
+const data={username,phone_number,role}
+  await ApiService.post("auth/register",data)
+}
 
   return (
     <SafeAreaView style={styles.container}>
@@ -88,7 +98,7 @@ const SignUpScreen = ({navigation}) => {
       </View>
 
       {/* Sign Up Button */}
-      <TouchableOpacity onPress={()=>navigation.replace('Otpscreen')} style={[styles.signUpButton,{top: responsiveHeight(690), backgroundColor: "#6D028E",}]}>
+      <TouchableOpacity onPress={()=>handleLogin({name,phoneNumber,"client"})} style={[styles.signUpButton,{top: responsiveHeight(690), backgroundColor: "#6D028E",}]}>
         <Text  style={[styles.signUpButtonText,{color: "#FFF",}]}>Sign Up</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.signUpButton,{top: responsiveHeight(748),backgroundColor: "#F5F7FA",elevation:6}]}>

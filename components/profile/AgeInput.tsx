@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "purple",
     flex: 1,
+    outlineColor:'transparent'
   },
   controls: {
     justifyContent: "center",

@@ -1,28 +1,106 @@
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from "@/utils/responsive";
 import { Feather } from "@expo/vector-icons";
 import React from "react";
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ToggleSwitch from 'toggle-switch-react-native';
+import ToggleSwitch from "toggle-switch-react-native";
 
 const SettingsScreen = () => {
-  const [isNotificationEnabled, setIsNotificationEnabled] =
-    React.useState(false);
-  const toggleNotification = () =>
-    setIsNotificationEnabled((previousState) => !previousState);
+  const [isNotificationEnabled, setIsNotificationEnabled] = React.useState(false);
+  const toggleNotification = () => setIsNotificationEnabled(prev => !prev);
+
+  const DATA = [
+    { section: "Profile" },
+    {
+      icon: require("../assets/icons/pencil.png"),
+      label: "Edit Profile",
+    },
+    {
+      icon: require("../assets/icons/save.png"),
+      label: "Wishlist",
+    },
+    { section: "General" },
+    {
+      icon: require("../assets/icons/bell.png"),
+      label: "Notification Alert",
+      toggle: true,
+    },
+    {
+      icon: require("../assets/icons/contact.png"),
+      label: "Contact Us",
+    },
+    {
+      icon: require("../assets/icons/file.png"),
+      label: "Terms and Conditions",
+    },
+    {
+      icon: require("../assets/icons/shield.png"),
+      label: "Privacy Policy",
+    },
+    { section: "Content" },
+    {
+      icon: require("../assets/icons/upload.png"),
+      label: "Upload Content",
+    },
+    {
+      icon: require("../assets/icons/hamburger.png"),
+      label: "Manage Content",
+    },
+    { section: "Delete" },
+  ];
+
+  const renderItem = ({ item }) => {
+    if (item.section) {
+      if (item.section === "Delete") {
+        return (
+          <View style={styles.DeleteBtnContianer}>
+            <TouchableOpacity style={styles.deleteButton}>
+              <Text style={styles.deleteButtonText}>Delete Account</Text>
+            </TouchableOpacity>
+          </View>
+        );
+      }
+      return <Text style={styles.sectionTitle}>{item.section}</Text>;
+    }
+
+    return (
+      <TouchableOpacity style={styles.menuItem} disabled={item.toggle}>
+        <View style={styles.menuIcon}>
+          <Image source={item.icon} />
+        </View>
+        <Text style={styles.menuText}>{item.label}</Text>
+        {item.toggle && (
+          <View style={{ marginLeft: "auto" }}>
+            <ToggleSwitch
+              isOn={isNotificationEnabled}
+              onColor="#6D028E"
+              offColor="#F2F2F5"
+              trackOffStyle={{ height: responsiveHeight(31), width: responsiveWidth(51), padding: 2 }}
+              trackOnStyle={{ height: responsiveHeight(31), width: responsiveWidth(51), padding: 2 }}
+              thumbOnStyle={{ backgroundColor: "white" }}
+              thumbOffStyle={{ backgroundColor: "white" }}
+              onToggle={toggleNotification}
+            />
+          </View>
+        )}
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.headerContainer}>
-        <TouchableOpacity>
-          <Feather name="arrow-left" size={24} color="black" />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Feather name="arrow-left" size={responsiveFontSize(20)} color="black" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Settings</Text>
         <TouchableOpacity style={styles.bellContainer}>
@@ -45,106 +123,26 @@ const SettingsScreen = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Followers and Following */}
+      {/* Followers */}
       <View style={styles.followContainer}>
-        <View style={styles.followBox}>
+        <Pressable onPress={() => navigation.navigate("follower")} style={styles.followBox}>
           <Text style={styles.followNumber}>1.5K</Text>
           <Text style={styles.followLabel}>Followers</Text>
-        </View>
-        <View style={styles.followBox}>
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate("following")} style={styles.followBox}>
           <Text style={styles.followNumber}>750</Text>
           <Text style={styles.followLabel}>Following</Text>
-        </View>
+        </Pressable>
       </View>
 
-      {/* Profile Section */}
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View>
-          <Text style={styles.sectionTitle}>Profile</Text>
-          <TouchableOpacity style={styles.menuItem}>
-            <View style={styles.menuIcon}>
-              <Image source={require("../assets/icons/pencil.png")} />
-            </View>
-            <Text style={styles.menuText}>Edit Profile</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
-            <View style={styles.menuIcon}>
-              <Image source={require("../assets/icons/save.png")} />
-            </View>
-            <Text style={styles.menuText}>Wishlist</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* General Section */}
-        <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>General</Text>
-          <View style={styles.menuItem}>
-            <View style={styles.menuIcon}>
-              <Image source={require("../assets/icons/bell.png")} />
-            </View>
-            <Text style={styles.menuText}>Notification Alert</Text>
-          <View style={{left:80}}>
-                <ToggleSwitch
-                isOn={isNotificationEnabled}
-                onColor="#6D028E"
-                offColor="#F2F2F5"
-                trackOffStyle={{height:31,width:51,padding:2}}
-                trackOnStyle={{height:31,width:51,padding:2}}
-                disabled={false}
-            
-                thumbOnStyle={{ backgroundColor: 'white' }}
-                thumbOffStyle={{ backgroundColor: 'white' }}
-                onToggle={() => setIsNotificationEnabled(!isNotificationEnabled)}
-                
-                />
-          </View>
-          </View>
-          <TouchableOpacity style={styles.menuItem}>
-            <View style={styles.menuIcon}>
-              <Image source={require("../assets/icons/contact.png")} />
-            </View>
-            <Text style={styles.menuText}>Contact Us</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
-            <View style={styles.menuIcon}>
-              {" "}
-              <Image source={require("../assets/icons/file.png")} />
-            </View>
-            <Text style={styles.menuText}>Terms and Conditions</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
-            <View style={styles.menuIcon}>
-              <Image source={require("../assets/icons/shield.png")} />
-            </View>
-            <Text style={styles.menuText}>Privacy Policy</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Content Section */}
-        <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Content</Text>
-          <TouchableOpacity style={styles.menuItem}>
-            <View style={styles.menuIcon}>
-              <Image source={require("../assets/icons/upload.png")} />
-            </View>
-            <Text style={styles.menuText}>Upload Content</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
-            <View style={styles.menuIcon}>
-              {" "}
-              <Image source={require("../assets/icons/hamburger.png")} />
-            </View>
-            <Text style={styles.menuText}>Manage Content</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Delete Account */}
-        <View style={styles.DeleteBtnContianer}>
-          <TouchableOpacity style={styles.deleteButton}>
-            <Text style={styles.deleteButtonText}>Delete Account</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+      {/* List Content */}
+      <FlatList
+        data={DATA}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={renderItem}
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}
+      />
     </SafeAreaView>
   );
 };
@@ -157,148 +155,119 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   scrollContainer: {
-    padding: 16,
+    paddingBottom: responsiveHeight(20),
   },
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    height: 72,
-    paddingTop: 16,
-    paddingBottom: 8,
-    paddingHorizontal: 16,
+    height: responsiveHeight(72),
+    paddingVertical: responsiveHeight(16),
+    paddingHorizontal: responsiveWidth(16),
   },
   headerTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: responsiveFontSize(20),
     fontFamily: "Font-Bold",
   },
   bellContainer: {
-    height: 40,
-    width: 40,
-    borderRadius: 8,
+    height: responsiveHeight(40),
+    width: responsiveWidth(40),
+    borderRadius: responsiveWidth(8),
     backgroundColor: "#F2F2F5",
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
   profileContainer: {
     flexDirection: "row",
     alignItems: "center",
-    height: 72,
-    width: 390,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
+    padding: responsiveWidth(16),
   },
   avatar: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
+    width: responsiveWidth(56),
+    height: responsiveWidth(56),
+    borderRadius: responsiveWidth(28),
   },
   profileTextContainer: {
     flex: 1,
-    marginLeft: 12,
+    marginLeft: responsiveWidth(12),
   },
   profileName: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(16),
     fontWeight: "bold",
   },
   profileUsername: {
-    fontSize: 14,
+    fontSize: responsiveFontSize(14),
     color: "#555",
   },
-
   followContainer: {
     flexDirection: "row",
-    height: 109,
-    width: 390,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    gap: 12,
+    justifyContent: "space-between",
+    paddingHorizontal: responsiveWidth(16),
+    paddingVertical: responsiveHeight(12),
+    gap: responsiveWidth(12),
   },
   followBox: {
-    height: 85,
-    width: 173,
-    padding: 12,
+    flex: 1,
+    padding: responsiveWidth(16),
     borderWidth: 1,
     borderColor: "#DEE0E3",
-    borderRadius: 8,
+    borderRadius: responsiveWidth(8),
   },
   followNumber: {
     fontFamily: "Font-Bold",
-    fontSize: 24,
+    fontSize: responsiveFontSize(24),
     color: "#121417",
     fontWeight: "700",
-    lineHeight: 30,
   },
   followLabel: {
     fontFamily: "Font-Regular",
-    fontSize: 14,
-    lineHeight: 21,
+    fontSize: responsiveFontSize(14),
     color: "#6B7582",
-    fontWeight: "400",
   },
-  sectionContainer: {},
   sectionTitle: {
-    fontSize: 18,
+    fontSize: responsiveFontSize(18),
     fontFamily: "Font-Bold",
-    fontWeight: "700",
-    width: 390,
-    height: 47,
-    paddingTop: 16,
-    paddingBottom: 8,
-    paddingHorizontal: 16,
+    paddingHorizontal: responsiveWidth(16),
+    paddingTop: responsiveHeight(16),
+    paddingBottom: responsiveHeight(8),
   },
   menuItem: {
-    height: 56,
-    width: 390,
-    paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
-    gap: 16,
+    paddingHorizontal: responsiveWidth(16),
+    height: responsiveHeight(56),
+    gap: responsiveWidth(16),
   },
   menuIcon: {
-    height: 40,
-    width: 40,
+    height: responsiveHeight(40),
+    width: responsiveHeight(40),
     backgroundColor: "#F2F2F5",
-    borderRadius: 8,
-    display: "flex",
+    borderRadius: responsiveWidth(8),
     justifyContent: "center",
     alignItems: "center",
   },
   menuText: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(16),
     fontFamily: "Font-Regular",
-    lineHeight: 24,
-    fontWeight: "400",
     color: "#121417",
   },
   DeleteBtnContianer: {
-    height: 64,
-    width: 390,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingVertical: responsiveHeight(12),
+    paddingHorizontal: responsiveWidth(16),
   },
   deleteButton: {
     backgroundColor: "#FE5120",
-    borderRadius: 20,
+    borderRadius: responsiveWidth(20),
     alignItems: "center",
     justifyContent: "center",
-    height: 40,
-    width: 139,
+    height: responsiveHeight(40),
+    width: responsiveWidth(139),
     alignSelf: "center",
   },
   deleteButtonText: {
     fontFamily: "Font-Bold",
     color: "#fff",
-    fontSize: 14,
+    fontSize: responsiveFontSize(14),
     fontWeight: "700",
-  },
-  switch: {
-    borderRadius: 15.5,
-    height: 31,
-    width: 51,
-    backgroundColor: "red",
-    justifyContent: "center",
   },
 });

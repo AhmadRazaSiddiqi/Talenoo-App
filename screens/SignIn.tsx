@@ -1,24 +1,42 @@
-import { responsiveFontSize as rf, responsiveHeight as rh, responsiveWidth as rw } from '@/utils/responsive.js';
+import ApiService from '@/services/ApiService';
+
 import { Feather } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 import Checkbox from "expo-checkbox";
 import React, { useState } from "react";
 import {
   Image,
   SafeAreaView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
+import { SignInstyles as styles } from "../assets/styles/siginScreen.styles";
 
-const SiginScreen = () => {
-  const navigation = useNavigation();
+const SiginScreen = ({navigation}) => {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [agreed, setAgreed] = useState(false);
-
+  const [data,setData]=useState(null)
+  const handleLogin = async () => {
+    try {
+      const response = await ApiService.post("/auth/loginWithPhone", { 
+        phone_number: "444456722128" 
+      });
+      
+      if (response.data) {
+        setData(response.data);
+        navigation.navigate("Otpscreen", { phone_number: "444456722128" });
+      } else {
+        // Handle case where response.data is empty
+        console.error("No data received from API");
+      }
+    } catch (error) {
+      // Handle API errors
+      console.error("Login failed:", error);
+      // You might want to show an error message to the user here
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       {/* Back button */}
@@ -33,7 +51,7 @@ const SiginScreen = () => {
       {/* Logo */}
       <View style={styles.main}>
         <Image
-          source={require("../assets/images/brandlogo.png")} // Replace with your logo path
+          source={require("../assets/images/brandlogo.png")}
           style={styles.logo}
           resizeMode="contain"
         />
@@ -71,9 +89,9 @@ const SiginScreen = () => {
           />
           <Text style={styles.checkboxText}>Remember me</Text>
         </View>
-      </View>{" "}
+      </View>
       {/* Sign Up Button */}
-      <TouchableOpacity style={styles.signUpButton}>
+      <TouchableOpacity style={styles.signUpButton} onPress={handleLogin}>
         <Text style={styles.signUpButtonText}>Sign In</Text>
       </TouchableOpacity>
       {/* Sign In link */}
@@ -88,152 +106,3 @@ const SiginScreen = () => {
 
 export default SiginScreen;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-    paddingHorizontal: rw(20),
-    position: "relative",
-  },
-  backButton: {
-    marginTop: rh(10),
-    position: "relative",
-    top: rh(15),
-    left: rw(15),
-  },
-  backButtonCircle: {
-    backgroundColor: "#F5F5F5",
-    width: rw(40),
-    height: rh(40),
-    borderRadius: rw(20),
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  logo: {
-    width: rw(172.62),
-    height: rh(237),
-    alignSelf: "center",
-  },
-  title: {
-    fontSize: rf(20),
-    fontWeight: "700",
-    color: "#1D253C",
-    textAlign: "center",
-  },
-  subtitle: {
-    fontSize: rf(14),
-    color: "#7C8592",
-    textAlign: "center",
-  },
-  inputContainer: {
-    height: rh(69),
-    width: rw(315),
-  },
-  inputLabel: {
-    fontSize: rf(14),
-    fontWeight: "600",
-    color: "#1D253C",
-    marginBottom: rh(5),
-  },
-  required: {
-    color: "red",
-  },
-  input: {
-    backgroundColor: "#F5F6FA",
-    width: rw(315),
-    height: rh(48),
-    borderRadius: rw(6),
-  },
-  phoneInputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#F5F6FA",
-    borderRadius: rw(6),
-  },
-  phoneCode: {
-    color: "#6D028E",
-    fontSize: rf(15),
-    fontWeight: "600",
-    marginRight: rw(10),
-  },
-  phoneInput: {
-    flex: 1,
-    height: rh(48),
-    width: rw(315),
-    fontSize: rf(15),
-    outlineColor: "transparent",
-  },
-  checkboxContainer: {
-    display: "flex",
-    flexDirection: "row",
-    gap: rw(10),
-    height: rh(20),
-    width: rw(313),
-  },
-  checkboxText: {
-    marginLeft: rw(10),
-    fontSize: rf(14),
-    color: "#7C8592",
-  },
-  linkText: {
-    color: "#FF7043",
-    textDecorationColor: "#FE5120",
-    textDecorationLine: "underline",
-  },
-  signUpButton: {
-    position: "absolute",
-    backgroundColor: "#6D028E",
-    borderRadius: rw(8),
-    alignItems: "center",
-    justifyContent: "center",
-    height: rh(48),
-    width: rw(315),
-    top: rh(748),
-    left: rw(30),
-  },
-  signUpButtonText: {
-    color: "white",
-    fontSize: rf(15),
-    fontWeight: "600",
-    height: rh(15),
-    width: rw(56),
-  },
-  signInText: {
-    position: "absolute",
-    textAlign: "center",
-    fontSize: rf(14),
-    color: "purple",
-    height: rh(10),
-    width: rw(226),
-    left: rw(74),
-    top: rh(750),
-    fontWeight: 500,
-    // marginVertical:'auto'
-  },
-  heading: {
-    display: "flex",
-    gap: rh(15),
-    width: rw(305),
-    height: rh(40),
-  },
-  details: {
-    width: rw(315),
-  },
-  checkbox: {
-    height: rh(20),
-    width: rw(20),
-    // borderWidth:2,
-    // borderColor:'#5F729D',
-    borderRadius: rw(3),
-  },
-  main: {
-    position: "absolute",
-    display: "flex",
-    justifyContent: "center",
-    gap: rh(45),
-    top: rh(100),
-    left: rw(30),
-    height: rh(476),
-    width: rw(315),
-  },
-});

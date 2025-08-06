@@ -1,27 +1,82 @@
+import ApiService from "@/services/ApiService"
 import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
+  responsiveFontSize
 } from "@/utils/responsive"
 import { Feather } from "@expo/vector-icons"
 import React, { useState } from "react"
 import {
+  Alert,
   Image,
   SafeAreaView,
-  StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native"
 import { OtpInput } from "react-native-otp-entry"
+import { Otpstyles as styles } from '../../assets/styles/OTPScreen.styles'
 
-const OTPVerificationScreen = ({navigation}) => {
-  
+const OTPVerificationScreen = ({navigation, route}) => {
+  const { phone_number } = route.params
+  console.log(phone_number)
   const [otp, setOtp] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleVerify = () => {
-    console.log("Entered OTP:", otp)
-    // Navigate to next screen or verify OTP
+  const handleVerify = async (enteredOtp = otp) => {
+    if (enteredOtp.length !== 4) {
+      Alert.alert("Error", "Please enter a 4-digit code")
+      return
+    }
+
+    setIsLoading(true)
+    try {
+      const data = {
+        phone_number,
+        code: enteredOtp
+      }
+      console.log("Verifying with:", data)
+      
+      const response = await ApiService.post('auth/verifyOTP', data)
+      console.log("Verification response:", response)
+      
+      if (response.status) {
+      await ApiService.setAuthToken(response.data.token)
+        
+        if (response.data.on_board) {
+          navigation.replace('Home') 
+        } else {
+          navigation.replace('TalentStep')
+        }
+      } else {
+        Alert.alert("Error", response.message || "Verification failed. Please check the code and try again.")
+      }
+    } catch (error) {
+      console.error("Verification error:", error)
+      Alert.alert("Error", error.message || "Failed to verify OTP. Please try again.")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleOtpChange = (text) => {
+    setOtp(text)
+    // Auto-submit when 4 digits are entered
+    if (text.length === 4) {
+      handleVerify(text)
+    }
+  }
+
+  const handleResendOTP = async () => {
+    try {
+      const response = await ApiService.post('auth/resendOTP', { phone_number })
+      if (response.status) {
+        Alert.alert("Success", "New OTP has been sent")
+      } else {
+        Alert.alert("Error", response.message || "Failed to resend OTP")
+      }
+    } catch (error) {
+      console.error("Resend error:", error)
+      Alert.alert("Error", "Failed to resend OTP")
+    }
   }
 
   return (
@@ -54,7 +109,7 @@ const OTPVerificationScreen = ({navigation}) => {
           <Text style={styles.authCodeText}>
             An Authentication Code Has Sent To
           </Text>
-          <Text style={styles.phoneNumber}>+966 12686 1010</Text>
+          <Text style={styles.phoneNumber}>+{phone_number}</Text>
         </View>
       </View>
 
@@ -63,7 +118,7 @@ const OTPVerificationScreen = ({navigation}) => {
         <OtpInput
           numberOfDigits={4}
           onTextChange={setOtp}
-          onFilled={(val) => console.log("Completed:", val)}
+          onFilled={(text) => handleVerify(text)} 
           hideStick={true}
           theme={{
             containerStyle: styles.otpContainer,
@@ -75,22 +130,26 @@ const OTPVerificationScreen = ({navigation}) => {
         />
         <View style={styles.resendContainer}>
           <Text style={styles.resendInfo}>If you don't receive code!</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleResendOTP}>
             <Text style={styles.resendLink}>Resend</Text>
           </TouchableOpacity>
         </View>
       </View>
 
-      {/* Resend Section */}
-
       {/* Verify Button */}
-      <TouchableOpacity style={styles.verifyButton} onPress={()=>navigation.replace('TalentStep')}>
-        <Text style={styles.verifyButtonText}>Verify and proceed</Text>
+      <TouchableOpacity 
+        style={[styles.verifyButton, isLoading && { opacity: 0.7 }]} 
+        onPress={handleVerify}
+        disabled={isLoading}
+      >
+        <Text style={styles.verifyButtonText}>
+          {isLoading ? "Verifying..." : "Verify and proceed"}
+        </Text>
       </TouchableOpacity>
 
       {/* Sign In Link */}
       <View style={styles.SiginInContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+        <TouchableOpacity onPress={() => navigation.replace("Login")}>
           <Text style={styles.signInText}>
             Back To <Text style={styles.signInLink}>Sign In</Text>
           </Text>
@@ -101,173 +160,3 @@ const OTPVerificationScreen = ({navigation}) => {
 }
 
 export default OTPVerificationScreen
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-    paddingHorizontal: responsiveWidth(20),
-    paddingTop: responsiveHeight(20),
-    alignItems: "center",
-    position: "relative",
-  },
-  backButton: {
-    position: "absolute",
-    top: responsiveHeight(15),
-    left: responsiveWidth(15),
-  },
-  backButtonCircle: {
-    backgroundColor: "#F5F5F5",
-    width: responsiveHeight(40),
-    height: responsiveHeight(40),
-    borderRadius: responsiveWidth(20),
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  logo: {
-    position: "absolute",
-    width: responsiveWidth(172.62),
-    height: responsiveHeight(237),
-    top: responsiveHeight(55),
-    left: responsiveWidth(100.69),
-  },
-  titleAndSubtitleContainer: {
-    position: "absolute",
-    height: responsiveHeight(60),
-    width: responsiveWidth(274),
-    top: responsiveHeight(342),
-    left: responsiveWidth(50),
-
-    gap: responsiveHeight(5),
-  },
-  title: {
-    fontFamily: "Font-Bold",
-    // height:responsiveHeight(15),
-    fontSize: responsiveFontSize(20),
-    lineHeight: responsiveFontSize(28),
-    fontWeight: "700",
-    color: "#24364C",
-    textAlign: "center",
-  },
-  phoneText: {
-    justifyContent: "center",
-    // alignItems:'center',
-    flexDirection: "row",
-    flexWrap: "wrap",
-    textAlign: "center",
-
-    width: "100%",
-    height: responsiveHeight(30),
-  },
-  authCodeText: {
-    color: "#5F729D",
-    fontFamily: "Font-Medium",
-    fontSize: responsiveFontSize(14),
-    fontWeight: "500",
-    lineHeight: responsiveHeight(20),
-  },
-  phoneNumber: {
-    fontFamily: "Font-Medium",
-    fontSize: responsiveFontSize(14),
-    fontWeight: "500",
-    color: "#FE5120",
-    lineHeight: responsiveHeight(20),
-  },
-  otpWrapper: {
-    position: "absolute",
-    width: responsiveWidth(252),
-    height: responsiveHeight(94),
-    left: responsiveWidth(61),
-    top: responsiveHeight(432),
-    gap: responsiveHeight(10),
-  },
-  otpContainer: {
-    flexDirection: "row",
-    alignSelf: "center",
-    width: responsiveWidth(222),
-    justifyContent: "space-between",
-  },
-  otpSlot: {
-    backgroundColor: "#F5F7FA",
-    width: responsiveWidth(48),
-    height: responsiveWidth(48),
-    borderRadius: responsiveWidth(6),
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 1,
-    borderColor: "#E5E7EB",
-  },
-  otpSlotActive: {
-    borderColor: "#E5E7EB",
-    borderWidth: 1,
-  },
-  otpSlotText: {
-    fontFamily: "Font-Medium",
-    fontSize: responsiveFontSize(28),
-    lineHeight: responsiveFontSize(32),
-    fontWeight: "300",
-    color: "#000000",
-    textAlign: "center",
-    textTransform: "capitalize",
-  },
-  caret: {
-    width: responsiveWidth(2),
-    height: responsiveHeight(20),
-    backgroundColor: "#6D028E",
-  },
-  resendContainer: {
-    alignItems: "center",
-    width: "100%",
-  },
-  resendInfo: {
-    fontFamily: "Font-Medium",
-    fontSize: responsiveFontSize(16),
-    lineHeight: responsiveFontSize(24),
-    fontWeight: "500",
-    color: "#5F729D",
-    textAlign: "center",
-  },
-  resendLink: {
-    fontFamily: "Font-Medium",
-    fontSize: responsiveFontSize(16),
-    lineHeight: responsiveFontSize(24),
-    fontWeight: "600",
-    color: "#FE5120",
-    textAlign: "center",
-  },
-  verifyButton: {
-    position: "absolute",
-    top: responsiveHeight(748),
-    width: responsiveWidth(315),
-    height: responsiveHeight(48),
-    backgroundColor: "#6D028E",
-    borderRadius: responsiveWidth(8),
-    justifyContent: "center",
-    left: responsiveWidth(30),
-  },
-  verifyButtonText: {
-    fontFamily: "Font-Bold",
-    fontSize: responsiveFontSize(15),
-    fontWeight: "700",
-    color: "#FFFFFF",
-    textAlign: "center",
-    textTransform: "capitalize",
-    lineHeight: responsiveFontSize(15),
-  },
-  SiginInContainer: {
-    position: "absolute",
-    top: responsiveHeight(800),
-    textAlign: "center",
-  },
-  signInText: {
-    color: "purple",
-    fontFamily: "Font-Medium",
-    fontSize: responsiveFontSize(14),
-    fontWeight: "500",
-    lineHeight: responsiveHeight(20),
-  },
-  signInLink: {
-    color: "#FE5120",
-    textDecorationLine: "underline",
-  },
-})

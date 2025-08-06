@@ -1,12 +1,12 @@
 import { Feather } from "@expo/vector-icons";
-import React from "react";
+import React, { useState } from "react";
 import {
-    FlatList,
-    Image,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -62,7 +62,8 @@ const followingData = [
 ];
 
 const FollowingScreen = () => {
-  const renderItem = ({ item }) => (
+  const [FollowingData,setFollowingData]=useState([])
+  const renderItem = ({ item}:any) => (
     <View style={styles.followerContainer}>
       <Image source={item.avatar} style={styles.avatar} />
       <View style={styles.textContainer}>
@@ -87,7 +88,7 @@ const FollowingScreen = () => {
       </View>
 
       <FlatList
-        data={followingData}
+        data={followingData || FollowingData}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         contentContainerStyle={{alignSelf:'center'}}

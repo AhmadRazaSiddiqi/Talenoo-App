@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     height: responsiveHeight(64),
     width: responsiveWidth(390),
     paddingVertical: responsiveHeight(12),
-    paddingHorizontal:responsiveWidth(12),
+    paddingHorizontal:responsiveWidth(16),
     
     
     // paddingHorizontal: responsiveWidth(16),
@@ -265,7 +265,7 @@ const styles = StyleSheet.create({
     width: responsiveWidth(390),
     height: responsiveHeight(64),
    paddingVertical:responsiveHeight(12),
-   paddingHorizontal:responsiveWidth(12)
+   paddingHorizontal:responsiveWidth(16)
 
 
   },

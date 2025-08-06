@@ -1,46 +1,66 @@
 // src/utils/responsive.js
-import { Dimensions, Platform, PixelRatio } from "react-native"
+
+import { Dimensions, PixelRatio, Platform } from "react-native"
 
 const { width, height } = Dimensions.get("window")
 
-// Adjust these based on your design's base screen size.
-// For example, if your design was made for an iPhone 8:
+// Base dimensions of your design (adjust as per Figma or Sketch reference)
 const BASE_WIDTH = 375
-const BASE_HEIGHT = 836 // Common iPhone X/XS/11 Pro height, adjust to your specific design
+const BASE_HEIGHT = 812
+
+// Calculate scale ratios
+const scaleWidth = width / BASE_WIDTH
+const scaleHeight = height / BASE_HEIGHT
+
+// Clamp utility to keep scale within a usable range
+const clamp = (min, value, max) => Math.min(Math.max(value, min), max)
+
+// Limit scaling range to avoid blowing up on tablets/large screens
+const limitedScaleWidth = clamp(0.85, scaleWidth, 1.15)
+const limitedScaleHeight = clamp(0.85, scaleHeight, 1.15)
 
 /**
- * Calculates a responsive width based on the base design width.
- * @param {number} size - The desired size from the design mockup.
- * @returns {number} The scaled width.
+ * Returns a responsive width
+ * @param {number} size - Design size
+ * @returns {number} scaled size
  */
 export const responsiveWidth = (size) => {
-  return (width / BASE_WIDTH) * size
+  return size * limitedScaleWidth
 }
 
 /**
- * Calculates a responsive height based on the base design height.
- * @param {number} size - The desired size from the design mockup.
- * @returns {number} The scaled height.
+ * Returns a responsive height
+ * @param {number} size - Design size
+ * @returns {number} scaled size
  */
 export const responsiveHeight = (size) => {
-  return (height / BASE_HEIGHT) * size
+  return size * limitedScaleHeight
 }
 
 /**
- * Calculates a responsive font size based on the base design width.
- * Typically, font sizes scale better with width for consistency.
- * @param {number} size - The desired font size from the design mockup.
- * @returns {number} The scaled font size.
+ * Returns a responsive font size
+ * @param {number} size - Design font size
+ * @returns {number} scaled font size
  */
 export const responsiveFontSize = (size) => {
-  const newSize = (width / BASE_WIDTH) * size
-  // Optional: Add a PixelRatio based adjustment for very small fonts to improve readability
-  if (Platform.OS === "ios") {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize))
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2 // Android often needs a slight adjustment
-  }
+  const scale = clamp(0.9, scaleWidth, 1.15)
+  const newSize = size * scale
+
+  return Platform.OS === "ios"
+    ? Math.round(PixelRatio.roundToNearestPixel(newSize))
+    : Math.round(PixelRatio.roundToNearestPixel(newSize)) - 1
 }
 
-// Optional: If you need to scale based on specific font scaling factor, though responsiveFontSize often covers it
+/**
+ * Optional: Returns scaled font size considering font scale settings
+ * @param {number} size
+ * @returns {number}
+ */
 export const scaleFont = (size) => size * PixelRatio.getFontScale()
+
+/**
+ * Optional: Utility to detect tablet-sized screen
+ */
+export const isTablet = () => {
+  return Math.min(width, height) >= 600
+}
