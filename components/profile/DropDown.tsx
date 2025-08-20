@@ -1,9 +1,5 @@
-// components/ReusableDropdown.tsx
-import React from "react";
-import { TextInput } from "react-native-paper";
-import { Dropdown } from "react-native-paper-dropdown";
-// ✅ Default import
-
+import React, { useState } from "react";
+import DropDownPicker from "react-native-dropdown-picker";
 interface OptionType {
   label: string;
   value: string;
@@ -12,32 +8,33 @@ interface OptionType {
 interface ReusableDropdownProps {
   label: string;
   value: string;
-  setValue: (value: string) => void;
-  list: OptionType[];
+  
   placeholder?: string;
-  mode?: "outlined" | "flat";
+  items?:[]
+
 }
 
 const DropdownComponent: React.FC<ReusableDropdownProps> = ({
-  label,
   value,
-  setValue,
-  list,
+  items, // Default empty array
   placeholder = "Select an option",
-  mode = "outlined",
+  setValue,
+  setItems
 }) => {
+
+  const[showDropdown,setShowDropdown]=useState<boolean>(false)
   return (
-    <Dropdown
-      label={label}
-      mode={mode}
-      value={value}
-      setValue={setValue}
-      list={list}
-      inputProps={{
-        right: <TextInput.Icon icon="menu-down" />,
-        placeholder: placeholder,
-      }}
+    <DropDownPicker
+     open={showDropdown}
+     value={value}
+     items={items}
+     setOpen={setShowDropdown}
+     setValue={setValue}
+     setItems={setItems}
+     placeholder={placeholder}
+     listMode="SCROLLVIEW"
     />
+   
   );
 };
 

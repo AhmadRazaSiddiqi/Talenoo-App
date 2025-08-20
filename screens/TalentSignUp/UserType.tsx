@@ -4,6 +4,7 @@ import {
   responsiveWidth,
 } from "@/utils/responsive";
 import { FontAwesome6 } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
@@ -15,12 +16,16 @@ import {
   View,
 } from "react-native";
 
-const UserTypeSelectionScreen: React.FC = ({navigation}) => {
+const UserTypeSelectionScreen: React.FC = ({navigation}:any) => {
   const [selectedUserType, setSelectedUserType] = useState<
-    "talent" | "client" | null
-  >(null);
+    "talent" | "client" | '' 
+  >('');
 
+const handleNext=async()=>{
+  await AsyncStorage.setItem('role',selectedUserType)
+  console.log(await AsyncStorage.getItem('role'))
 
+}
   const renderRadioButton = (type: "talent" | "client") => (
     <View style={styles.radioButtonContainer}>
       <View
@@ -140,7 +145,7 @@ const UserTypeSelectionScreen: React.FC = ({navigation}) => {
       {/* Next Button */}
       <Pressable
         style={[styles.nextButton, !selectedUserType && styles.nextButton,!selectedUserType?{opacity:.5}:{opacity:1}]}
-        onPress={()=>{navigation.replace('TalentSignUp',{usertype:selectedUserType})}}
+        onPress={()=>{handleNext(); navigation.replace('TalentSignUp')}}
         disabled={!selectedUserType}
       >
         <Text style={styles.nextButtonText}>Next</Text>

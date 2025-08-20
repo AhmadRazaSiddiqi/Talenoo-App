@@ -1,310 +1,287 @@
-import ProfileInput from "@/components/profile/ProfileInput";
-import ProfileRadioButtons from "@/components/profile/ProfileRadioButtons";
+import DropdownComponent from '@/components/profile/DropDown'
+import ApiService from '@/services/ApiService'
+import { FontAwesome6 } from '@expo/vector-icons'
+import * as ImagePicker from 'expo-image-picker'
+import React, { useEffect, useRef, useState } from 'react'
 import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
-} from "@/utils/responsive";
-import { AntDesign, FontAwesome6 } from "@expo/vector-icons";
-import React, { useState } from "react";
-import {
-  FlatList,
-  Pressable,
+  Alert,
+  Image,
   ScrollView,
-  Text,
   TouchableOpacity,
-  View,
-} from "react-native";
-import DropDownPicker from "react-native-dropdown-picker";
-import ApiService from "../../services/ApiService.js";
-
-import { SafeAreaView } from "react-native-safe-area-context";
-import { scale, verticalScale } from "react-native-size-matters";
-import CustomNumericInput from "../../components/profile/AgeInput";
+  View
+} from 'react-native'
+import {
+  Text,
+  TextInput
+} from 'react-native-paper'
+import PhoneInput from "react-native-phone-number-input"
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { ProfileScreenstyles as styles } from '../../assets/styles/ProfileScreen.styles'
+import ProfileRadioButtons from '../../components/profile/ProfileRadioButtons'
 
 const ProfileScreen = () => {
-  const [Countryopen, setcountryOpen] = useState(false);
-  const [Cityopen, setcityOpen] = useState(false);
-  const [Languageopen, setlanguageOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    { label: "Saudia Arabia", value: "saudia" },
-    { label: "Egypt", value: "egypt" },
-    { label: "Moroco", value: "moroco" },
-  ]);
-  const [Talents, setTalents] = useState([
-    {
-      label: "Hair Dresser",
-      value: "hairDresser",
-      price: "50",
-      currency: "/SAR hr",
-    },
-    { label: "Singer", value: "singer", price: "50", currency: "/SAR hr" },
-    { label: "Painter", value: "painter", price: "50", currency: "/SAR hr" },
-  ]);
-  console.log(Talents);
-  const [FormData,setFormData]=useState({
-    name:'',
-    email:'',
-    phone_number:'',
-    password:'',
-    role:'',
-    full_name:'',
-    country:'',
-    city:'',
-    main_talent:'',
-    languages:[],
-    skills:[],
-    hourly_rate:'',
-    profile_photo:''
-  })
-  const handleChange = (key: string, value: any) => {
-    setFormData(prev => {
-      const updated = { ...prev, [key]: value };
-      console.log("Updated Form Data", updated);
-      return updated;
-    });
-  };
-  
-  
-  
-  return (
-    <SafeAreaView
-      style={{ flex: 1, position: "relative", backgroundColor: "#FFF" }}
-    >
-      <View
-        style={{
-          position: "absolute",
-          top: responsiveHeight(15),
-          left: responsiveWidth(15),
-          width: responsiveWidth(40),
-          height: responsiveWidth(40),
-          borderRadius: responsiveWidth(20),
-          backgroundColor: "#F5F7FA",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Pressable>
-          <AntDesign
-            name="arrowleft"
-            size={responsiveFontSize(20)}
-            color="#6D028E"
-          />
-        </Pressable>
-      </View>
-      <Text
-        style={{
-          position: "absolute",
-          top: responsiveHeight(29.77),
-          left: responsiveWidth(146),
-          fontSize: responsiveFontSize(20),
-          lineHeight: responsiveHeight(28),
-          fontFamily: "Font-Bold",
-          textAlignVertical: "top",
-          color: "#6D028E",
-        }}
-      >
-        Profile
-      </Text>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          flex: 1,
-          gap: responsiveHeight(15),
-          top: responsiveHeight(90),
-          left: responsiveWidth(30),
-          paddingBottom: responsiveHeight(20),
-        }}
-      >
-        <View
-          style={{
-            width: responsiveWidth(319),
-            
-            flexDirection: "column",
-          }}
-        >
-          <View>
-            <Text
-              style={{
-                fontFamily: "Font-Bold",
-                fontSize: responsiveFontSize(20),
-                color: "#24364C",
-                textAlign: "center",
-                lineHeight: responsiveHeight(28),
-              }}
-            >
-              Complete your profile
-            </Text>
-            <Text
-              style={{
-                fontFamily: "Font-Medium",
-                color: "#5F729D",
-                fontSize: responsiveFontSize(14),
-                textAlign: "center",
-                lineHeight: responsiveHeight(20),
-              }}
-            >
-              {
-                "Rest assured,your personal data is visible only \n to you.No one else will have access to it."
-              }
-            </Text>
-          </View>
-          <ProfileInput labelText="Full Name" Inputtype="name" value={FormData.full_name} setValue={handleChange} name='full_name'/>
-          <ProfileInput labelText="Username" Inputtype="email" value={FormData.email}  setValue={handleChange} name="name"/>
-          <ProfileInput labelText="Phone Number" Inputtype="phone" value={FormData.phone_number}  setValue={handleChange} name="phone_number"/>
-          {/* Radio Buttons */}
-          <ProfileRadioButtons />
-          <CustomNumericInput />
-          <View>
-            <Text
-              style={{
-                fontSize: scale(15),
-                fontFamily: "Font-Medium",
-                fontWeight: "500",
-                color: "#25374D",
-                lineHeight: verticalScale(24),
-              }}
-            >
-              Country
-            </Text>
-            <DropDownPicker
-              open={Countryopen}
-              value={value}
-              items={items}
-              setOpen={setcountryOpen}
-              setValue={setValue}
-              setItems={setItems}
-              placeholder={"Select Your Country"}
-              dropDownDirection="BOTTOM"
-              textStyle={{
-                color: "#6D028E",
-                fontFamily: "Font-Medium",
-                fontSize: responsiveFontSize(15),
-                fontWeight: "500",
-              }}
-              style={{ borderColor: "transparent", backgroundColor: "#F5F7FA" }}
-              containerStyle={{ borderColor: "transparent" }}
-              dropDownContainerStyle={{ borderColor: "transparent" }}
-              arrowIconStyle={{ outlineColor: "green" }}
-            />
-          </View>
-          <View>
-            <Text
-              style={{
-                fontSize: scale(15),
-                fontFamily: "Font-Medium",
-                fontWeight: "500",
-                color: "#25374D",
-                lineHeight: verticalScale(24),
-              }}
-            >
-              City
-            </Text>
-            <DropDownPicker
-              open={Cityopen}
-              value={value}
-              items={items}
-              setOpen={setcityOpen}
-              setValue={setValue}
-              setItems={setItems}
-              placeholder={"Select Your Country"}
-              dropDownDirection="BOTTOM"
-              textStyle={{
-                color: "#6D028E",
-                fontFamily: "Font-Medium",
-                fontSize: responsiveFontSize(15),
-                fontWeight: "500",
-              }}
-              style={{ borderColor: "transparent", backgroundColor: "#F5F7FA" }}
-              containerStyle={{ borderColor: "transparent" }}
-              dropDownContainerStyle={{ borderColor: "transparent" }}
-              arrowIconStyle={{ outlineColor: "green" }}
-              multiple={true}
-            />
-          </View>
-          <View>
-            <Text
-              style={{
-                fontSize: scale(15),
-                fontFamily: "Font-Medium",
-                fontWeight: "500",
-                color: "#25374D",
-                lineHeight: verticalScale(24),
-              }}
-            >
-              Languages
-            </Text>
-            <DropDownPicker
-              open={Languageopen}
-              value={value}
-              items={items}
-              setOpen={setlanguageOpen}
-              setValue={setValue}
-              setItems={setItems}
-              placeholder={"Select Your Country"}
-              dropDownDirection="BOTTOM"
-              textStyle={{
-                color: "#6D028E",
-                fontFamily: "Font-Medium",
-                fontSize: responsiveFontSize(15),
-                fontWeight: "500",
-              }}
-              style={{ borderColor: "transparent", backgroundColor: "#F5F7FA" }}
-              containerStyle={{ borderColor: "transparent" }}
-              dropDownContainerStyle={{ borderColor: "transparent" }}
-              multiple={true}
-              searchPlaceholder="Add language..."
-            />
-          </View>
-          <View>
-            <Text>Talents</Text>
-            <FlatList
-              data={Talents}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem={(Item) => (
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    height: responsiveHeight(48),
-                    width: responsiveWidth(316),
-                  }}
-                >
-                  <View style={{ flexDirection: "row" }}>
-                    <TouchableOpacity>
-                      <FontAwesome6
-                        name="trash-can"
-                        size={13}
-                        color="#FE5120"
-                      />
-                    </TouchableOpacity>{" "}
-                    <Text>{Item.item.label}</Text>
-                  </View>
-                  <View style={{ flexDirection: "row" }}>
-                    <Text>{Item.item.price}</Text>
-                    <Text> /SAR hr</Text>
-                  </View>
-                </View>
-              )}
-            />
-          </View>
-          <Pressable onPress={()=>ApiService.post('updateProfile',FormData)}
-            style={{
-              height: responsiveHeight(48),
-              width: responsiveWidth(315),
-              borderRadius: responsiveWidth(8),
-              backgroundColor: "#6D028E",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text style={{ color: "white" }}>Complete Profile</Text>
-          </Pressable>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+  const [profileImage, setProfileImage] = useState(require('../../assets/images/Lucas.png'))
+  const [fullName, setFullName] = useState('')
+  const [username, setUsername] = useState('khalidkhan')
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [age, setAge] = useState('45')
+  const [country, setCountry] = useState (194)
+  const [city, setCity] = useState('')
+  const [languages, setLanguages] = useState(['English', 'Arabic'])
+  const [newLanguage, setNewLanguage] = useState('')
 
-export default ProfileScreen;
+  const [countries, setCountries] = useState<any[]>([])
+  const [cities, setCities] = useState<any[]>([])
+  const [gender, setGender] = useState<string>();
+  const[selectedCountry,setselectedCountry]=useState()
+
+  // Menu states
+
+  const phoneInputRef = useRef(null)
+
+  // Age options
+  const ageOptions = Array.from({ length: 80 }, (_, i) => (i + 18).toString())
+
+  // Fetch Countries
+  const fetchCountries=async ()=>{
+    try {
+      const data = await ApiService.get('country');
+      if (data?.data?.countries) {
+        setCountries(data.data.countries.map((c: any) => ({ label: c.name, value: c.id }))); 
+       // Assuming city objects have a 'name' property
+      } else {
+        setCountries([]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch cities:", error);
+      setCities([])
+    }
+  }
+  useEffect(() => {
+    fetchCountries()
+
+  }, [])
+
+  // Fetch Cities when country changes
+  const fetchCities = async () => {
+    try {
+      const data = await ApiService.get('city', { "country_id": country });
+      if (data?.data?.cities) {
+        setCities(data.data.cities.map((c: any) => ({ label: c.name, value: c.name }))); // Assuming city objects have a 'name' property
+      } else {
+        setCities([]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch cities:", error);
+      setCities([])
+    }
+  };
+  useEffect(() => {
+    fetchCities()
+    console.log(countries.find(e=>e.value===country))
+  }, [country])
+  const pickImage = async () => {
+    try {
+      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
+      if (status !== 'granted') {
+        Alert.alert('Permission Required', 'Sorry, we need camera roll permissions to change your profile picture!')
+        return
+      }
+
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 0.8,
+        base64: false,
+      })
+
+      if (!result.canceled && result.assets && result.assets[0]) {
+        setTimeout(() => {
+          setProfileImage({ uri: result.assets[0].uri })
+        }, 100)
+      }
+    } catch (error) {
+      console.error('Error picking image:', error)
+      Alert.alert('Error', 'Failed to pick image. Please try again.')
+    }
+  }
+
+  const removeLanguage = (langToRemove: string) => {
+    setLanguages(languages.filter(lang => lang !== langToRemove))
+  }
+
+  const addLanguage = () => {
+    if (newLanguage.trim() && !languages.includes(newLanguage.trim())) {
+      setLanguages([...languages, newLanguage.trim()])
+      setNewLanguage('')
+    }
+  }
+
+  return (
+    <SafeAreaView style={styles.container}>
+        <ScrollView
+          style={styles.scrollView}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled"
+          scrollEnabled={true}
+        >
+          {/* Header */}
+          <View style={styles.header}>
+            <TouchableOpacity style={styles.backButton}>
+              <FontAwesome6 name="arrow-left" size={20} color="#6D028E" />
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>Profile</Text>
+            <View style={styles.placeholder} />
+          </View>
+
+          {/* Title Section */}
+          <View style={styles.titleSection}>
+            <Text style={styles.title}>Complete Your Profile</Text>
+            <Text style={styles.subtitle}>
+              Rest assured, your personal data is visible only to you. No one else will have access to it.
+            </Text>
+          </View>
+
+          {/* Profile Image */}
+          <View style={styles.imageContainer}>
+            <Image
+              source={profileImage}
+              style={styles.profileImage}
+              onError={() => setProfileImage(require('../../assets/images/Lucas.png'))}
+            />
+            <TouchableOpacity style={styles.editButton} onPress={pickImage}>
+              <FontAwesome6 name="pen-to-square" size={14} color="white" />
+              <Text style={styles.editButtonText}>Edit</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Form Fields */}
+          <View style={styles.formContainer}>
+            {/* Full Name */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>Full Name</Text>
+              <TextInput
+                value={fullName}
+                onChangeText={setFullName}
+                mode="outlined"
+                style={styles.textInput}
+                outlineColor="transparent"
+                activeOutlineColor="transparent"
+                outlineStyle={styles.outlineStyle}
+                contentStyle={styles.inputContent}
+              />
+            </View>
+
+            {/* Username */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>
+                Username<Text style={styles.required}>*</Text>
+              </Text>
+              <TextInput
+                value={username}
+                onChangeText={setUsername}
+                mode="outlined"
+                style={styles.textInput}
+                outlineColor="transparent"
+                activeOutlineColor="transparent"
+                outlineStyle={styles.outlineStyle}
+                contentStyle={styles.inputContent}
+                left={<TextInput.Affix text="@" textStyle={styles.prefixText} />}
+              />
+            </View>
+
+            {/* Phone Number */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>
+                Phone Number<Text style={styles.required}>*</Text>
+              </Text>
+              <View style={styles.phoneContainer}>
+                <PhoneInput
+                  ref={phoneInputRef}
+                  defaultValue={phoneNumber}
+                  defaultCode="SA"
+                  layout="second"
+                  renderDropdownImage={<View />}
+                  onChangeText={setPhoneNumber}
+                  containerStyle={styles.phoneInputContainer}
+                  textContainerStyle={styles.phoneTextContainer}
+                  textInputStyle={styles.phoneTextInput}
+                  countryPickerButtonStyle={styles.countryPicker}
+                  flagButtonStyle={styles.flagButton}
+                />
+              </View>
+            </View>
+
+            {/* Gender */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>
+                Gender<Text style={styles.required}>*</Text>
+              </Text>
+              <ProfileRadioButtons />
+            </View>
+
+            {/* Age */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>Age</Text>
+             
+            </View>
+
+            {/* Country */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>Country</Text>
+              <DropdownComponent items={countries} value={country}    setValue={setCountry}/>
+                
+            </View>
+
+            {/* City */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>City</Text>
+              <DropdownComponent items={cities} value={city}    setValue={setCity}/>
+             
+            </View>
+
+            {/* Languages */}
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>Languages</Text>
+              <View style={styles.languagesContainer}>
+                {languages.map((language) => (
+                  <View key={language} style={styles.languageTag}>
+                    <Text style={styles.languageText}>{language}</Text>
+                    <TouchableOpacity onPress={() => removeLanguage(language)}>
+                      <FontAwesome6 name="xmark" size={12} color="#6D028E" />
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </View>
+              <View style={styles.addLanguageContainer}>
+                <TextInput
+                  value={newLanguage}
+                  onChangeText={setNewLanguage}
+                  placeholder="Add language..."
+                  mode="outlined"
+                  style={styles.languageInput}
+                  outlineColor="transparent"
+                  activeOutlineColor="transparent"
+                  outlineStyle={styles.outlineStyle}
+                  contentStyle={styles.inputContent}
+                  onSubmitEditing={addLanguage}
+                />
+              </View>
+            </View>
+          </View>
+
+          {/* Complete Profile Button */}
+          <TouchableOpacity style={styles.completeButton}>
+            <Text style={styles.completeButtonText}>Complete Profile</Text>
+          </TouchableOpacity>
+        </ScrollView>
+    
+    </SafeAreaView>
+  )
+}
+
+export default ProfileScreen
+
+

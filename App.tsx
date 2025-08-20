@@ -15,20 +15,18 @@ import MessagesScreen from "./screens/Messages";
 import RequestsScreen from "./screens/Tabs/RequestsScreen";
 import ProfileScreen from "./screens/TalentSignUp/Profile";
 
+import FeedScreen from "./screens/ClientDashboard/Feed";
 import ContactUsScreen from "./screens/ContactUs";
 import EditImageScreen from "./screens/EditImage";
 import EditVideoScreen from "./screens/EditVideo";
-import FollowingScreen from "./screens/Following";
 import ManageContentScreen from "./screens/ManageVideos";
 import BookingDetailsModal from "./screens/Modals/BookingDetails";
 import SettingsScreen from "./screens/ProfileSettings";
 import QRScreen from "./screens/QRCode";
-import SiginScreen from "./screens/SignIn";
-import OTPVerificationScreen from "./screens/TalentSignUp/EnterCode";
-import TalentStep from "./screens/TalentSignUp/TalentStep";
 import UploadContentScreen from "./screens/UploadContent";
 import WishListScreen from "./screens/WishList";
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from "./utils/responsive";
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -178,37 +176,45 @@ function ClientTabs() {
 
 function RootStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-       {/* <Stack.Screen name="Onboarding" component={OnboardingScreen} /> */}
-      {/* <Stack.Screen name="Onboarding" component={OnboardingScreen} /> */}
-      {/* <Stack.Screen name="usertypescreen" component={UserTypeSelectionScreen} /> */}
-      {/* Add other screens here as needed */}
-      {/* <Stack.Screen name="Home" component={HomeLayoutScreen} /> */}
-      {/* <Stack.Screen name="UserSelection" component={UserTypeSelectionScreen} /> */}
-      {/* <Stack.Screen name="TalentSignUp" component={SignUpScreen} /> */}
-    <Stack.Screen name="signin" component={SiginScreen} />
-      <Stack.Screen name="Otpscreen" component={OTPVerificationScreen} />
-      {/* <Stack.Screen name="ClientSignUp" component={ClientSignUpScreen} /> */}
-      {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
-      <Stack.Screen name="TalentStep" component={TalentStep} />
-      {/* <Stack.Screen name="JobStep2" component={JobStepScreen2} /> */}
-      {/* <Stack.Screen name="JobStep" component={JobStepScreen} /> */}
-      {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
-      {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
-      {/* <Stack.Screen name="plan" component={Plans} /> */}
-      {/* <Stack.Screen name="booking" component={BookingDetailsModal} /> */}
-      {/* <Stack.Screen name="notifications" component={NotificationScreen} /> */}
-      {/* <Stack.Screen name="settings" component={SettingsScreen} /> */}
-      {/* <Stack.Screen name="follower" component={FollowersScreen} /> */}
-      <Stack.Screen name="following" component={FollowingScreen} />
-      <Stack.Screen name="contactus" component={ContactUsScreen} />
-      <Stack.Screen name="upload" component={UploadContentScreen} />
-      <Stack.Screen name="ManageContent" component={ManageContentScreen} />
-      <Stack.Screen name="editvideo" component={EditVideoScreen} />
-      <Stack.Screen name="editImage" component={EditImageScreen} />
-      <Stack.Screen name="wishlist" component={WishListScreen} />
-      <Stack.Screen name="qrscreen" component={QRScreen} />
-    </Stack.Navigator>
+   
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+         {/* <Stack.Screen name="Onboarding" component={OnboardingScreen} /> */}
+        {/* <Stack.Screen name="Onboarding" component={OnboardingScreen} /> */}
+        {/* <Stack.Screen name="usertypescreen" component={UserTypeSelectionScreen} /> */}
+        {/* Add other screens here as needed */}
+        {/* <Stack.Screen name="Home" component={HomeLayoutScreen} /> */}
+        {/* <Stack.Screen name="UserSelection" component={UserTypeSelectionScreen} /> */}
+        {/* <Stack.Screen name="TalentSignUp" component={SignUpScreen} /> */}
+      {/* <Stack.Screen name="signin" component={SiginScreen} /> */}
+        {/* <Stack.Screen name="Otpscreen" component={OTPVerificationScreen} /> */}
+        {/* <Stack.Screen name="ClientSignUp" component={ClientSignUpScreen} /> */}
+        {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
+        {/* <Stack.Screen name="test" component={CitySelector} /> */}
+
+        {/* <Stack.Screen name="TalentStep" component={TalentStep} /> */}
+        {/* <Stack.Screen name="JobStep2" component={JobStepScreen2} /> */}
+        {/* <Stack.Screen name="JobStep" component={JobStepScreen} /> */}
+        {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
+        {/* <Stack.Screen name="Location" component={LocationSearchScreen} /> */}
+        {/* <Stack.Screen name="plan" component={Plans} /> */}
+        {/* <Stack.Screen name="booking" component={BookingDetailsModal} /> */}
+        {/* <Stack.Screen name="notifications" component={NotificationScreen} /> */}
+        {/* <Stack.Screen name="settings" component={SettingsScreen} /> */}
+        {/* <Stack.Screen name="follower" component={FollowersScreen} /> */}
+        {/* <Stack.Screen name="following" component={FollowingScreen} /> */}
+        {/* <Stack.Screen name="following" component={BookingRequest} /> */}
+        {/* <Stack.Screen name="rate" component={RateClient} /> */}
+        <Stack.Screen name="search" component={SearchScreen} />
+        <Stack.Screen name="feed" component={FeedScreen} />
+        <Stack.Screen name="contactus" component={ContactUsScreen} />
+        <Stack.Screen name="upload" component={UploadContentScreen} />
+        <Stack.Screen name="ManageContent" component={ManageContentScreen} />
+        <Stack.Screen name="editvideo" component={EditVideoScreen} />
+        <Stack.Screen name="editImage" component={EditImageScreen} />
+        <Stack.Screen name="wishlist" component={WishListScreen} />
+        <Stack.Screen name="qrscreen" component={QRScreen} />
+      </Stack.Navigator>
+
   );
 }
 
