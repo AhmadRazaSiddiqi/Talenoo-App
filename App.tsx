@@ -17,6 +17,7 @@ import ProfileScreen from "./screens/TalentSignUp/Profile";
 
 import FeedScreen from "./screens/ClientDashboard/Feed";
 import ContactUsScreen from "./screens/ContactUs";
+import Democalendar from "./screens/Democalendar";
 import EditImageScreen from "./screens/EditImage";
 import EditVideoScreen from "./screens/EditVideo";
 import ManageContentScreen from "./screens/ManageVideos";
@@ -202,7 +203,7 @@ function RootStack() {
         {/* <Stack.Screen name="settings" component={SettingsScreen} /> */}
         {/* <Stack.Screen name="follower" component={FollowersScreen} /> */}
         {/* <Stack.Screen name="following" component={FollowingScreen} /> */}
-        {/* <Stack.Screen name="following" component={BookingRequest} /> */}
+        <Stack.Screen name="bookingrequest" component={Democalendar} />
         {/* <Stack.Screen name="rate" component={RateClient} /> */}
         <Stack.Screen name="search" component={SearchScreen} />
         <Stack.Screen name="feed" component={FeedScreen} />
