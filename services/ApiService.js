@@ -13,7 +13,8 @@ class ApiService {
 
     this.api.interceptors.request.use(async (config) => {
       try {
-        const token = await AsyncStorage.getItem('authToken');
+        // const token = await AsyncStorage.getItem('authToken');
+        const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzU1MTAzNzEzLCJleHAiOjE3NTUxOTAxMTN9.fhaH1bJnqj79X2fc7rlnWoH83vYArxl0J5Dk1DFnIro"
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
@@ -58,7 +59,7 @@ async getAuthToken() {
 }
   async clearAuthToken() {
     await AsyncStorage.removeItem('authToken');
-    await AsyncStorage.removeItem('roles');
+    await AsyncStorage.removeItem('role');
   }
 
   async get(endpoint, params = {}) {

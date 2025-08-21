@@ -1,10 +1,21 @@
+import ApiService from "@/services/ApiService";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const FeedScreen = () => {
+  const[data,setData]=useState([])
+  const getData=async()=>{
+const response=await ApiService.get('feed')
+if(response!==null || undefined)
+  setData(response?.data?.data?.feed)
+console.log(data)
+  }
+  useEffect(()=>{
+getData()
+  },[])
   return (
     <SafeAreaView style={styles.safeArea}>
       <LinearGradient
@@ -70,7 +81,7 @@ const FeedScreen = () => {
 
       {/* Play Button */}
       <Image
-        source={require("../../assets/images/play.png")}
+        source={require("../../assets/icons/play.png")}
         style={styles.playButton}
       />
 
